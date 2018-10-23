@@ -93,9 +93,46 @@ namespace DAL.Mappers
             return new StatutEmployee()
             {
                 Id = (int) dr["Id_Employee_Statut"],
-                NomStatut = (string) dr ["Nom_Employee_Statut"]
+                NomStatut = (string) dr["Nom_Employee_Statut"]
             };
         }
-        
+
+        internal static Equipe ToEquipe(this IDataRecord dr)
+        {
+            return new Equipe()
+            {
+                Creee = (DateTime) dr["Date_Creation_Equipe"],
+                Id = (int) dr["Id_Equipe"],
+                Nom = (string) dr["Nom_Equipe"],
+                Projet = (int) dr["Id_Projet"]
+            };
+        }
+
+        internal static Event ToEvent(this IDataRecord dr)
+        {
+            return new Event()
+            {
+                DateDebut = (DateTime) dr["Date_Debut"],
+                DateFin = (DateTime) dr["Date_Fin"],
+                Description = (string) dr["Description"],
+                FullDay = (bool) dr["FullDay"],
+                Id = (int) dr["Id_Event"],
+                Id_Employee = (int) dr["Id_Employee"],
+                Lieu = (int) dr["Lieu"],
+                Nom = (string) dr["Nom_Event"]
+            };
+
+        }
+
+        internal static MessageEmployee ToMessageEmployee(this IDataRecord dr)
+        {
+            return new MessageEmployee()
+            {
+                Contenu = (string) dr["Texte_Message_Employee"],
+                Date = (DateTime) dr["Date_Message_Employee"],
+                Id = (int) dr["Id_Message_Employee"],
+
+            };
+    }
     }
 }
