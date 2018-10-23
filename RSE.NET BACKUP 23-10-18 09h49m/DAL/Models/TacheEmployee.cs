@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace DAL.Models {
     class TacheEmployee {
-
+        public int? Id { get; set; }
+        public string Nom { get; set; }
+        public string Description { get; set; }
+        public DateTime Debut { get; set; }
+        public DateTime Fin { get; set; }
+        public DateTime Final { get; set; }
+        public int? TachePrécedente { get; set; }
+        public int Projet { get; set; }
     }
 }
