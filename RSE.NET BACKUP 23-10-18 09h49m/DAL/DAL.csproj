@@ -52,6 +52,8 @@
     <Compile Include="Models\MessageProjet.cs" />
     <Compile Include="Models\MessageTache.cs" />
     <Compile Include="Models\Projet.cs" />
+    <Compile Include="Models\StatutEmployee.cs" />
+    <Compile Include="Models\StatutTache.cs" />
     <Compile Include="Models\TacheEmployee.cs" />
     <Compile Include="Models\TacheEquipe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
