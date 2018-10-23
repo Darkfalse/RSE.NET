@@ -29,7 +29,7 @@ namespace DAL.Services {
 
         public Employee Insert(Employee e) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("INSERT INTO Employee (Nom_Employee, Prenom, Email, Password, Birthday, RegNat, Id_Adresse, HireDate, Tel, Id_Coordonee) OUTPUT INSERTED.ID VALUES (@ne, @pr, @em, @pa, @bd, @rn, @ia, @hd, @te, @ic);");
+            Command command = new Command("EXEC SP_AddEmployee @nom = @ne, @prenom = @pr, @email = @em, @password = @pa, @birtday = @bd, @regnat = @rn, @idadresse = @ia, @hiredate = @hd, @tel = @te, @idcoordonee = @id;");
             command.AddParameter("ne", e.Nom);
             command.AddParameter("pr", e.Prenom);
             command.AddParameter("em", e.Email);
@@ -48,7 +48,7 @@ namespace DAL.Services {
 
         public bool Update(Employee e) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("UPDATE Employee SET Nom_Employee = @ne, Prenom = @pr, Email = @em, Password = @pa, Birthday = @bd, RegNat = @rn, Id_Adresse = @ia, HireDate = @hd, Tel = @te, Id_Coordonee = @ic WHERE Id_Employee = @id;");
+            Command command = new Command("EXEC SP_UpdateEmployee @id = @ide, @nom = @ne, @prenom = @pr, @email = @em, @password = @pa, @birtday = @bd, @regnat = @rn, @idadresse = @ia, @hiredate = @hd, @tel = @te, @idcoordonee = @id;");
             command.AddParameter("ne", e.Nom);
             command.AddParameter("pr", e.Prenom);
             command.AddParameter("em", e.Email);
@@ -59,15 +59,15 @@ namespace DAL.Services {
             command.AddParameter("hd", e.HireDate);
             command.AddParameter("te", e.Tel);
             command.AddParameter("ic", e.Coordonnee);
-            command.AddParameter("id", e.Id);
+            command.AddParameter("ide", e.Id);
 
             return connection.ExecuteNonQuery(command) == 1;
         }
 
         public bool Delete(int id) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("DELETE FROM Employee WHERE Id_Employee = @id;");
-            command.AddParameter("id", id);
+            Command command = new Command("EXEC SP_DeleteEmployee @id = @ide;");
+            command.AddParameter("ide", id);
 
             return connection.ExecuteNonQuery(command) == 1;
         }
