@@ -10,9 +10,5 @@ namespace DAL.Models {
         public string Nom { get; set; }
         public DateTime Creee { get; set; }
         public string NomProjet { get; set; }
-
-        //Données de vue
-        public string NomManager { get; set; }
-        public string PrenomManager { get; set; }
     }
 }

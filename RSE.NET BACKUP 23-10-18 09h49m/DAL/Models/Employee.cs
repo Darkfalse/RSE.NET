@@ -17,12 +17,5 @@ namespace DAL.Models {
         public DateTime HireDate { get; set; }
         public string Tel { get; set; }
         public int? Coordonnee { get; set; }
-
-        //Données de vues
-        public string Rue { get; set; }
-        public string BoitePostale { get; set; }
-        public string Ville { get; set; }
-        public int? Zip { get; set; }
-        public string Pays { get; set; }
     }
 }
