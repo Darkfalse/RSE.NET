@@ -31,7 +31,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappers\Mappers.cs" />
     <Compile Include="Models\Administrateur.cs" />
     <Compile Include="Models\Adresse.cs" />
     <Compile Include="Models\Coordonnee.cs" />
@@ -61,15 +61,6 @@
     <Compile Include="Models\TacheEquipe.cs" />
     <Compile Include="Models\Ville.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\MessageProjetService.cs" />
-    <Compile Include="Services\MessageTacheService.cs" />
-    <Compile Include="Services\PaysService.cs" />
-    <Compile Include="Services\ProjetService.cs" />
-    <Compile Include="Services\StatutEmployeeService.cs" />
-    <Compile Include="Services\StatutTacheService.cs" />
-    <Compile Include="Services\TacheEmployeeService.cs" />
-    <Compile Include="Services\TacheEquipeService.cs" />
-    <Compile Include="Services\VilleService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ToolBox\ToolBox.csproj">
@@ -78,7 +69,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Mappers\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
