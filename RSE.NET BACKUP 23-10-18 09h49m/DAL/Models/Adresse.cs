@@ -8,5 +8,7 @@ namespace DAL.Models
 {
     class Adresse
     {
+        public int? Id { get; set; }
+        public string Nom_Rue { get; set; }
     }
 }
