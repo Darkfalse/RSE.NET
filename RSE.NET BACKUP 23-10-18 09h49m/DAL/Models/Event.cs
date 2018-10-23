@@ -11,7 +11,7 @@ namespace DAL.Models
         public int Id { get; set; }
         public string Nom { get; set; }
         public string Description { get; set; }
-        public string Lieu { get; set; }
+        public int Lieu { get; set; }
         public DateTime DateDebut { get; set; }
         public DateTime DateFin { get; set; }
         public bool FullDay { get; set; }
