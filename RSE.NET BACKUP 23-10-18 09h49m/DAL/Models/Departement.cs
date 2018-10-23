@@ -10,9 +10,5 @@ namespace DAL.Models {
         public string Nom { get; set; }
         public string Description { get; set; }
         public int Admin { get; set; }
-
-        //Données de vues
-        public string NomCreateur { get; set; }
-        public string PrenomCreateur { get; set; }
     }
 }

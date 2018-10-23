@@ -14,9 +14,5 @@ namespace DAL.Models {
         public DateTime Final { get; set; }
         public int? TachePrécedente { get; set; }
         public int Projet { get; set; }
-
-        //Données de vue
-        public string Statut { get; set; }
-        public string NomTachePrecedente { get; set; }
     }
 }

@@ -11,9 +11,5 @@ namespace DAL.Models {
         public string Description { get; set; }
         public DateTime Debut { get; set; }
         public DateTime Fin { get; set; }
-
-        //Données de vues
-        public string NomManager { get; set; }
-        public string PrenomManager { get; set; }
     }
 }
