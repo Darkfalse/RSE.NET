@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Models\Administrateur.cs" />
     <Compile Include="Models\Adresse.cs" />
+    <Compile Include="Models\Coordonnee.cs" />
     <Compile Include="Models\Departement.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Equipe.cs" />
