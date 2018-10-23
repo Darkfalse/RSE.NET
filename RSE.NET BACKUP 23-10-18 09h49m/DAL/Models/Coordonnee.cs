@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DAL.Models
 {
-    class Administrateur
+    class Coordonnee
     {
         public int Id { get; set; }
-        public int NumeroAdmin { get; set; }
-        public int Employee  { get; set; }
+        public string Longitude { get; set; }
+        public string Latitude { get; set; }
     }
 }
