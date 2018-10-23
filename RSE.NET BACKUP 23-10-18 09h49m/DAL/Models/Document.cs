@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DAL.Models {
-     public public class Document
+     public class Document
     {
         public int? Id { get; set; }
         public string Nom { get; set; }
