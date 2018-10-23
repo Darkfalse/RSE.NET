@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DAL.Models {
-    class MessageTache {
+    public class MessageTache {
         public int Id { get; set; }
         public string Titre { get; set; }
         public DateTime Date { get; set; }
