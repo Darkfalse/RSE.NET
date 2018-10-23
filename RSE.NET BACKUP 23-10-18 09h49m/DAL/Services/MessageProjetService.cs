@@ -44,7 +44,7 @@ namespace DAL.Services {
 
         public bool Update(MessageProjet mp) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("UPDATE Message_Projet SET Titre_Message = @tim, Date_Message = @dm, Texte_Message = @tm, Id_Message = @im, Id_Projet, Id_Employee = @ie WHERE Id_Message_Tache = @id;");
+            Command command = new Command("UPDATE Message_Projet SET Titre_Message = @tim, Date_Message = @dm, Texte_Message = @tm, Id_Message = @im, Id_Projet = @ip, Id_Employee = @ie WHERE Id_Message_Tache = @id;");
             command.AddParameter("tim", mp.Titre);
             command.AddParameter("dm", mp.Date);
             command.AddParameter("tm", mp.Contenu);

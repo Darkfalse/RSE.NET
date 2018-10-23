@@ -9,6 +9,6 @@ namespace DAL.Models {
         public int? Id { get; set; }
         public string Nom { get; set; }
         public DateTime Creee { get; set; }
-        public string NomProjet { get; set; }
+        public int Projet { get; set; }
     }
 }
