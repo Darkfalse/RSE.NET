@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace ToolBox {
-    class Command
+    public class Command
     {
         public string Query { get; private set; }
         public Dictionary<string, object> Parameters { get; private set; }

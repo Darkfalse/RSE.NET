@@ -12,7 +12,7 @@ namespace DAL.Models {
         public DateTime Debut { get; set; }
         public DateTime Fin { get; set; }
         public DateTime Final { get; set; }
-        public int? TachePrécedente { get; set; }
+        public int? TachePrecedente { get; set; }
         public int Projet { get; set; }
     }
 }

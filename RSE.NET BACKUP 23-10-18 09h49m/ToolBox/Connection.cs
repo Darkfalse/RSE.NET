@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.Common;
 
 namespace ToolBox {
-    class Connection
+    public class Connection
     {
         private DbProviderFactory factory { get; set; }
         private string connectString { get; set; }
