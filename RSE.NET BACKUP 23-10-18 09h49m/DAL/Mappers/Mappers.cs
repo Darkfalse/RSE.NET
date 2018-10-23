@@ -131,8 +131,24 @@ namespace DAL.Mappers
                 Contenu = (string) dr["Texte_Message_Employee"],
                 Date = (DateTime) dr["Date_Message_Employee"],
                 Id = (int) dr["Id_Message_Employee"],
-
+                Id_Employee = (int) dr["Id_Employee"],
+                Id_Destinataire = (int) dr["Id_Employee_Destinataire"],
+                MessagePrecedent = (int) dr["Id_Message"],
+                Titre = (string) dr["Titre_Message_Employee"]
             };
-    }
+        }
+        internal static MessageEquipe ToMessageEquipe(this IDataRecord dr)
+        {
+            return new MessageEquipe()
+            {
+                Contenu = (string)dr["Texte_Message_Equipe"],
+                Date = (DateTime)dr["Date_Message_Equipe"],
+                Id = (int)dr["Id_Message_Equipe"],
+                Id_Equipe = (int)dr["Id_Equipe"],
+                MessagePrecedent = (int)dr["Id_Message"],
+                Titre = (string)dr["Titre_Message_Equipe"],
+                Id_Employee = (int)dr["Id_Employee"]
+            };
+        }
     }
 }
