@@ -47,7 +47,10 @@
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Equipe.cs" />
     <Compile Include="Models\Event.cs" />
-    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\MessageEmployee.cs" />
+    <Compile Include="Models\MessageEquipe.cs" />
+    <Compile Include="Models\MessageProjet.cs" />
+    <Compile Include="Models\MessageTache.cs" />
     <Compile Include="Models\Projet.cs" />
     <Compile Include="Models\TacheEmployee.cs" />
     <Compile Include="Models\TacheEquipe.cs" />
