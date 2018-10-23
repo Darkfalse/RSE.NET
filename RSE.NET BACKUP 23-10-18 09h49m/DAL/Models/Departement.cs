@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DAL.Models {
-    class Departement {
+   public class Departement
+   {
         public int? Id { get; set; }
         public string Nom { get; set; }
         public string Description { get; set; }

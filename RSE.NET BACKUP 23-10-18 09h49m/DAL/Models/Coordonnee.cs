@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Models
 {
-    class Coordonnee
+    public class Coordonnee
     {
         public int Id { get; set; }
         public string Longitude { get; set; }
