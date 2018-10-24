@@ -11,5 +11,6 @@ namespace DAL.Models
         public int Id { get; set; }
         public int NumeroAdmin { get; set; }
         public int Employee  { get; set; }
+
     }
 }
