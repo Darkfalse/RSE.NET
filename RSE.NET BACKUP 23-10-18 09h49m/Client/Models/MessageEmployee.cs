@@ -25,7 +25,7 @@ namespace Client.Models
             Id_Destinataire = iddest;
         }
 
-        public MessageEmployee(int id?, string titre, DateTime date, string contenu, int? precedent, int idemp, int iddest) : this(titre, date, contenu, precedent, idemp, iddest) {
+        public MessageEmployee(int? id, string titre, DateTime date, string contenu, int? precedent, int idemp, int iddest) : this(titre, date, contenu, precedent, idemp, iddest) {
             Id = id;
         }
     }

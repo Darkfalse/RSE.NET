@@ -15,6 +15,6 @@ namespace DAL.Models {
         public float Taille { get; set; }
         public string Format { get; set; }
         public int Id_Emp_Creee { get; set; }
-        public int Id_Emp_Maj { get; set; }
+        public int? Id_Emp_Maj { get; set; }
     }
 }
