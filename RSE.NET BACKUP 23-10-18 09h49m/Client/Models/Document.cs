@@ -16,5 +16,20 @@ namespace Client.Models {
         public string Format { get; set; }
         public int Id_Emp_Creee { get; set; }
         public int Id_Emp_Maj { get; set; }
+
+        public Document(string nom, string des, DateTime date, string lien, float taille, string format, int idEmpCree, int idEmpMaj) {
+            Nom = nom;
+            Description = des;
+            Date = date;
+            Lien = lien;
+            Taille = taille;
+            Format = format;
+            Id_Emp_Creee = idEmpCree;
+            Id_Emp_Maj = idEmpMaj;
+        }
+
+        public Document(int id, string nom, string des, DateTime date, string lien, float taille, string format, int idEmpCree, int idEmpMaj) : this(nom, des, date, lien, taille, format, idEmpCree, idEmpMaj) {
+            Id = id;
+        }
     }
 }

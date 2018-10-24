@@ -9,7 +9,7 @@ using ToolBox;
 using System.Configuration;
 
 namespace DAL.Services {
-    class MessageTacheService {
+    public class MessageTacheService {
 
         private readonly string providerName = ConfigurationManager.ConnectionStrings["SQLConnection"].ProviderName;
         private readonly string connString = ConfigurationManager.ConnectionStrings["SQLConnection"].ConnectionString;

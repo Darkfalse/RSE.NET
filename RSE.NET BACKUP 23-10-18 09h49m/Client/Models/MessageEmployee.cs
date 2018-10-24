@@ -15,5 +15,18 @@ namespace Client.Models
         public int? MessagePrecedent { get; set; }
         public int Id_Employee { get; set; }
         public int Id_Destinataire { get; set; }
+
+        public MessageEmployee(string titre, DateTime date, string contenu, int precedent, int idemp, int iddest) {
+            Titre = titre;
+            Date = date;
+            Contenu = contenu;
+            MessagePrecedent = precedent;
+            Id_Employee = idemp;
+            Id_Destinataire = iddest;
+        }
+
+        public MessageEmployee(int id, string titre, DateTime date, string contenu, int precedent, int idemp, int iddest) : this(titre, date, contenu, precedent, idemp, iddest) {
+            Id = id;
+        }
     }
 }

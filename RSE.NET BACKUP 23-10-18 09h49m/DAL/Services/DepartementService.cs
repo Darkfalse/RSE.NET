@@ -9,7 +9,7 @@ using System.Configuration;
 using ToolBox;
 
 namespace DAL.Services {
-    class DepartementService {
+    public class DepartementService {
 
         private readonly string providerName = ConfigurationManager.ConnectionStrings["SQLConnection"].ProviderName;
         private readonly string connString = ConfigurationManager.ConnectionStrings["SQLConnection"].ConnectionString;
