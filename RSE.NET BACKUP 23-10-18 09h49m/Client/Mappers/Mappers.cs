@@ -333,7 +333,7 @@ namespace Client.Mappers
         }
         internal static C.Pays ToClient(this D.Pays e)
         {
-            return new C.Pays(e.Id, e.Alpha2, e.Alpha3, e.Nom_FR, e.Nom_EN);
+            return new C.Pays(e.Id,e.Code, e.Alpha2, e.Alpha3, e.Nom_FR, e.Nom_EN);
         }
         internal static C.StatutEmployee ToClient(this D.StatutEmployee e)
         {
