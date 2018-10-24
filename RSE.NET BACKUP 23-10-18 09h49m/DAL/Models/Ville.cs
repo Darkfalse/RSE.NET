@@ -8,7 +8,7 @@ namespace DAL.Models {
     public class Ville {
         public int? Id { get; set; }
         public string Nom { get; set; }
-        public int Zip { get; set; }
+        public string Zip { get; set; }
         public int Id_Pays { get; set; }
     }
 }

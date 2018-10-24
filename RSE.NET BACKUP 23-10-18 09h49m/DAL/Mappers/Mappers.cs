@@ -21,7 +21,6 @@ namespace DAL.Mappers
                 NumeroAdmin = (int) dr["Numero_Admin"]
             };
         }
-
         internal static Adresse ToAdresse(this IDataRecord dr)
         {
             return new Adresse()
@@ -32,7 +31,6 @@ namespace DAL.Mappers
                 Nom_Rue = (string) dr["Nom_Rue"]
             };
         }
-
         internal static Coordonnee ToCoordonnee(this IDataRecord dr)
         {
             return new Coordonnee()
@@ -42,7 +40,6 @@ namespace DAL.Mappers
                 Longitude = (string) dr["Longitude"]
             };
         }
-
         internal static Departement ToDepartement(this IDataRecord dr)
         {
             return new Departement()
@@ -53,7 +50,6 @@ namespace DAL.Mappers
                 Nom = (string) dr["Nom_Departement"]
             };
         }
-
         internal static Document ToDocument(this IDataRecord dr)
         {
             return new Document()
@@ -69,7 +65,6 @@ namespace DAL.Mappers
                 Taille = (float) dr["Taille"]
             };
         }
-
         internal static Employee ToEmployee(this IDataRecord dr)
         {
             return new Employee()
@@ -87,7 +82,6 @@ namespace DAL.Mappers
                 Tel = (string) dr["Tel"]
             };
         }
-
         internal static StatutEmployee ToStatutEmployee(this IDataRecord dr)
         {
             return new StatutEmployee()
@@ -96,7 +90,6 @@ namespace DAL.Mappers
                 NomStatut = (string) dr["Nom_Employee_Statut"]
             };
         }
-
         internal static Equipe ToEquipe(this IDataRecord dr)
         {
             return new Equipe()
@@ -107,7 +100,6 @@ namespace DAL.Mappers
                 Projet = (int) dr["Id_Projet"]
             };
         }
-
         internal static Event ToEvent(this IDataRecord dr)
         {
             return new Event()
@@ -121,9 +113,7 @@ namespace DAL.Mappers
                 Lieu = (int) dr["Lieu"],
                 Nom = (string) dr["Nom_Event"]
             };
-
         }
-
         internal static MessageEmployee ToMessageEmployee(this IDataRecord dr)
         {
             return new MessageEmployee()
@@ -141,14 +131,116 @@ namespace DAL.Mappers
         {
             return new MessageEquipe()
             {
-                Contenu = (string)dr["Texte_Message_Equipe"],
-                Date = (DateTime)dr["Date_Message_Equipe"],
-                Id = (int)dr["Id_Message_Equipe"],
-                Id_Equipe = (int)dr["Id_Equipe"],
-                MessagePrecedent = (int)dr["Id_Message"],
-                Titre = (string)dr["Titre_Message_Equipe"],
-                Id_Employee = (int)dr["Id_Employee"]
+                Contenu = (string) dr["Texte_Message_Equipe"],
+                Date = (DateTime) dr["Date_Message_Equipe"],
+                Id = (int) dr["Id_Message_Equipe"],
+                Id_Equipe = (int) dr["Id_Equipe"],
+                MessagePrecedent = (int) dr["Id_Message"],
+                Titre = (string) dr["Titre_Message_Equipe"],
+                Id_Employee = (int) dr["Id_Employee"]
             };
         }
+        internal static MessageProjet ToMessageProjet(this IDataRecord dr)
+        {
+            return new MessageProjet()
+            {
+                Contenu = (string) dr["Texte_Message_Projet"],
+                Date = (DateTime) dr["Date_Message_Projet"],
+                Id = (int) dr["Id_Message_Projet"],
+                MessagePrecedent = (int) dr["Id_Message"],
+                Titre = (string) dr["Titre_Message_Projet"],
+                Id_Employee = (int) dr["Id_Employee"],
+                Id_Projet = (int) dr["Id_Projet"]
+            };
+        }
+        internal static MessageTache ToMessageTache(this IDataRecord dr)
+        {
+            return new MessageTache()
+            {
+                Contenu = (string) dr["Texte_Message_Tache"],
+                Date = (DateTime) dr["Date_Message_Tache"],
+                Id = (int) dr["Id_Message_Tache"],
+                MessagePrecedent = (int) dr["Id_Message"],
+                Titre = (string) dr["Titre_Message_Tache"],
+                Id_Employee = (int) dr["Id_Employee"],
+                Id_Tache_Emplopyee = (int) dr["Id_Tache_Employee"],
+                Id_Tache_Equipe = (int) dr["Id_Tache_Equipe"]
+            };
+        }
+        internal static Pays ToPays(this IDataRecord dr)
+        {
+            return new Pays()
+            {
+                Alpha2 = (string) dr["Alpha2"],
+                Alpha3 = (string) dr["Alpha3"],
+                Code = (int) dr["Code"],
+                Id = (int) dr["Id_Pays"],
+                Nom_EN = (string) dr["Nom_International"],
+                Nom_FR = (string) dr["Nom_Francais"]
+            };
+        }
+
+        internal static Projet ToProjet(this IDataRecord dr)
+        {
+            return new Projet()
+            {
+                Admin = (int) dr["Id_Admin"],
+                Debut = (DateTime) dr["Date_Debut"],
+                Description = (string) dr["Description"],
+                Fin = (DateTime) dr["Date_Fin"],
+                Id = (int) dr["Id_Projet"],
+                Nom = (string) dr["Nom_Projet"]
+            };
+        }
+
+        internal static TacheEmployee ToTacheEmployee(this IDataRecord dr)
+        {
+            return new TacheEmployee()
+            {
+                Debut = (DateTime) dr["Date_Debut"],
+                Description = (string) dr["Description_Tache_Employee"],
+                Fin = (DateTime) dr["Date_Fin"],
+                Final = (DateTime) dr["Date_Final"],
+                Id = (int) dr["Id_Tache_Employee"],
+                Nom = (string) dr["Nom_Tache_Employee"],
+                Projet = (int) dr["Id_Projet"],
+                TachePrecedente = (int) dr["Tache_Precedente"]
+            };
+        }
+        internal static TacheEquipe ToTacheEquipe(this IDataRecord dr)
+        {
+            return new TacheEquipe()
+            {
+                Debut = (DateTime) dr["Date_Debut"],
+                Description = (string) dr["Description_Tache_Equipe"],
+                Fin = (DateTime) dr["Date_Fin"],
+                Final = (DateTime) dr["Date_Final"],
+                Id = (int) dr["Id_Tache_Equipe"],
+                Nom = (string) dr["Nom_Tache_Equipe"],
+                Projet = (int) dr["Id_Projet"],
+                TachePrecedente = (int) dr["Tache_Precedente"]
+            };
+        }
+
+        internal static StatutTache ToStatutTache(this IDataRecord dr)
+        {
+            return new StatutTache()
+            {
+                Id = (int) dr["Id_Tache_Statut"],
+                NomStatut = (string) dr["Nom_Tache_Statut"]
+            };
+        }
+
+        internal static Ville ToVille(this IDataRecord dr)
+        {
+            return new Ville()
+            {
+                Id = (int) dr["Id_Ville"],
+                Id_Pays = (int) dr["Id_Pays"],
+                Nom = (string) dr["Nom_Ville"],
+                Zip = (string) dr["Zip"]
+            };
+        }
+
     }
 }
