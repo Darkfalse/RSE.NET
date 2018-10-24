@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using ToolBox;
 
 namespace DAL.Services {
-    class CoordonneeService {
+    public class CoordonneeService {
 
         private readonly string providerName = ConfigurationManager.ConnectionStrings["SQLConnection"].ProviderName;
         private readonly string connString = ConfigurationManager.ConnectionStrings["SQLConnection"].ConnectionString;
