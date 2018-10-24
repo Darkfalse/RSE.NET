@@ -22,37 +22,46 @@ namespace _WebApp.Models.Formulaires
         public string Prenom { get; set; }
 
         [Required]
-        [MaxLength(250)]
+        [MaxLength(249)]
         public string Email { get; set; }
 
         [Required]
+        [MaxLength(19)]
+        [MinLength(8)]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
         
         [Required]
+        [DataType(DataType.Date)]
         public DateTime Birthday { get; set; }
 
         [Required]
+        [MaxLength(20)]
         public string RegNat { get; set; }
 
         [Required]
+        [MaxLength(100)]
         public string Nom_Rue { get; set; }
 
-        [MaxLength]
+        [MaxLength(5)]
         public string Boite_Postal { get; set; }
 
         [Required]
         public string Ville { get; set; }
 
         [Required]
+        [MaxLength(7)]
         public string Zip { get; set; }
 
         [Required]
         public string Pays { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
         public DateTime HireDate { get; set; }
 
         [Required]
+        [MaxLength(25)]
         public string Tel { get; set; }
     }
 }
