@@ -31,7 +31,7 @@ namespace DAL.Services {
 
         public Employee Insert(Employee e) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("EXEC SP_AddEmployee @nom = @ne, @prenom = @pr, @email = @em, @password = @pa, @birtday = @bd, @regnat = @rn, @idadresse = @ia, @hiredate = @hd, @tel = @te, @idcoordonee = @id;");
+            Command command = new Command("EXEC SP_AddEmployee @nom = @ne, @prenom = @pr, @email = @em, @password = @pa, @birtday = @bd, @regnat = @rn, @idadresse = @ia, @hiredate = @hd, @tel = @te, @idcoordonee = @ic;");
             command.AddParameter("ne", e.Nom);
             command.AddParameter("pr", e.Prenom);
             command.AddParameter("em", e.Email);
@@ -50,7 +50,7 @@ namespace DAL.Services {
 
         public bool Update(Employee e) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("EXEC SP_UpdateEmployee @id = @ide, @nom = @ne, @prenom = @pr, @email = @em, @password = @pa, @birtday = @bd, @regnat = @rn, @idadresse = @ia, @hiredate = @hd, @tel = @te, @idcoordonee = @id;");
+            Command command = new Command("EXEC SP_UpdateEmployee @id = @ide, @nom = @ne, @prenom = @pr, @email = @em, @password = @pa, @birtday = @bd, @regnat = @rn, @idadresse = @ia, @hiredate = @hd, @tel = @te, @idcoordonee = @ic;");
             command.AddParameter("ne", e.Nom);
             command.AddParameter("pr", e.Prenom);
             command.AddParameter("em", e.Email);

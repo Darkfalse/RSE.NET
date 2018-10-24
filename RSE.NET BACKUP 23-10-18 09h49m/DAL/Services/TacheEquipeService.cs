@@ -21,7 +21,7 @@ namespace DAL.Services {
             return connection.ExecuteReader(command, (dr) => dr.ToTacheEquipe());
         }
 
-        public Ville GetById(int id) {
+        public TacheEquipe GetById(int id) {
             Connection connection = new Connection(providerName, connString);
             Command command = new Command("SELECT * FROM Tache_Equipe WHERE Id_Tache_Equipe = @Id;");
             command.AddParameter("Id", id);

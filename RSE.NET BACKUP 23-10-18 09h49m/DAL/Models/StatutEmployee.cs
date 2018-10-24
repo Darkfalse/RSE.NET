@@ -9,7 +9,7 @@ namespace DAL.Models
 {
     public class StatutEmployee
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string NomStatut { get; set; }
     }
 }

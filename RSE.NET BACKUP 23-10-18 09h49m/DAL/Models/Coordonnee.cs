@@ -8,7 +8,7 @@ namespace DAL.Models
 {
     public class Coordonnee
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Longitude { get; set; }
         public string Latitude { get; set; }
     }

@@ -8,7 +8,7 @@ namespace DAL.Models
 {
     public class Administrateur
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public int NumeroAdmin { get; set; }
         public int Employee  { get; set; }
 

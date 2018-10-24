@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Models {
     public class MessageProjet {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Titre { get; set; }
         public DateTime Date { get; set; }
         public string Contenu { get; set; }

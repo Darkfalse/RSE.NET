@@ -8,7 +8,7 @@ namespace DAL.Models
 {
     public class StatutTache
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string NomStatut { get; set; }
     }
 }
