@@ -48,7 +48,7 @@ namespace DAL.Services {
 
         public bool Update(Document d) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("UPDATE Equipe SET Nom_Document = @nd, Description = @d, Date = @da, Lien = @l, Taille = @t, Format = @f, Id_Employee_Cree = @ic, Id_Employee_Maj = @im WHERE Id_Document = @id;");
+            Command command = new Command("UPDATE Document SET Nom_Document = @nd, Description = @d, Date = @da, Lien = @l, Taille = @t, Format = @f, Id_Employee_Cree = @ic, Id_Employee_Maj = @im WHERE Id_Document = @id;");
             command.AddParameter("nd", d.Nom);
             command.AddParameter("d", d.Description);
             command.AddParameter("da", d.Date);
@@ -64,7 +64,7 @@ namespace DAL.Services {
 
         public bool Delete(int id) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("DELETE FROM Equipe WHERE Id_Document = @id;");
+            Command command = new Command("DELETE FROM Document WHERE Id_Document = @id;");
             command.AddParameter("id", id);
 
             return connection.ExecuteNonQuery(command) == 1;
