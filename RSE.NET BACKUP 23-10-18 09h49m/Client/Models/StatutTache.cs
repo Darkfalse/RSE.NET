@@ -10,5 +10,13 @@ namespace Client.Models
     {
         public int? Id { get; private set; }
         public string NomStatut { get; set; }
+
+        public StatutTache(string nom) {
+            NomStatut = nom;
+        }
+
+        public StatutTache(int id, string nom) : this(nom) {
+            Id = id;
+        }
     }
 }

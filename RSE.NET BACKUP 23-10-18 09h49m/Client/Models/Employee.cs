@@ -17,5 +17,22 @@ namespace Client.Models {
         public DateTime HireDate { get; set; }
         public string Tel { get; set; }
         public int? Coordonnee { get; set; }
+
+        public Employee(string nom, string prenom, string email, string pass, DateTime birthday, string regnat, int adresse, DateTime hiredate, string tel, int coord) {
+            Nom = nom;
+            Prenom = prenom;
+            Email = email;
+            Password = pass;
+            Birthday = birthday;
+            RegNat = regnat;
+            Adresse = adresse;
+            HireDate = hiredate;
+            Tel = tel;
+            Coordonnee = coord;
+        }
+
+        public Employee(int id, string nom, string prenom, string email, string pass, DateTime birthday, string regnat, int adresse, DateTime hiredate, string tel, int coord) : this(nom, prenom, email, pass, birthday, regnat, adresse, hiredate, tel, coord) {
+            Id = id;
+        }
     }
 }

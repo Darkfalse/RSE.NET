@@ -16,5 +16,19 @@ namespace Client.Models
         public DateTime DateFin { get; set; }
         public bool FullDay { get; set; }
         public int Id_Employee { get; set; }
+
+        public Event(string nom, string des, int lieu, DateTime debut, DateTime fin, bool fullday, int idemp) {
+            Nom = nom;
+            Description = des;
+            Lieu = lieu;
+            DateDebut = debut;
+            DateFin = fin;
+            FullDay = fullday;
+            Id_Employee = idemp;
+        }
+
+        public Event(int id, string nom, string des, int lieu, DateTime debut, DateTime fin, bool fullday, int idemp) : this(nom, des, lieu, debut, fin, fullday, idemp) {
+            Id = id;
+        }
     }
 }

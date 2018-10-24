@@ -11,5 +11,13 @@ namespace Client.Models
     {
         public int? Id { get; private set; }
         public string NomStatut { get; set; }
+
+        public StatutEmployee(string nom) {
+            NomStatut = nom;
+        }
+
+        public StatutEmployee(int id, string nom) : this(nom) {
+            Id = id;
+        }
     }
 }

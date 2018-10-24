@@ -10,5 +10,15 @@ namespace Client.Models {
         public string Nom { get; set; }
         public DateTime Creee { get; set; }
         public int Projet { get; set; }
+
+        public Equipe(string nom, DateTime cree, int projet) {
+            Nom = nom;
+            Creee = cree;
+            Projet = projet;
+        }
+
+        public Equipe(int id, string nom, DateTime cree, int projet) : this(nom, cree, projet) {
+            Id = id;
+        }
     }
 }
