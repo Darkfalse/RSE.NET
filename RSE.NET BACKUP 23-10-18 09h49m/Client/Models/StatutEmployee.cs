@@ -16,7 +16,7 @@ namespace Client.Models
             NomStatut = nom;
         }
 
-        public StatutEmployee(int id, string nom) : this(nom) {
+        public StatutEmployee(int? id, string nom) : this(nom) {
             Id = id;
         }
     }

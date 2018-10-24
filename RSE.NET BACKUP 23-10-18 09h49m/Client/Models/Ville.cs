@@ -17,7 +17,7 @@ namespace Client.Models {
             Id_Pays = idpays;
         }
 
-        public Ville(int id, string nom, string zip, int idpays) : this(nom, zip, idpays) {
+        public Ville(int? id, string nom, string zip, int idpays) : this(nom, zip, idpays) {
             Id = id;
         }
     }

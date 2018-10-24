@@ -15,7 +15,7 @@ namespace Client.Models
             NomStatut = nom;
         }
 
-        public StatutTache(int id, string nom) : this(nom) {
+        public StatutTache(int? id, string nom) : this(nom) {
             Id = id;
         }
     }

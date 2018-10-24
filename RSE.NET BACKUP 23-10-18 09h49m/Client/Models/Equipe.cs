@@ -17,7 +17,7 @@ namespace Client.Models {
             Projet = projet;
         }
 
-        public Equipe(int id, string nom, DateTime cree, int projet) : this(nom, cree, projet) {
+        public Equipe(int? id, string nom, DateTime cree, int projet) : this(nom, cree, projet) {
             Id = id;
         }
     }

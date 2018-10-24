@@ -21,7 +21,7 @@ namespace Client.Models {
             Nom_FR = nomfr;
         }
 
-        public Pays(int id, int code, string a2, string a3, string nomfr, string nomen) : this(code, a2, a3, nomfr, nomen) {
+        public Pays(int? id, int code, string a2, string a3, string nomfr, string nomen) : this(code, a2, a3, nomfr, nomen) {
             Id = id;
         }
     }

@@ -8,7 +8,7 @@ namespace Client.Models
 {
     public class Administrateur
     {
-        public int Id { get; private set; }
+        public int? Id { get; private set; }
         public int NumeroAdmin { get; set; }
         public int Employee  { get; set; }
 
@@ -17,7 +17,7 @@ namespace Client.Models
             Employee = em;
         }
 
-        public Administrateur(int id, int num, int em) : this(num, em) {
+        public Administrateur(int? id, int num, int em) : this(num, em) {
             Id = id;
         }
     }

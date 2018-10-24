@@ -19,7 +19,7 @@ namespace Client.Models
             Id_Ville = idville;
         }
 
-        public Adresse(int id, string nomrue, string bp, int idville) : this (nomrue, bp, idville) {
+        public Adresse(int? id, string nomrue, string bp, int idville) : this (nomrue, bp, idville) {
             Id = id;
         }
     }
