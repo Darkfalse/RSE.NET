@@ -40,6 +40,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Administrateur.cs" />
+    <Compile Include="Models\Adresse.cs" />
+    <Compile Include="Models\Coordonnee.cs" />
+    <Compile Include="Models\Departement.cs" />
+    <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Equipe.cs" />
+    <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\MessageEmployee.cs" />
+    <Compile Include="Models\MessageEquipe.cs" />
+    <Compile Include="Models\MessageProjet.cs" />
+    <Compile Include="Models\MessageTache.cs" />
+    <Compile Include="Models\Pays.cs" />
+    <Compile Include="Models\Projet.cs" />
+    <Compile Include="Models\StatutEmployee.cs" />
+    <Compile Include="Models\StatutTache.cs" />
+    <Compile Include="Models\TacheEmployee.cs" />
+    <Compile Include="Models\TacheEquipe.cs" />
+    <Compile Include="Models\Ville.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -50,7 +69,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mappers\" />
-    <Folder Include="Models\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
