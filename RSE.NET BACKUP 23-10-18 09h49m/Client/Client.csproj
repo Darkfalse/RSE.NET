@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappers\Mappers.cs" />
     <Compile Include="Models\Administrateur.cs" />
     <Compile Include="Models\Adresse.cs" />
     <Compile Include="Models\Coordonnee.cs" />
@@ -68,7 +69,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Mappers\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
