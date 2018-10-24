@@ -31,7 +31,7 @@ namespace DAL.Services {
 
         public Adresse Insert(Adresse a) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("INSERT INTO Adresse (Nom_Rue, Boite_Postal, Id_Ville) OUTPUT INSERTED.ID VALUES (@nr, @bp, @iv);");
+            Command command = new Command("EXEC SP_AddAdresse @nomrue = @nr, @boitepostal = @bp, @idville = @iv;");
             command.AddParameter("nr", a.Nom_Rue);
             command.AddParameter("bp", a.Boite_Postal);
             command.AddParameter("iv", a.Id_Ville);
@@ -43,19 +43,19 @@ namespace DAL.Services {
 
         public bool Update(Adresse a) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("UPDATE Adresse SET Nom_Rue = @nr, Boite_Postal = @bp, Id_Ville = @iv WHERE Id_Adresse = @id;");
+            Command command = new Command("EXEC SP_UpdateAdresse @id = @i, @nomrue = @nr, @boitepostal = @bp, @idville = @iv;");
             command.AddParameter("nr", a.Nom_Rue);
             command.AddParameter("bp", a.Boite_Postal);
             command.AddParameter("iv", a.Id_Ville);
-            command.AddParameter("id", a.Id);
+            command.AddParameter("i", a.Id);
 
             return connection.ExecuteNonQuery(command) == 1;
         }
 
         public bool Delete(int id) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("DELETE FROM Adresse WHERE Id_Adresse = @id;");
-            command.AddParameter("id", id);
+            Command command = new Command("EXEC SP_DeleteAdresse @id = @i");
+            command.AddParameter("i", id);
 
             return connection.ExecuteNonQuery(command) == 1;
         }

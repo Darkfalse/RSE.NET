@@ -31,7 +31,7 @@ namespace DAL.Services {
 
         public Coordonnee Insert(Coordonnee c) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("INSERT INTO Coordonnee (Longitude, Latitude) OUTPUT INSERTED.ID VALUES (@lo, @la);");
+            Command command = new Command("EXEC SP_AddCoordonnee @long = @lo, @lat = @la;");
             command.AddParameter("lo", c.Longitude);
             command.AddParameter("la", c.Latitude);
 
@@ -42,18 +42,18 @@ namespace DAL.Services {
 
         public bool Update(Coordonnee c) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("UPDATE Coordonnee SET Longitude = @lo, Latitude = @la WHERE Id_Coordonnee = @id;");
+            Command command = new Command("EXEC SP_UpdateCoordonnee @id = @i, @long = @lo, @lat = @la;");
             command.AddParameter("lo", c.Longitude);
             command.AddParameter("la", c.Latitude);
-            command.AddParameter("id", c.Id);
+            command.AddParameter("i", c.Id);
 
             return connection.ExecuteNonQuery(command) == 1;
         }
 
         public bool Delete(int id) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("DELETE FROM Coordonnee WHERE Id_Coordonnee = @id;");
-            command.AddParameter("id", id);
+            Command command = new Command("EXEC SP_DeleteCoordonnee @id = @i;");
+            command.AddParameter("i", id);
 
             return connection.ExecuteNonQuery(command) == 1;
         }

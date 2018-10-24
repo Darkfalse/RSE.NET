@@ -31,7 +31,7 @@ namespace DAL.Services {
 
         public Administrateur Insert(Administrateur a) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("INSERT INTO Administrateur (Numero_Admin, Id_Employee) OUTPUT INSERTED.ID VALUES (@na, @ie);");
+            Command command = new Command("EXEC SP_AddAdmin @num = @na, @idemp = @ie;");
             command.AddParameter("na", a.NumeroAdmin);
             command.AddParameter("ie", a.Employee);
 
@@ -42,18 +42,18 @@ namespace DAL.Services {
 
         public bool Update(Administrateur a) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("UPDATE Administrateur SET Numero_Admin = @na, Id_Employee = @ie WHERE Id_Admin = @id;");
+            Command command = new Command("EXEC SP_UpdateAdmin @id = @i, @num = @na, @idemp = @ide;");
             command.AddParameter("na", a.NumeroAdmin);
-            command.AddParameter("ie", a.Employee);
-            command.AddParameter("id", a.Id);
+            command.AddParameter("ide", a.Employee);
+            command.AddParameter("i", a.Id);
 
             return connection.ExecuteNonQuery(command) == 1;
         }
 
         public bool Delete(int id) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("DELETE FROM Administrateur WHERE Id_Admin = @id;");
-            command.AddParameter("id", id);
+            Command command = new Command("EXEC SP_DeleteAdmin @id = @ida;");
+            command.AddParameter("ida", id);
 
             return connection.ExecuteNonQuery(command) == 1;
         }
