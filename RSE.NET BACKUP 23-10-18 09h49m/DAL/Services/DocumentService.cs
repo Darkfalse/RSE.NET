@@ -1,16 +1,18 @@
 ﻿using DAL.Models;
+using DAL.Mappers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ToolBox;
+using System.Configuration;
 
 namespace DAL.Services {
     class DocumentService {
 
-        private readonly string providerName = "System.Data.SqlClient";
-        private readonly string connString = @"Data Source = FORMAVDI1605\TFTIC; Initial Catalog = RSE; User ID = sa; Password = tftic@2012;";
+        private readonly string providerName = ConfigurationManager.ConnectionStrings["SQLConnection"].ProviderName;
+        private readonly string connString = ConfigurationManager.ConnectionStrings["SQLConnection"].ConnectionString;
 
         public IEnumerable<Document> GetAll() {
             Connection connection = new Connection(providerName, connString);
@@ -24,7 +26,7 @@ namespace DAL.Services {
             Command command = new Command("SELECT * FROM Document WHERE Id_Document = @Id;");
             command.AddParameter("Id", id);
 
-            return connection.ExecuteReader(command, (dr) => dr.ToDocument()).SingleOrDefault;
+            return connection.ExecuteReader(command, (dr) => dr.ToDocument()).SingleOrDefault();
         }
 
         public Document Insert(Document d) {
@@ -46,7 +48,7 @@ namespace DAL.Services {
 
         public bool Update(Document d) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("UPDATE Equipe SET Nom_Document = @nd, Description = @d, Date = @da, Lien = @l, Taille = @t, Format = @f, Id_Employee_Cree = @ic, Id_Employee_Maj = @im WHERE Id_Document = @id;");
+            Command command = new Command("UPDATE Document SET Nom_Document = @nd, Description = @d, Date = @da, Lien = @l, Taille = @t, Format = @f, Id_Employee_Cree = @ic, Id_Employee_Maj = @im WHERE Id_Document = @id;");
             command.AddParameter("nd", d.Nom);
             command.AddParameter("d", d.Description);
             command.AddParameter("da", d.Date);
@@ -62,7 +64,7 @@ namespace DAL.Services {
 
         public bool Delete(int id) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("DELETE FROM Equipe WHERE Id_Document = @id;");
+            Command command = new Command("DELETE FROM Document WHERE Id_Document = @id;");
             command.AddParameter("id", id);
 
             return connection.ExecuteNonQuery(command) == 1;
