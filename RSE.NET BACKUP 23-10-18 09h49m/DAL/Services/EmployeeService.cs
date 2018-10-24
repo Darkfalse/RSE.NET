@@ -66,6 +66,14 @@ namespace DAL.Services {
             return connection.ExecuteNonQuery(command) == 1;
         }
 
+        public bool ValideEmployee(int id) {
+            Connection connection = new Connection(providerName, connString);
+            Command command = new Command("EXEC SP_ValideEmployee @id = @i;");
+            command.AddParameter("i", id);
+
+            return connection.ExecuteNonQuery(command) == 1;
+        }
+
         public bool Delete(int id) {
             Connection connection = new Connection(providerName, connString);
             Command command = new Command("EXEC SP_DeleteEmployee @id = @ide;");

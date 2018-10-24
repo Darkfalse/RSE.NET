@@ -45,7 +45,7 @@ namespace DAL.Services {
             return te;
         }
 
-        public bool Update(TacheEquipe te) {
+        public bool Update(TacheEmployee te) {
             Connection connection = new Connection(providerName, connString);
             Command command = new Command("UPDATE Tache_Employee SET Nom_Tache = @nt, Description = @d, Date_Debut = @dd, Date_Fin = @dfin, Date_Final = @dfinal, Tache_Precedente = @tp, Id_Projet = @ip WHERE Id_Tache_Employee = @id;");
             command.AddParameter("nt", te.Nom);
