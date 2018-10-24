@@ -43,6 +43,7 @@ namespace DAL.Services {
             command.AddParameter("te", e.Tel);
             command.AddParameter("ic", e.Coordonnee);
 
+
             e.Id = (int)connection.ExecuteScalar(command);
 
             return e;

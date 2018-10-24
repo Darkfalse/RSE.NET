@@ -156,6 +156,8 @@
     <Compile Include="Infrastructure\AnonymousRequiredAttribute.cs" />
     <Compile Include="Infrastructure\AuthRequiredAttribute.cs" />
     <Compile Include="Infrastructure\EmployeeSession.cs" />
+    <Compile Include="Models\Formulaires\InscriptionForms.cs" />
+    <Compile Include="Models\Formulaires\LoginForms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -203,6 +205,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\Formulaires\" />
     <Folder Include="Views\Member\" />
+    <Folder Include="Infrastructure\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DAL.Models {
-     public class Employee {
+     public class Employee
+     {
         public int? Id { get; set; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
@@ -17,5 +18,8 @@ namespace DAL.Models {
         public DateTime HireDate { get; set; }
         public string Tel { get; set; }
         public int? Coordonnee { get; set; }
+        public bool Valide { get; set; }
+
+
     }
 }
