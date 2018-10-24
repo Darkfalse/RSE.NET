@@ -9,273 +9,353 @@ using System.Threading.Tasks;
 
 namespace Client.Mappers
 {
-    /****************************************************************************************************************************************************************
-        *XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*
-        *X                                                                       TO DAL                                                                               X*
-        *X                                                                       TO DAL                                                                               X*
-        *X                                                                       TO DAL                                                                               X*
-        *X                                                                       TO DAL                                                                               X*
-        *X                                                                       TO DAL                                                                               X*
-        *X                                                                       TO DAL                                                                               X*
-        *XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*
-        ****************************************************************************************************************************************************************/
+    /**********************************************************************************************************************
+     *XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*
+     *X                                                        TO DAL                                                    X*
+     *X                                                        TO DAL                                                    X*
+     *X                                                        TO DAL                                                    X*
+     *X                                                        TO DAL                                                    X*
+     *X                                                        TO DAL                                                    X*
+     *X                                                        TO DAL                                                    X*
+     *XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*
+     **********************************************************************************************************************/
 
     internal static class Mappers
     {
-        internal static D.Projet ToDal(this C.Projet entity)
+        internal static D.Projet ToDal(this C.Projet e)
         {
             return new D.Projet()
             {
-                Id = entity.Id,
-                Admin = entity.Admin,
-                Debut = entity.Debut,
-                Description = entity.Description,
-                Fin = entity.Fin,
-                Nom = entity.Nom
+                Id = e.Id,
+                Admin = e.Admin,
+                Debut = e.Debut,
+                Description = e.Description,
+                Fin = e.Fin,
+                Nom = e.Nom
             };
         }
 
-        internal static D.Administrateur ToDal(this C.Administrateur entity)
+        internal static D.Administrateur ToDal(this C.Administrateur e)
         {
             return new D.Administrateur()
             {
-                Employee = entity.Employee,
-                Id = entity.Id,
-                NumeroAdmin = entity.NumeroAdmin
+                Employee = e.Employee,
+                Id = e.Id,
+                NumeroAdmin = e.NumeroAdmin
             };
         }
 
-        internal static D.Employee ToDal(this C.Employee entity)
+        internal static D.Employee ToDal(this C.Employee e)
         {
             return new D.Employee()
             {
-                Id = entity.Id,
-                Nom = entity.Nom,
-                Adresse = entity.Adresse,
-                Birthday = entity.Birthday,
-                Coordonnee = entity.Coordonnee,
-                Email = entity.Email,
-                HireDate = entity.HireDate,
-                Password = entity.Password,
-                Prenom = entity.Prenom,
-                RegNat = entity.RegNat,
-                Tel = entity.Tel
+                Id = e.Id,
+                Nom = e.Nom,
+                Adresse = e.Adresse,
+                Birthday = e.Birthday,
+                Coordonnee = e.Coordonnee,
+                Email = e.Email,
+                HireDate = e.HireDate,
+                Password = e.Password,
+                Prenom = e.Prenom,
+                RegNat = e.RegNat,
+                Tel = e.Tel
             };
         }
 
-        internal static D.Adresse ToDal(this C.Adresse entity)
+        internal static D.Adresse ToDal(this C.Adresse e)
         {
             return new D.Adresse()
             {
-                Boite_Postal = entity.Boite_Postal,
-                Id = entity.Id,
-                Id_Ville = entity.Id_Ville,
-                Nom_Rue = entity.Nom_Rue,
+                Boite_Postal = e.Boite_Postal,
+                Id = e.Id,
+                Id_Ville = e.Id_Ville,
+                Nom_Rue = e.Nom_Rue,
             };
         }
 
-        internal static D.Coordonnee ToDal(this C.Coordonnee entity)
+        internal static D.Coordonnee ToDal(this C.Coordonnee e)
         {
             return new D.Coordonnee()
             {
-                Id = entity.Id,
-                Latitude = entity.Latitude,
-                Longitude = entity.Longitude,
+                Id = e.Id,
+                Latitude = e.Latitude,
+                Longitude = e.Longitude,
             };
         }
 
-        internal static D.Departement ToDal(this C.Departement entity)
+        internal static D.Departement ToDal(this C.Departement e)
         {
             return new D.Departement()
             {
-                Admin = entity.Admin,
-                Description = entity.Description,
-                Id = entity.Id,
-                Nom = entity.Nom
+                Admin = e.Admin,
+                Description = e.Description,
+                Id = e.Id,
+                Nom = e.Nom
             };
         }
 
-        internal static D.Document ToDal(this C.Document entity)
+        internal static D.Document ToDal(this C.Document e)
         {
             return new D.Document()
             {
-                Date = entity.Date,
-                Description = entity.Description,
-                Format = entity.Format,
-                Id = entity.Id,
-                Id_Emp_Creee = entity.Id_Emp_Creee,
-                Id_Emp_Maj = entity.Id_Emp_Maj,
-                Lien = entity.Lien,
-                Nom = entity.Nom,
-                Taille = entity.Taille
+                Date = e.Date,
+                Description = e.Description,
+                Format = e.Format,
+                Id = e.Id,
+                Id_Emp_Creee = e.Id_Emp_Creee,
+                Id_Emp_Maj = e.Id_Emp_Maj,
+                Lien = e.Lien,
+                Nom = e.Nom,
+                Taille = e.Taille
             };
         }
 
-        internal static D.Equipe ToDal(this C.Equipe entity)
+        internal static D.Equipe ToDal(this C.Equipe e)
         {
             return new D.Equipe()
             {
-                Creee = entity.Creee,
-                Id = entity.Id,
-                Nom = entity.Nom,
-                Projet = entity.Projet
+                Creee = e.Creee,
+                Id = e.Id,
+                Nom = e.Nom,
+                Projet = e.Projet
             };
         }
 
-        internal static D.Event ToDal(this C.Event entity)
+        internal static D.Event ToDal(this C.Event e)
         {
             return new D.Event()
             {
-                DateDebut = entity.DateDebut,
-                Id = entity.Id,
-                Nom = entity.Nom,
-                Description = entity.Description,
-                Id_Employee = entity.Id_Employee,
-                Lieu = entity.Lieu,
-                DateFin = entity.DateFin,
-                FullDay = entity.FullDay
+                DateDebut = e.DateDebut,
+                Id = e.Id,
+                Nom = e.Nom,
+                Description = e.Description,
+                Id_Employee = e.Id_Employee,
+                Lieu = e.Lieu,
+                DateFin = e.DateFin,
+                FullDay = e.FullDay
             };
         }
 
-        internal static D.MessageEmployee ToDal(this C.MessageEmployee entity)
+        internal static D.MessageEmployee ToDal(this C.MessageEmployee e)
         {
             return new D.MessageEmployee()
             {
-                Contenu = entity.Contenu,
-                Id = entity.Id,
-                Id_Employee = entity.Id_Employee,
-                Date = entity.Date,
-                MessagePrecedent = entity.MessagePrecedent,
-                Id_Destinataire = entity.Id_Destinataire,
-                Titre = entity.Titre
+                Contenu = e.Contenu,
+                Id = e.Id,
+                Id_Employee = e.Id_Employee,
+                Date = e.Date,
+                MessagePrecedent = e.MessagePrecedent,
+                Id_Destinataire = e.Id_Destinataire,
+                Titre = e.Titre
             };
         }
 
-        internal static D.MessageEquipe ToDal(this C.MessageEquipe entity)
+        internal static D.MessageEquipe ToDal(this C.MessageEquipe e)
         {
             return new D.MessageEquipe()
             {
-                Contenu = entity.Contenu,
-                Id = entity.Id,
-                Id_Equipe = entity.Id_Equipe,
-                Date = entity.Date,
-                MessagePrecedent = entity.MessagePrecedent,
-                Titre = entity.Titre,
-                Id_Employee = entity.Id_Employee
+                Contenu = e.Contenu,
+                Id = e.Id,
+                Id_Equipe = e.Id_Equipe,
+                Date = e.Date,
+                MessagePrecedent = e.MessagePrecedent,
+                Titre = e.Titre,
+                Id_Employee = e.Id_Employee
             };
         }
 
-        internal static D.MessageProjet ToDal(this C.MessageProjet entity)
+        internal static D.MessageProjet ToDal(this C.MessageProjet e)
         {
             return new D.MessageProjet()
             {
-                Contenu = entity.Contenu,
-                Id = entity.Id,
-                Id_Projet = entity.Id_Projet,
-                Date = entity.Date,
-                MessagePrecedent = entity.MessagePrecedent,
-                Titre = entity.Titre,
-                Id_Employee = entity.Id_Employee
+                Contenu = e.Contenu,
+                Id = e.Id,
+                Id_Projet = e.Id_Projet,
+                Date = e.Date,
+                MessagePrecedent = e.MessagePrecedent,
+                Titre = e.Titre,
+                Id_Employee = e.Id_Employee
             };
         }
-        internal static D.MessageTache ToDal(this C.MessageTache entity)
+        internal static D.MessageTache ToDal(this C.MessageTache e)
         {
             return new D.MessageTache()
             {
-                Contenu = entity.Contenu,
-                Id = entity.Id,
-                Date = entity.Date,
-                MessagePrecedent = entity.MessagePrecedent,
-                Titre = entity.Titre,
-                Id_Employee = entity.Id_Employee,
-                Id_Tache_Emplopyee = entity.Id_Tache_Emplopyee,
-                Id_Tache_Equipe = entity.Id_Tache_Equipe
+                Contenu = e.Contenu,
+                Id = e.Id,
+                Date = e.Date,
+                MessagePrecedent = e.MessagePrecedent,
+                Titre = e.Titre,
+                Id_Employee = e.Id_Employee,
+                Id_Tache_Emplopyee = e.Id_Tache_Emplopyee,
+                Id_Tache_Equipe = e.Id_Tache_Equipe
             };
         }
 
-        internal static D.Pays ToDal(this C.Pays entity)
+        internal static D.Pays ToDal(this C.Pays e)
         {
             return new D.Pays()
             {
-                Id = entity.Id,
-                Nom_FR = entity.Nom_FR,
-                Nom_EN = entity.Nom_EN,
-                Code = entity.Code,
-                Alpha2 = entity.Alpha2,
-                Alpha3 = entity.Alpha3
+                Id = e.Id,
+                Nom_FR = e.Nom_FR,
+                Nom_EN = e.Nom_EN,
+                Code = e.Code,
+                Alpha2 = e.Alpha2,
+                Alpha3 = e.Alpha3
             };
         }
 
-        internal static D.StatutEmployee ToDal(this C.StatutEmployee entity)
+        internal static D.StatutEmployee ToDal(this C.StatutEmployee e)
         {
             return new D.StatutEmployee()
             {
-                Id = entity.Id,
-                NomStatut = entity.NomStatut,
+                Id = e.Id,
+                NomStatut = e.NomStatut,
             };
         }
-        internal static D.StatutTache ToDal(this C.StatutTache entity)
+        internal static D.StatutTache ToDal(this C.StatutTache e)
         {
             return new D.StatutTache()
             {
-                Id = entity.Id,
-                NomStatut = entity.NomStatut,
+                Id = e.Id,
+                NomStatut = e.NomStatut,
             };
         }
 
-        internal static D.TacheEmployee ToDal(this C.TacheEmployee entity)
+        internal static D.TacheEmployee ToDal(this C.TacheEmployee e)
         {
             return new D.TacheEmployee()
             {
-                Id = entity.Id,
-                Nom = entity.Nom,
-                Projet = entity.Projet,
-                Description = entity.Description,
-                Debut = entity.Debut,
-                Fin = entity.Fin,
-                Final = entity.Final,
-                TachePrecedente = entity.TachePrecedente
+                Id = e.Id,
+                Nom = e.Nom,
+                Projet = e.Projet,
+                Description = e.Description,
+                Debut = e.Debut,
+                Fin = e.Fin,
+                Final = e.Final,
+                TachePrecedente = e.TachePrecedente
             };
         }
-        internal static D.TacheEquipe ToDal(this C.TacheEquipe entity)
+        internal static D.TacheEquipe ToDal(this C.TacheEquipe e)
         {
             return new D.TacheEquipe()
             {
-                Id = entity.Id,
-                Nom = entity.Nom,
-                Projet = entity.Projet,
-                Description = entity.Description,
-                Debut = entity.Debut,
-                Fin = entity.Fin,
-                Final = entity.Final,
-                TachePrecedente = entity.TachePrecedente
+                Id = e.Id,
+                Nom = e.Nom,
+                Projet = e.Projet,
+                Description = e.Description,
+                Debut = e.Debut,
+                Fin = e.Fin,
+                Final = e.Final,
+                TachePrecedente = e.TachePrecedente
             };
         }
 
-        internal static D.Ville ToDal(this C.Ville entity)
+        internal static D.Ville ToDal(this C.Ville e)
         {
             return new D.Ville()
             {
-                Id = entity.Id,
-                Nom = entity.Nom,
-                Id_Pays = entity.Id_Pays,
-                Zip = entity.Zip
+                Id = e.Id,
+                Nom = e.Nom,
+                Id_Pays = e.Id_Pays,
+                Zip = e.Zip
             };
         }
-        /****************************************************************************************************************************************************************
-         *XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*
-         *X                                                                      TO CLIENT                                                                             X*
-         *X                                                                      TO CLIENT                                                                             X*
-         *X                                                                      TO CLIENT                                                                             X*
-         *X                                                                      TO CLIENT                                                                             X*
-         *X                                                                      TO CLIENT                                                                             X*
-         *X                                                                      TO CLIENT                                                                             X*
-         *XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*
-         ****************************************************************************************************************************************************************/
+        /**********************************************************************************************************************
+         *XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*
+         *X                                                      TO CLIENT                                                   X*
+         *X                                                      TO CLIENT                                                   X*
+         *X                                                      TO CLIENT                                                   X*
+         *X                                                      TO CLIENT                                                   X*
+         *X                                                      TO CLIENT                                                   X*
+         *X                                                      TO CLIENT                                                   X*
+         *XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*
+         **********************************************************************************************************************/
 
-        internal static C.Projet ToClient(this D.Projet entity)
+        internal static C.Projet ToClient(this D.Projet e)
         {
-            return new C.Projet(entity.Nom, entity.Description, entity.Debut, entity.Fin, entity.Admin);
+            return new C.Projet(e.Id ,e.Nom, e.Description, e.Debut, e.Fin, e.Admin);
         }
+
+        internal static C.Administrateur ToClient(this D.Administrateur e)
+        {
+            return new C.Administrateur(e.Id, e.NumeroAdmin, e.Employee);
+        }
+
+        internal static C.Adresse ToClient(this D.Adresse e)
+        {
+            return new C.Adresse(e.Id, e.Nom_Rue, e.Boite_Postal,e.Id_Ville);
+        }
+
+        internal static C.Coordonnee ToClient(this D.Coordonnee e)
+        {
+            return new C.Coordonnee(e.Id,e.Longitude,e.Latitude);
+        }
+
+        internal static C.Departement ToClient(this D.Departement e)
+        {
+            return new C.Departement(e.Id, e.Nom, e.Description, e.Admin);
+        }
+        internal static C.Document ToClient(this D.Document e)
+        {
+            return new C.Document(e.Id, e.Nom, e.Description, e.Date, e.Lien, e.Taille, e.Format, e.Id_Emp_Creee,
+                e.Id_Emp_Maj);
+        }
+        internal static C.Employee ToClient(this D.Employee e)
+        {
+            return new C.Employee(e.Id, e.Nom, e.Prenom, e.Email, e.Password, e.Birthday, e.RegNat, e.Adresse,
+                e.HireDate, e.Tel, e.Coordonnee);
+        }
+        internal static C.Equipe ToClient(this D.Equipe e)
+        {
+            return new C.Equipe(e.Id, e.Nom, e.Creee, e.Projet);
+        }
+        internal static C.Event ToClient(this D.Event e)
+        {
+            return new C.Event(e.Id, e.Nom, e.Description, e.Lieu, e.DateDebut, e.DateFin, e.FullDay, e.Id_Employee);
+        }
+        internal static C.MessageEmployee ToClient(this D.MessageEmployee e)
+        {
+            return new C.MessageEmployee(e.Id, e.Titre, e.Date, e.Contenu, e.MessagePrecedent, e.Id_Employee, e.Id_Destinataire);
+        }
+        internal static C.MessageEquipe ToClient(this D.MessageEquipe e)
+        {
+            return new C.MessageEquipe(e.Id, e.Titre, e.Date, e.Contenu, e.MessagePrecedent, e.Id_Employee, e.Id_Equipe);
+        }
+        internal static C.MessageProjet ToClient(this D.MessageProjet e)
+        {
+            return new C.MessageProjet(e.Id, e.Titre, e.Date, e.Contenu, e.MessagePrecedent, e.Id_Employee, e.Id_Projet);
+        }
+        internal static C.MessageTache ToClient(this D.MessageTache e)
+        {
+            return new C.MessageTache(e.Id, e.Titre, e.Date, e.Contenu, e.MessagePrecedent, e.Id_Employee, e.Id_Tache_Equipe,e.Id_Tache_Emplopyee);
+        }
+        internal static C.Pays ToClient(this D.Pays e)
+        {
+            return new C.Pays(e.Id, e.Alpha2, e.Alpha3, e.Nom_FR, e.Nom_EN);
+        }
+        internal static C.StatutEmployee ToClient(this D.StatutEmployee e)
+        {
+            return new C.StatutEmployee(e.Id, e.NomStatut);
+        }
+        internal static C.StatutTache ToClient(this D.StatutTache e)
+        {
+            return new C.StatutTache(e.Id, e.NomStatut);
+        }
+        internal static C.TacheEmployee ToClient(this D.TacheEmployee e)
+        {
+            return new C.TacheEmployee(e.Id, e.Nom, e.Description, e.Debut, e.Fin, e.Final, e.TachePrecedente,e.Projet);
+        }
+        internal static C.TacheEquipe ToClient(this D.TacheEquipe e)
+        {
+            return new C.TacheEquipe(e.Id, e.Nom, e.Description, e.Debut, e.Fin, e.Final, e.TachePrecedente, e.Projet);
+        }
+        internal static C.Ville ToClient(this D.Ville e)
+        {
+            return new C.Ville(e.Id, e.Nom, e.Zip, e.Id_Pays);
+        }
+
     }
+
 }
