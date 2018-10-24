@@ -18,19 +18,19 @@ namespace Client.Services {
             service = new DS.EventService();
         }
 
-        public IEnumerable<Equipe> GetAll() {
+        public IEnumerable<Event> GetAll() {
             return service.GetAll().Select(a => a.ToClient());
         }
 
-        public Equipe GetById(int id) {
+        public Event GetById(int id) {
             return service.GetById(id).ToClient();
         }
 
-        public Equipe Insert(Equipe a) {
+        public Event Insert(Event a) {
             return service.Insert(a.ToDal()).ToClient();
         }
 
-        public bool Update(Equipe a) {
+        public bool Update(Event a) {
             return service.Update(a.ToDal());
         }
 
