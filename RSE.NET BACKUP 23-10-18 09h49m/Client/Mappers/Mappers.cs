@@ -9,6 +9,17 @@ using System.Threading.Tasks;
 
 namespace Client.Mappers
 {
+    /****************************************************************************************************************************************************************
+        *XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*
+        *X                                                                       TO DAL                                                                               X*
+        *X                                                                       TO DAL                                                                               X*
+        *X                                                                       TO DAL                                                                               X*
+        *X                                                                       TO DAL                                                                               X*
+        *X                                                                       TO DAL                                                                               X*
+        *X                                                                       TO DAL                                                                               X*
+        *XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*
+        ****************************************************************************************************************************************************************/
+
     internal static class Mappers
     {
         internal static D.Projet ToDal(this C.Projet entity)
@@ -251,11 +262,20 @@ namespace Client.Mappers
                 Zip = entity.Zip
             };
         }
+        /****************************************************************************************************************************************************************
+         *XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*
+         *X                                                                      TO CLIENT                                                                             X*
+         *X                                                                      TO CLIENT                                                                             X*
+         *X                                                                      TO CLIENT                                                                             X*
+         *X                                                                      TO CLIENT                                                                             X*
+         *X                                                                      TO CLIENT                                                                             X*
+         *X                                                                      TO CLIENT                                                                             X*
+         *XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*
+         ****************************************************************************************************************************************************************/
 
-
-        //internal static C.Projet ToClient(this D.Projet entity)
-        //{
-        //    return new C.Projet(entity.);
-        //}
+        internal static C.Projet ToClient(this D.Projet entity)
+        {
+            return new C.Projet(entity.Nom, entity.Description, entity.Debut, entity.Fin, entity.Admin);
+        }
     }
 }
