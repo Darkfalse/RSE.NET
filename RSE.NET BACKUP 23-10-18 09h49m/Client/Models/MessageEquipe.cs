@@ -14,7 +14,7 @@ namespace Client.Models {
         public int Id_Employee { get; set; }
         public int Id_Equipe { get; set; }
 
-        public MessageEquipe(string titre, DateTime date, string contenu, int precedent, int idemp, int ideq) {
+        public MessageEquipe(string titre, DateTime date, string contenu, int? precedent, int idemp, int ideq) {
             Titre = titre;
             Date = date;
             Contenu = contenu;
@@ -23,7 +23,7 @@ namespace Client.Models {
             Id_Equipe = ideq;
         }
 
-        public MessageEquipe(int id, string titre, DateTime date, string contenu, int precedent, int idemp, int ideq) : this(titre, date, contenu, precedent, idemp, ideq) {
+        public MessageEquipe(int? id, string titre, DateTime date, string contenu, int? precedent, int idemp, int ideq) : this(titre, date, contenu, precedent, idemp, ideq) {
             Id = id;
         }
     }

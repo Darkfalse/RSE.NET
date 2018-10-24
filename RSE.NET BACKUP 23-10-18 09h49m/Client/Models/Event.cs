@@ -27,7 +27,7 @@ namespace Client.Models
             Id_Employee = idemp;
         }
 
-        public Event(int id, string nom, string des, int lieu, DateTime debut, DateTime fin, bool fullday, int idemp) : this(nom, des, lieu, debut, fin, fullday, idemp) {
+        public Event(int? id, string nom, string des, int lieu, DateTime debut, DateTime fin, bool fullday, int idemp) : this(nom, des, lieu, debut, fin, fullday, idemp) {
             Id = id;
         }
     }

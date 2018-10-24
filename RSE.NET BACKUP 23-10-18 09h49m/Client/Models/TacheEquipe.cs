@@ -15,7 +15,7 @@ namespace Client.Models {
         public int? TachePrecedente { get; set; }
         public int Projet { get; set; }
 
-        public TacheEquipe(string nom, string des, DateTime debut, DateTime fin, DateTime final, int precedente, int projet) {
+        public TacheEquipe(string nom, string des, DateTime debut, DateTime fin, DateTime final, int? precedente, int projet) {
             Nom = nom;
             Description = des;
             Debut = debut;
@@ -25,7 +25,7 @@ namespace Client.Models {
             Projet = projet;
         }
 
-        public TacheEquipe(int id, string nom, string des, DateTime debut, DateTime fin, DateTime final, int precedente, int projet) : this(nom, des, debut, fin, final, precedente, projet) {
+        public TacheEquipe(int? id, string nom, string des, DateTime debut, DateTime fin, DateTime final, int? precedente, int projet) : this(nom, des, debut, fin, final, precedente, projet) {
             Id = id;
         }
     }

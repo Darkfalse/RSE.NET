@@ -18,7 +18,7 @@ namespace Client.Models {
             Admin = admin;
         }
 
-        public Departement(int id, string nom, string des, int admin) : this(nom, des, admin) {
+        public Departement(int? id, string nom, string des, int admin) : this(nom, des, admin) {
             Id = id;
         }
     }

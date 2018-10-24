@@ -17,7 +17,7 @@ namespace Client.Models
             Latitude = lat;
         }
 
-        public Coordonnee(int id, string lon, string lat) : this(lon, lat) {
+        public Coordonnee(int? id, string lon, string lat) : this(lon, lat) {
             Id = id;
         }
     }
