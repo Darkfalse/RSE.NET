@@ -1,16 +1,18 @@
 ﻿using DAL.Models;
+using DAL.Mappers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ToolBox;
+using System.Configuration;
 
 namespace DAL.Services {
     class EmployeeService {
 
-        private readonly string providerName = "System.Data.SqlClient";
-        private readonly string connString = @"Data Source = FORMAVDI1605\TFTIC; Initial Catalog = RSE; User ID = sa; Password = tftic@2012;";
+        private readonly string providerName = ConfigurationManager.ConnectionStrings["SQLConnection"].ProviderName;
+        private readonly string connString = ConfigurationManager.ConnectionStrings["SQLConnection"].ConnectionString;
 
         public IEnumerable<Employee> GetAll() {
             Connection connection = new Connection(providerName, connString);
@@ -24,7 +26,7 @@ namespace DAL.Services {
             Command command = new Command("SELECT * FROM Employee WHERE Id_Equipe = @Id;");
             command.AddParameter("Id", id);
 
-            return connection.ExecuteReader(command, (dr) => dr.ToEmployee()).SingleOrDefault;
+            return connection.ExecuteReader(command, (dr) => dr.ToEmployee()).SingleOrDefault();
         }
 
         public Employee Insert(Employee e) {
