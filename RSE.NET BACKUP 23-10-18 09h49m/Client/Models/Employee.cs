@@ -17,8 +17,9 @@ namespace Client.Models {
         public DateTime HireDate { get; set; }
         public string Tel { get; set; }
         public int? Coordonnee { get; set; }
+         public bool Valide { get; set; }
 
-        public Employee(string nom, string prenom, string email, string pass, DateTime birthday, string regnat, int? adresse, DateTime hiredate, string tel, int? coord) {
+        public Employee(string nom, string prenom, string email, string pass, DateTime birthday, string regnat, int? adresse, DateTime hiredate, string tel, int? coord,bool valide) {
             Nom = nom;
             Prenom = prenom;
             Email = email;
@@ -29,9 +30,10 @@ namespace Client.Models {
             HireDate = hiredate;
             Tel = tel;
             Coordonnee = coord;
+            Valide = valide;
         }
 
-        public Employee(int? id, string nom, string prenom, string email, string pass, DateTime birthday, string regnat, int? adresse, DateTime hiredate, string tel, int? coord) : this(nom, prenom, email, pass, birthday, regnat, adresse, hiredate, tel, coord) {
+        public Employee(int? id, string nom, string prenom, string email, string pass, DateTime birthday, string regnat, int? adresse, DateTime hiredate, string tel, int? coord,bool valide) : this(nom, prenom, email, pass, birthday, regnat, adresse, hiredate, tel, coord, valide) {
             Id = id;
         }
     }

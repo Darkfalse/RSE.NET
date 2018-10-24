@@ -59,7 +59,8 @@ namespace Client.Mappers
                 Password = e.Password,
                 Prenom = e.Prenom,
                 RegNat = e.RegNat,
-                Tel = e.Tel
+                Tel = e.Tel,
+                Valide = e.Valide
             };
         }
 
@@ -305,7 +306,7 @@ namespace Client.Mappers
         internal static C.Employee ToClient(this D.Employee e)
         {
             return new C.Employee(e.Id, e.Nom, e.Prenom, e.Email, e.Password, e.Birthday, e.RegNat, e.Adresse,
-                e.HireDate, e.Tel, e.Coordonnee);
+                e.HireDate, e.Tel, e.Coordonnee,e.Valide);
         }
         internal static C.Equipe ToClient(this D.Equipe e)
         {

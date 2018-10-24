@@ -79,7 +79,8 @@ namespace DAL.Mappers
                 Password = null,
                 Prenom = (string) dr["Prenom"],
                 RegNat = (string) dr["RegNat"],
-                Tel = (string) dr["Tel"]
+                Tel = (string) dr["Tel"],
+                Valide = (bool) dr["Valide"]
             };
         }
         internal static StatutEmployee ToStatutEmployee(this IDataRecord dr)
