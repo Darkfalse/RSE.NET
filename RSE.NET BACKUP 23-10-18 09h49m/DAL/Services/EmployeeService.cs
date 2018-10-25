@@ -29,6 +29,15 @@ namespace DAL.Services {
             return connection.ExecuteReader(command, (dr) => dr.ToEmployee()).SingleOrDefault();
         }
 
+        public Employee GetByEmailPassword(string email, string password) {
+            Connection connection = new Connection(providerName, connString);
+            Command command = new Command("EXEC SP_SelectEmployeeByEmailPassword @email = @em, @pass = @pa;");
+            command.AddParameter("em", email);
+            command.AddParameter("pa", password);
+
+            return connection.ExecuteReader(command, (dr) => dr.ToEmployee()).SingleOrDefault();
+        }
+
         public Employee Insert(Employee e) {
             Connection connection = new Connection(providerName, connString);
             Command command = new Command("EXEC SP_AddEmployee @nom = @ne, @prenom = @pr, @email = @em, @password = @pa, @birtday = @bd, @regnat = @rn, @idadresse = @ia, @hiredate = @hd, @tel = @te, @idcoordonee = @ic;");

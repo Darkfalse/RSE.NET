@@ -26,6 +26,10 @@ namespace Client.Services {
             return service.GetById(id).ToClient();
         }
 
+        public Employee GetByEmailPassword(string email, string password) {
+            return service.GetByEmailPassword(email, password).ToClient();
+        }
+
         public Employee Insert(Employee a) {
             return service.Insert(a.ToDal()).ToClient();
         }

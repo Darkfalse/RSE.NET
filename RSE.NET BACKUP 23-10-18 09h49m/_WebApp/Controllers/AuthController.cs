@@ -15,55 +15,63 @@ namespace _WebApp.Controllers
         // GET: Auth
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
         [AnonymousRequired]
         public ActionResult Register() {
             return View();
         }
+        
+        [AnonymousRequired]
+        [HttpPost]
+        public ActionResult Register(InscriptionForms form) {
+            if (ModelState.IsValid) {
+                //Récupere le pays et la ville depuis la base de données
+                PaysService ps = new PaysService();
+                Pays p = ps.GetByName(form.Pays);
+                VilleService vs = new VilleService();
+                Ville v = vs.GetByNomZipPays(form.Ville, form.Zip, (int)p.Id);
 
-        //TODO
-        //[AnonymousRequired]
-        //[HttpPost]
-        //public ActionResult Register(InscriptionForms form) {
-        //    if (ModelState.IsValid) {
-        //        EmployeeService ur = new EmployeeService();
-        //        Employee e = new Employee(form.Nom, form.Prenom, form.Email, form.Password, form.Birthday, form.RegNat, form.Adresse, form.HireDate, form.Tel, form.Coordonnee, form.Valide);
-        //        //Adresse a = 
-        //        e.Id = ur.Insert(e);
-        //        TempData["msg"] = "Inscription réussie";
-        //        ModelState.Clear();
-        //        return View();
-        //    }
-        //    return View(form);
-        //}
+                if (p != null && v != null) {
+                    AdresseService ads = new AdresseService();
+                    Adresse a = new Adresse(form.Nom_Rue, form.Boite_Postal, (int)v.Id);
+                    int idads = (int)ads.Insert(a).Id;
+                    EmployeeService ur = new EmployeeService();
+                    Employee e = new Employee(form.Nom, form.Prenom, form.Email, form.Password, form.Birthday, form.RegNat, idads, form.HireDate, form.Tel, null, false);
+                    ur.Insert(e);
+                    TempData["msg"] = "Inscription réussie";
+                    ModelState.Clear();
+                }
+                return View();
+            }
+            return View(form);
+        }
 
         [AnonymousRequired]
         public ActionResult Login() {
             return View();
         }
 
-        //[AnonymousRequired]
-        //[HttpPost]
-        //public ActionResult Login(LoginForm form) {
-        //    if (ModelState.IsValid) {
-        //        EmployeeService ur = new EmployeeService();
-        //        Employee e = ur.GetUserByEmailPassword(form.Login, form.Password);
-        //        if (e != null)// && SecuredPassword.Verify(form.Password, u.Password))
-        //        {
-        //            TempData["nomUser"] = e.FirstName;
-        //            EmployeeSession.CurrentEmployee = new Employee() { Id = e.Id, Email = form.Login };
-        //            return RedirectToAction("Index", "Member");
-        //        }
-        //        else {
-        //            TempData["loginError"] = "Login ou mot de passe incorrect.";
-        //            ModelState.Clear();
-        //            return View();
-        //        }
-        //    }
-        //    return View(form);
-        //}
+        [AnonymousRequired]
+        [HttpPost]
+        public ActionResult Login(LoginForm form) {
+            if (ModelState.IsValid) {
+                EmployeeService ur = new EmployeeService();
+                Employee e = ur.GetByEmailPassword(form.Login, form.Password);
+                if (e != null)
+                {
+                    EmployeeSession.CurrentEmployee = e;
+                    return RedirectToAction("Index", "Member");
+                }
+                else {
+                    TempData["loginError"] = "Login ou mot de passe incorrect.";
+                    ModelState.Clear();
+                    return View();
+                }
+            }
+            return View(form);
+        }
 
         [AuthRequired]
         public ActionResult Logout() {

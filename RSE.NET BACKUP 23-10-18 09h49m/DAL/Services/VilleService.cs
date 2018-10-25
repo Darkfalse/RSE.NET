@@ -28,5 +28,15 @@ namespace DAL.Services {
 
             return connection.ExecuteReader(command, (dr) => dr.ToVille()).SingleOrDefault();
         }
+
+        public Ville GetByNomZipPays(string nom, string zip, int id) {
+            Connection connection = new Connection(providerName, connString);
+            Command command = new Command("SELECT * FROM Ville WHERE Nom_Ville = @nv AND Zip = @zp AND Id_Pays = @id;");
+            command.AddParameter("np", nom);
+            command.AddParameter("zp", zip);
+            command.AddParameter("id", id);
+
+            return connection.ExecuteReader(command, (dr) => dr.ToVille()).SingleOrDefault();
+        }
     }
 }
