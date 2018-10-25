@@ -28,5 +28,13 @@ namespace DAL.Services {
 
             return connection.ExecuteReader(command, (dr) => dr.ToPays()).SingleOrDefault();
         }
+
+        public Pays GetByName(string nomPays) {
+            Connection connection = new Connection(providerName, connString);
+            Command command = new Command("SELECT * FROM Pays WHERE Nom_Francais = @nf;");
+            command.AddParameter("nf", nomPays);
+
+            return connection.ExecuteReader(command, (dr) => dr.ToPays()).SingleOrDefault();
+        }
     }
 }

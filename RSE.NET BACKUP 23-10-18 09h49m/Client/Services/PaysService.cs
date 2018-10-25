@@ -25,5 +25,9 @@ namespace Client.Services {
         public Pays GetById(int id) {
             return service.GetById(id).ToClient();
         }
+
+        public Pays GetByName(string nomPays) {
+            return service.GetByName(nomPays).ToClient();
+        }
     }
 }

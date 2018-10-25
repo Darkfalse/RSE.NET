@@ -25,5 +25,9 @@ namespace Client.Services {
         public Ville GetById(int id) {
             return service.GetById(id).ToClient();
         }
+
+        public Ville GetByNomZipPays(string nom, string zip, int id) {
+            return service.GetByNomZipPays(nom, zip, id).ToClient();
+        }
     }
 }
