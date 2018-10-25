@@ -17,7 +17,11 @@ namespace Client.Models {
         public DateTime HireDate { get; set; }
         public string Tel { get; set; }
         public int? Coordonnee { get; set; }
-         public bool Valide { get; set; }
+        public bool Valide { get; set; }
+
+        public Employee() {
+
+        }
 
         public Employee(string nom, string prenom, string email, string pass, DateTime birthday, string regnat, int? adresse, DateTime hiredate, string tel, int? coord,bool valide) {
             Nom = nom;

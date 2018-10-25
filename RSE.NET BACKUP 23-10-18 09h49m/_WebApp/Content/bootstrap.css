@@ -5248,6 +5248,8 @@ a.thumbnail:focus {
 }
 
 .list-group {
+  color:lightgrey;
+  background-color:white;
   padding-left: 0;
   margin-bottom: 20px;
 }

@@ -1,0 +1,116 @@
+﻿@model _WebApp.Models.ViewModels.MemberIndex
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div class="list-group">
+    <table class="table">
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.p.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.p.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.p.Debut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.p.Fin)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.ListP) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Debut)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fin)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<div class="list-group">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.e.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.e.Prenom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.e.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.e.Birthday)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.e.RegNat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.e.Adresse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.e.HireDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.e.Tel)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.ListE) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prenom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Birthday)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RegNat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adresse)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HireDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tel)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

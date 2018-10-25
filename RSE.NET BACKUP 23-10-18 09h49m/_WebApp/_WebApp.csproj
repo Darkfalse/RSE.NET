@@ -160,6 +160,7 @@
     <Compile Include="Models\Formulaires\InscriptionForms.cs" />
     <Compile Include="Models\Formulaires\LoginForms.cs" />
     <Compile Include="Models\Formulaires\TacheForms.cs" />
+    <Compile Include="Models\ViewModels\MemberIndex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -204,10 +205,10 @@
     <Content Include="Views\Auth\Register.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Member\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Member\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

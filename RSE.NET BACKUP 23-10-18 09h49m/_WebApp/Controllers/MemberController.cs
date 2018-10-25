@@ -1,4 +1,7 @@
-﻿using System;
+﻿using _WebApp.Infrastructure;
+using _WebApp.Models.ViewModels;
+using Client.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +11,16 @@ namespace _WebApp.Controllers
 {
     public class MemberController : Controller
     {
-        // GET: Member
+        [AuthRequiredAttribute]
         public ActionResult Index()
         {
-            return View();
+            MemberIndex mi = new MemberIndex();
+            ProjetService ps = new ProjetService();
+            mi.ListP = ps.GetAll();
+            EmployeeService es = new EmployeeService();
+            mi.ListE = es.GetAll();
+
+            return View(mi);
         }
     }
 }

@@ -13,6 +13,10 @@ namespace Client.Models {
         public DateTime? Fin { get; set; }
         public int? Admin { get; set; }
 
+        public Projet() {
+
+        }
+
         public Projet(string nom, string des, DateTime debut, DateTime? fin, int? admin) {
             Nom = nom;
             Description = des;
