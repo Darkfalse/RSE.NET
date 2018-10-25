@@ -11,8 +11,8 @@ using ToolBox;
 namespace DAL.Services {
     public class AdresseService {
 
-        private readonly string providerName = ConfigurationManager.ConnectionStrings["SQLConnection"].ProviderName;
-        private readonly string connString = ConfigurationManager.ConnectionStrings["SQLConnection"].ConnectionString;
+        private readonly string providerName = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("/_WebApp").ConnectionStrings.ConnectionStrings["SQLConnection"].ProviderName;
+        private readonly string connString = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("/_WebApp").ConnectionStrings.ConnectionStrings["SQLConnection"].ConnectionString;
 
         public IEnumerable<Adresse> GetAll() {
             Connection connection = new Connection(providerName, connString);
