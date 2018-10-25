@@ -6,3 +6,11 @@ C:\Users\forma1605\Documents\Mertens Xavier\GitHubRepo\RSE.NET BACKUP 23-10-18 0
 C:\Users\forma1605\Documents\Mertens Xavier\GitHubRepo\RSE.NET BACKUP 23-10-18 09h49m\DAL\bin\Debug\DAL.dll.config
 C:\Users\forma1605\Documents\Mertens Xavier\GitHubRepo\RSE.NET BACKUP 23-10-18 09h49m\DAL\bin\Debug\DAL.dll
 C:\Users\forma1605\Documents\Mertens Xavier\GitHubRepo\RSE.NET BACKUP 23-10-18 09h49m\DAL\obj\Debug\DAL.dll
+C:\Users\forma1612\Documents\GitHubVisualStudio\RSE.NET\RSE.NET BACKUP 23-10-18 09h49m\DAL\bin\Debug\DAL.dll.config
+C:\Users\forma1612\Documents\GitHubVisualStudio\RSE.NET\RSE.NET BACKUP 23-10-18 09h49m\DAL\bin\Debug\DAL.dll
+C:\Users\forma1612\Documents\GitHubVisualStudio\RSE.NET\RSE.NET BACKUP 23-10-18 09h49m\DAL\bin\Debug\DAL.pdb
+C:\Users\forma1612\Documents\GitHubVisualStudio\RSE.NET\RSE.NET BACKUP 23-10-18 09h49m\DAL\bin\Debug\ToolBox.dll
+C:\Users\forma1612\Documents\GitHubVisualStudio\RSE.NET\RSE.NET BACKUP 23-10-18 09h49m\DAL\bin\Debug\ToolBox.pdb
+C:\Users\forma1612\Documents\GitHubVisualStudio\RSE.NET\RSE.NET BACKUP 23-10-18 09h49m\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\forma1612\Documents\GitHubVisualStudio\RSE.NET\RSE.NET BACKUP 23-10-18 09h49m\DAL\obj\Debug\DAL.dll
+C:\Users\forma1612\Documents\GitHubVisualStudio\RSE.NET\RSE.NET BACKUP 23-10-18 09h49m\DAL\obj\Debug\DAL.pdb

@@ -25,7 +25,7 @@ namespace DAL.Mappers
         {
             return new Adresse()
             {
-                Boite_Postal = (string) dr["Boite_Postal"],
+                Boite_Postal = dr["Boite_Postal"] == DBNull.Value ? null : (string) dr["Boite_Postal"],
                 Id = (int) dr["Id_Adresse"],
                 Id_Ville = (int) dr["Id_Ville"],
                 Nom_Rue = (string) dr["Nom_Rue"]
@@ -69,9 +69,9 @@ namespace DAL.Mappers
         {
             return new Employee()
             {
-                Adresse = (int) dr["Id_Adresse"],
+                Adresse = dr["Id_Adresse"] == DBNull.Value ? 0 : (int)dr["Id_Adresse"],
                 Birthday = (DateTime) dr["Birthday"],
-                Coordonnee = (int) dr["Id_Coordonee"],
+                Coordonnee = dr["Id_Coordonee"] == DBNull.Value ? 0 : (int) dr["Id_Coordonee"],
                 Email = (string) dr["Email"],
                 HireDate = (DateTime) dr["HireDate"],
                 Id = (int) dr["Id_Employee"],
@@ -124,7 +124,7 @@ namespace DAL.Mappers
                 Id = (int) dr["Id_Message_Employee"],
                 Id_Employee = (int) dr["Id_Employee"],
                 Id_Destinataire = (int) dr["Id_Employee_Destinataire"],
-                MessagePrecedent = (int) dr["Id_Message"],
+                MessagePrecedent = dr["Id_Message"] == DBNull.Value ? 0 : (int) dr["Id_Message"],
                 Titre = (string) dr["Titre_Message_Employee"]
             };
         }
@@ -136,7 +136,7 @@ namespace DAL.Mappers
                 Date = (DateTime) dr["Date_Message_Equipe"],
                 Id = (int) dr["Id_Message_Equipe"],
                 Id_Equipe = (int) dr["Id_Equipe"],
-                MessagePrecedent = (int) dr["Id_Message"],
+                MessagePrecedent = dr["Id_Message"] == DBNull.Value ? 0 : (int) dr["Id_Message"],
                 Titre = (string) dr["Titre_Message_Equipe"],
                 Id_Employee = (int) dr["Id_Employee"]
             };
@@ -148,7 +148,7 @@ namespace DAL.Mappers
                 Contenu = (string) dr["Texte_Message_Projet"],
                 Date = (DateTime) dr["Date_Message_Projet"],
                 Id = (int) dr["Id_Message_Projet"],
-                MessagePrecedent = (int) dr["Id_Message"],
+                MessagePrecedent = dr["Id_Message"] == DBNull.Value ? 0 : (int) dr["Id_Message"],
                 Titre = (string) dr["Titre_Message_Projet"],
                 Id_Employee = (int) dr["Id_Employee"],
                 Id_Projet = (int) dr["Id_Projet"]
@@ -161,11 +161,11 @@ namespace DAL.Mappers
                 Contenu = (string) dr["Texte_Message_Tache"],
                 Date = (DateTime) dr["Date_Message_Tache"],
                 Id = (int) dr["Id_Message_Tache"],
-                MessagePrecedent = (int) dr["Id_Message"],
+                MessagePrecedent = dr["Id_Message"] == DBNull.Value ? 0 : (int) dr["Id_Message"],
                 Titre = (string) dr["Titre_Message_Tache"],
                 Id_Employee = (int) dr["Id_Employee"],
-                Id_Tache_Emplopyee = (int) dr["Id_Tache_Employee"],
-                Id_Tache_Equipe = (int) dr["Id_Tache_Equipe"]
+                Id_Tache_Emplopyee = dr["Id_Tache_Employee"] == DBNull.Value ? 0 : (int) dr["Id_Tache_Employee"],
+                Id_Tache_Equipe = dr["Id_Tache_Equipe"] == DBNull.Value ? 0 : (int) dr["Id_Tache_Equipe"]
             };
         }
         internal static Pays ToPays(this IDataRecord dr)
@@ -188,7 +188,7 @@ namespace DAL.Mappers
                 Admin = (int) dr["Id_Admin"],
                 Debut = (DateTime) dr["Date_Debut"],
                 Description = (string) dr["Description"],
-                Fin = (DateTime) dr["Date_Fin"],
+                Fin = dr["Date_Fin"] == DBNull.Value ? null : (DateTime?) dr["Date_Fin"],
                 Id = (int) dr["Id_Projet"],
                 Nom = (string) dr["Nom_Projet"]
             };
@@ -200,12 +200,12 @@ namespace DAL.Mappers
             {
                 Debut = (DateTime) dr["Date_Debut"],
                 Description = (string) dr["Description_Tache_Employee"],
-                Fin = (DateTime) dr["Date_Fin"],
-                Final = (DateTime) dr["Date_Final"],
+                Fin = dr["Date_Fin"] == DBNull.Value ? null : (DateTime?) dr["Date_Fin"],
+                Final = dr["Date_Final"] == DBNull.Value ? null : (DateTime?) dr["Date_Final"],
                 Id = (int) dr["Id_Tache_Employee"],
                 Nom = (string) dr["Nom_Tache_Employee"],
                 Projet = (int) dr["Id_Projet"],
-                TachePrecedente = (int) dr["Tache_Precedente"]
+                TachePrecedente = dr["Tache_Precedente"] == DBNull.Value ? 0 : (int?) dr["Tache_Precedente"]
             };
         }
         internal static TacheEquipe ToTacheEquipe(this IDataRecord dr)
@@ -214,12 +214,12 @@ namespace DAL.Mappers
             {
                 Debut = (DateTime) dr["Date_Debut"],
                 Description = (string) dr["Description_Tache_Equipe"],
-                Fin = (DateTime) dr["Date_Fin"],
-                Final = (DateTime) dr["Date_Final"],
+                Fin = dr["Date_Fin"] == DBNull.Value ? null : (DateTime?)dr["Date_Fin"],
+                Final = dr["Date_Final"] == DBNull.Value ? null : (DateTime?)dr["Date_Final"],
                 Id = (int) dr["Id_Tache_Equipe"],
                 Nom = (string) dr["Nom_Tache_Equipe"],
                 Projet = (int) dr["Id_Projet"],
-                TachePrecedente = (int) dr["Tache_Precedente"]
+                TachePrecedente = dr["Tache_Precedente"] == DBNull.Value ? 0 : (int?)dr["Tache_Precedente"]
             };
         }
 

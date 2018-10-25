@@ -10,12 +10,12 @@ namespace Client.Models {
         public string Nom { get; set; }
         public string Description { get; set; }
         public DateTime Debut { get; set; }
-        public DateTime Fin { get; set; }
-        public DateTime Final { get; set; }
+        public DateTime? Fin { get; set; }
+        public DateTime? Final { get; set; }
         public int? TachePrecedente { get; set; }
         public int Projet { get; set; }
 
-        public TacheEmployee(string nom, string des, DateTime debut, DateTime fin, DateTime final, int? precedente, int projet) {
+        public TacheEmployee(string nom, string des, DateTime debut, DateTime? fin, DateTime? final, int? precedente, int projet) {
             Nom = nom;
             Description = des;
             Debut = debut;
@@ -25,7 +25,7 @@ namespace Client.Models {
             Projet = projet;
         }
 
-        public TacheEmployee(int? id, string nom, string des, DateTime debut, DateTime fin, DateTime final, int? precedente, int projet) : this(nom, des, debut, fin, final, precedente, projet) {
+        public TacheEmployee(int? id, string nom, string des, DateTime debut, DateTime? fin, DateTime? final, int? precedente, int projet) : this(nom, des, debut, fin, final, precedente, projet) {
             Id = id;
         }
     }

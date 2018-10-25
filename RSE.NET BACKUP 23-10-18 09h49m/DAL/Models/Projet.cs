@@ -10,7 +10,7 @@ namespace DAL.Models {
         public string Nom { get; set; }
         public string Description { get; set; }
         public DateTime Debut { get; set; }
-        public DateTime Fin { get; set; }
+        public DateTime? Fin { get; set; }
         public int? Admin { get; set; }
     }
 }

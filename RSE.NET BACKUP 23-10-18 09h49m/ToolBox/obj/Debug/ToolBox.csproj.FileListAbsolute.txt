@@ -3,3 +3,8 @@ C:\Users\forma1605\Documents\Mertens Xavier\GitHubRepo\RSE.NET BACKUP 23-10-18 0
 C:\Users\forma1605\Documents\Mertens Xavier\GitHubRepo\RSE.NET BACKUP 23-10-18 09h49m\ToolBox\obj\Debug\ToolBox.csprojResolveAssemblyReference.cache
 C:\Users\forma1605\Documents\Mertens Xavier\GitHubRepo\RSE.NET BACKUP 23-10-18 09h49m\ToolBox\obj\Debug\ToolBox.dll
 C:\Users\forma1605\Documents\Mertens Xavier\GitHubRepo\RSE.NET BACKUP 23-10-18 09h49m\ToolBox\obj\Debug\ToolBox.pdb
+C:\Users\forma1612\Documents\GitHubVisualStudio\RSE.NET\RSE.NET BACKUP 23-10-18 09h49m\ToolBox\bin\Debug\ToolBox.dll
+C:\Users\forma1612\Documents\GitHubVisualStudio\RSE.NET\RSE.NET BACKUP 23-10-18 09h49m\ToolBox\bin\Debug\ToolBox.pdb
+C:\Users\forma1612\Documents\GitHubVisualStudio\RSE.NET\RSE.NET BACKUP 23-10-18 09h49m\ToolBox\obj\Debug\ToolBox.csprojResolveAssemblyReference.cache
+C:\Users\forma1612\Documents\GitHubVisualStudio\RSE.NET\RSE.NET BACKUP 23-10-18 09h49m\ToolBox\obj\Debug\ToolBox.dll
+C:\Users\forma1612\Documents\GitHubVisualStudio\RSE.NET\RSE.NET BACKUP 23-10-18 09h49m\ToolBox\obj\Debug\ToolBox.pdb
