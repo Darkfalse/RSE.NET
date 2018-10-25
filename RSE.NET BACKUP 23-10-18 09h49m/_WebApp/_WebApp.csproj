@@ -159,6 +159,7 @@
     <Compile Include="Infrastructure\EmployeeSession.cs" />
     <Compile Include="Models\Formulaires\InscriptionForms.cs" />
     <Compile Include="Models\Formulaires\LoginForms.cs" />
+    <Compile Include="Models\Formulaires\ProjetForms.cs" />
     <Compile Include="Models\Formulaires\TacheForms.cs" />
     <Compile Include="Models\ViewModels\MemberIndex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

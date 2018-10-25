@@ -6,10 +6,9 @@ using System.Web;
 
 namespace _WebApp.Models.Formulaires
 {
-    public class TacheForms
+    public class ProjetForms
     {
         [Required]
-        [MaxLength(50)]
         public string Nom { get; set; }
 
         [Required]
@@ -17,23 +16,17 @@ namespace _WebApp.Models.Formulaires
         [DataType(DataType.Text)]
         public string Description { get; set; }
 
-        [Required]
         [DataType(DataType.Date)]
+        [Required]
         public DateTime Debut { get; set; }
 
         [DataType(DataType.Date)]
-        public DateTime Fin { get; set; }
+        public DateTime? Fin { get; set; }
 
-        [DataType(DataType.Date)]
-        public DateTime Final { get; set; }
+        public int? Admin { get; set; }
 
 
-        public int? TachePrecedente { get; set; }
 
-        [Required]
-        public int Projet { get; set; }
-
-        public Boolean TacheEquipe { get; set; }
 
 
     }
