@@ -40,10 +40,11 @@ namespace _WebApp.Controllers
                     EmployeeService ur = new EmployeeService();
                     Employee e = new Employee(form.Nom, form.Prenom, form.Email, form.Password, form.Birthday, form.RegNat, idads, form.HireDate, form.Tel, null, false);
                     ur.Insert(e);
-                    TempData["msg"] = "Inscription réussie";
                     ModelState.Clear();
+                    return RedirectToAction("Index", "Home");
                 }
-                return View();
+                else
+                    return View(form);
             }
             return View(form);
         }
@@ -65,7 +66,6 @@ namespace _WebApp.Controllers
                     return RedirectToAction("Index", "Member");
                 }
                 else {
-                    TempData["loginError"] = "Login ou mot de passe incorrect.";
                     ModelState.Clear();
                     return View();
                 }
