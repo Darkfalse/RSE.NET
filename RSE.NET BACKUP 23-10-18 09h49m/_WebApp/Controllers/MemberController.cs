@@ -1,5 +1,7 @@
 ﻿using _WebApp.Infrastructure;
+using _WebApp.Models.Formulaires;
 using _WebApp.Models.ViewModels;
+using Client.Models;
 using Client.Services;
 using System;
 using System.Collections.Generic;
@@ -16,9 +18,9 @@ namespace _WebApp.Controllers
         {
             MemberIndex mi = new MemberIndex();
             ProjetService ps = new ProjetService();
-            mi.ListP = ps.GetAll();
+            mi.ListP = ps.GetByIdEmpl((int)EmployeeSession.CurrentEmployee.Id);
             EmployeeService es = new EmployeeService();
-            mi.ListE = es.GetAll();
+            mi.ListE = es.GetByEquipe((int)EmployeeSession.CurrentEmployee.Id);
 
             return View(mi);
         }
@@ -32,45 +34,29 @@ namespace _WebApp.Controllers
         }
         
         public ActionResult CreateProjet() {
-            //TODO
             return View();
         }
-
-        // POST: Member2/Create
+        
         [HttpPost]
-        public ActionResult CreateProjet(ProjetForm form) {
-            
-            return View();
-        }
+        public ActionResult CreateProjet(ProjetForms form) {
+            if (ModelState.IsValid) {
+                Projet p = new Projet(form.Nom, form.Description, form.Debut, form.Fin, form.Admin);
+                ProjetService ps = new ProjetService();
+                ps.Insert(p);
 
-        // GET: Member2/Edit/5
+                return RedirectToAction("Index", "Member");
+            }
+            return View(form);
+        }
+        
         public ActionResult EditProjet(int id) {
             return View();
         }
-
-        // POST: Member2/Edit/5
+        
         [HttpPost]
-        public ActionResult EditProjet(int id, ProjetForm collection) {
+        public ActionResult EditProjet(int id, ProjetForms collection) {
             try {
                 // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch {
-                return View();
-            }
-        }
-
-        // GET: Member2/Delete/5
-        public ActionResult DeleteProjet(int id) {
-            return View();
-        }
-
-        // POST: Member2/Delete/5
-        [HttpPost]
-        public ActionResult DeleteProjet(int id, ProjetForm collection) {
-            try {
-                // TODO: Add delete logic here
 
                 return RedirectToAction("Index");
             }

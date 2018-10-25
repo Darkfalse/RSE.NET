@@ -22,6 +22,10 @@ namespace Client.Services {
             return service.GetAll().Select(a => a.ToClient());
         }
 
+        public IEnumerable<Projet> GetByIdEmpl(int id) {
+            return service.GetByIdEmpl(id).Select(a => a.ToClient());
+        }
+
         public Projet GetById(int id) {
             return service.GetById(id).ToClient();
         }
@@ -32,10 +36,6 @@ namespace Client.Services {
 
         public bool Update(Projet p) {
             return service.Update(p.ToDal());
-        }
-
-        public bool Delete(int id) {
-            return service.Delete(id);
         }
     }
 }
