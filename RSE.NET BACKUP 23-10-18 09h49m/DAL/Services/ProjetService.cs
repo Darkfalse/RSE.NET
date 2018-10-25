@@ -21,6 +21,14 @@ namespace DAL.Services {
             return connection.ExecuteReader(command, (dr) => dr.ToProjet());
         }
 
+        public IEnumerable<Projet> GetByIdEmpl(int id) {
+            Connection connection = new Connection(providerName, connString);
+            Command command = new Command("EXEC SP_ProjetDEmployee @id = @i;");
+            command.AddParameter("i", id);
+
+            return connection.ExecuteReader(command, (dr) => dr.ToProjet());
+        }
+
         public Projet GetById(int id) {
             Connection connection = new Connection(providerName, connString);
             Command command = new Command("SELECT * FROM Projet WHERE Id_Projet = @Id;");
@@ -31,7 +39,7 @@ namespace DAL.Services {
 
         public Projet Insert(Projet p) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("INSERT INTO Projet (Nom_Projet, Description, Date_Debut, Date_Fin, Id_Admin) OUTPUT INSERTED.ID VALUES (@nt, @d, @dd, @df, @ia);");
+            Command command = new Command("EXEC SP_AddProjet @nom = @np, @des = @d, @debut = @dd, @fin = @df, @idadmin = @ia;");
             command.AddParameter("np", p.Nom);
             command.AddParameter("d", p.Description);
             command.AddParameter("dd", p.Debut);
@@ -45,21 +53,11 @@ namespace DAL.Services {
 
         public bool Update(Projet p) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("UPDATE Projet SET Nom_Projet = @np, Description = @d, Date_Debut = @dd, Date_Fin = @df, Id_Admin = @ia WHERE Id_Projet = @id;");
+            Command command = new Command("EXEC SP_UpdateProjet @id = @i, @nom = @np, @des = @d, @fin = @df;");
             command.AddParameter("np", p.Nom);
             command.AddParameter("d", p.Description);
-            command.AddParameter("dd", p.Debut);
             command.AddParameter("df", p.Fin);
-            command.AddParameter("ia", p.Admin);
-            command.AddParameter("id", p.Id);
-
-            return connection.ExecuteNonQuery(command) == 1;
-        }
-
-        public bool Delete(int id) {
-            Connection connection = new Connection(providerName, connString);
-            Command command = new Command("DELETE FROM Projet WHERE Id_Projet = @id;");
-            command.AddParameter("id", id);
+            command.AddParameter("i", p.Id);
 
             return connection.ExecuteNonQuery(command) == 1;
         }

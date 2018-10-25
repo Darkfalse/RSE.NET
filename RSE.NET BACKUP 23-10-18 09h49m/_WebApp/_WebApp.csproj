@@ -209,6 +209,10 @@
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Member\Index.cshtml" />
+    <Content Include="Views\Member\DetailsProjet.cshtml" />
+    <Content Include="Views\Member\DetailsEmployee.cshtml" />
+    <Content Include="Views\Member\CreateProjet.cshtml" />
+    <Content Include="Views\Member\DeleteProjet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

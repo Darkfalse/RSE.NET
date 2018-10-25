@@ -6,6 +6,9 @@
 
 <h2>Index</h2>
 <div class="list-group">
+    <p>
+        @Html.ActionLink("Créer nouveau", "CreateProjet")
+    </p>
     <table class="table">
 
         <tr>
@@ -26,7 +29,7 @@
         @foreach (var item in Model.ListP) {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item)
+                    @Html.DisplayFor(modelItem => item.Nom)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
@@ -39,9 +42,8 @@
                 </td>
 
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    @Html.ActionLink("Edit", "EditProjet", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "DetailsProjet", new { id = item.Id })
                 </td>
             </tr>
         }
@@ -105,9 +107,7 @@
                     @Html.DisplayFor(modelItem => item.Tel)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    @Html.ActionLink("Details", "DetailsEmployee", new { id = item.Id })
                 </td>
             </tr>
         }
