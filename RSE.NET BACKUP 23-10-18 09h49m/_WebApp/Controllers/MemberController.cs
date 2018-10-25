@@ -11,9 +11,9 @@ using System.Web.Mvc;
 
 namespace _WebApp.Controllers
 {
+    [AuthRequiredAttribute]
     public class MemberController : Controller
     {
-        [AuthRequiredAttribute]
         public ActionResult Index()
         {
             MemberIndex mi = new MemberIndex();
