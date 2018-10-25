@@ -1,0 +1,58 @@
+﻿@model Client.Models.Projet
+
+@{
+    ViewBag.Title = "DetailsProjet";
+}
+
+<h2>DetailsProjet</h2>
+
+<div>
+    <h4>Projet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Debut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Debut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditProjet", new { id = Model.Id }) |
+    @Html.ActionLink("Retour", "Index")
+</p>

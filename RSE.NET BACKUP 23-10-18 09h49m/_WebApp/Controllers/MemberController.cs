@@ -22,5 +22,61 @@ namespace _WebApp.Controllers
 
             return View(mi);
         }
+
+        public ActionResult DetailsProjet(int id) {
+            return View();
+        }
+
+        public ActionResult DetailsEmployee(int id) {
+            return View();
+        }
+        
+        public ActionResult CreateProjet() {
+            //TODO
+            return View();
+        }
+
+        // POST: Member2/Create
+        [HttpPost]
+        public ActionResult CreateProjet(ProjetForm form) {
+            
+            return View();
+        }
+
+        // GET: Member2/Edit/5
+        public ActionResult EditProjet(int id) {
+            return View();
+        }
+
+        // POST: Member2/Edit/5
+        [HttpPost]
+        public ActionResult EditProjet(int id, ProjetForm collection) {
+            try {
+                // TODO: Add update logic here
+
+                return RedirectToAction("Index");
+            }
+            catch {
+                return View();
+            }
+        }
+
+        // GET: Member2/Delete/5
+        public ActionResult DeleteProjet(int id) {
+            return View();
+        }
+
+        // POST: Member2/Delete/5
+        [HttpPost]
+        public ActionResult DeleteProjet(int id, ProjetForm collection) {
+            try {
+                // TODO: Add delete logic here
+
+                return RedirectToAction("Index");
+            }
+            catch {
+                return View();
+            }
+        }
     }
 }
