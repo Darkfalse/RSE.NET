@@ -41,7 +41,7 @@ namespace ToolBox {
                 using (DbCommand cmd2 = CreateCommand(db, cmd))
                 {
                     db.Open();
-                    DbDataReader reader = cmd2.ExecuteReader();
+                   DbDataReader reader = cmd2.ExecuteReader();
                     
                     while (reader.Read()) {
                         yield return func(reader);
