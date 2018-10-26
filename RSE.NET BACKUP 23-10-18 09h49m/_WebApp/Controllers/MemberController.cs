@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace _WebApp.Controllers
 {
     [AuthRequiredAttribute]
@@ -17,7 +18,7 @@ namespace _WebApp.Controllers
         public ActionResult Index()
         {
             MemberIndex mi = new MemberIndex();
-            int IdEmp = (int)EmployeeSession.CurrentEmployee.Id;
+            int IdEmp = (int) EmployeeSession.CurrentEmployee.Id;
             ProjetService ps = new ProjetService();
             mi.ListP = ps.GetByIdEmpl(IdEmp);
             EmployeeService es = new EmployeeService();
@@ -31,62 +32,75 @@ namespace _WebApp.Controllers
         /***********************************************************************************************************
          ***********************************************Equipe******************************************************
          ***********************************************************************************************************/
-        public ActionResult Equipe() {
+        public ActionResult Equipe()
+        {
             EmployeeService es = new EmployeeService();
-            return View(es.GetByEquipe((int)EmployeeSession.CurrentEmployee.Id).First().Id);
+            return View(es.GetByEquipe((int) EmployeeSession.CurrentEmployee.Id).First().Id);
         }
 
-        public ActionResult Equipe(int id) {
+        public ActionResult Equipe(int id)
+        {
             return View();
         }
 
         /***********************************************************************************************************
          ***********************************************Employee****************************************************
          ***********************************************************************************************************/
-        public ActionResult Employee(int id) {
+        public ActionResult Employee(int id)
+        {
             return View();
         }
 
         /***********************************************************************************************************
          ***********************************************Projet******************************************************
          ***********************************************************************************************************/
-        public ActionResult Projet() {
+        public ActionResult Projet()
+        {
             ProjetService ps = new ProjetService();
-            return View(ps.GetByIdEmpl((int)EmployeeSession.CurrentEmployee.Id).First().Id);
+            return View(ps.GetByIdEmpl((int) EmployeeSession.CurrentEmployee.Id).First().Id);
         }
 
-        public ActionResult Projet(int id) {
+        public ActionResult Projet(int id)
+        {
             return View();
         }
 
-        public ActionResult CreateProjet() {
+        public ActionResult CreateProjet()
+        {
             return View();
         }
-        
+
         [HttpPost]
-        public ActionResult CreateProjet(ProjetForms form) {
-            if (ModelState.IsValid) {
+        public ActionResult CreateProjet(ProjetForms form)
+        {
+            if (ModelState.IsValid)
+            {
                 Projet p = new Projet(form.Nom, form.Description, form.Debut, form.Fin, form.Admin);
                 ProjetService ps = new ProjetService();
                 ps.Insert(p);
 
                 return RedirectToAction("Index", "Member");
             }
+
             return View(form);
         }
-        
-        public ActionResult EditProjet(int id) {
+
+        public ActionResult EditProjet(int id)
+        {
             return View();
         }
-        
+
         [HttpPost]
-        public ActionResult EditProjet(int id, ProjetForms collection) {
-            try {
+        public ActionResult EditProjet(int id, ProjetForms collection)
+        {
+            try
+            {
                 // TODO: Add update logic here
 
                 return RedirectToAction("Index");
             }
-            catch {
+            catch
+            {
                 return View();
             }
         }
