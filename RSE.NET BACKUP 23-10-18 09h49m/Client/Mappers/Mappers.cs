@@ -276,11 +276,15 @@ namespace Client.Mappers
 
         internal static C.Projet ToClient(this D.Projet e)
         {
-            return new C.Projet(e.Id ,e.Nom, e.Description, e.Debut, e.Fin, e.Admin);
+            if (e != null)
+                return new C.Projet(e.Id, e.Nom, e.Description, e.Debut, e.Fin, e.Admin);
+            else
+                return null;
         }
 
         internal static C.Administrateur ToClient(this D.Administrateur e)
         {
+            
             return new C.Administrateur(e.Id, e.NumeroAdmin, e.Employee);
         }
 
