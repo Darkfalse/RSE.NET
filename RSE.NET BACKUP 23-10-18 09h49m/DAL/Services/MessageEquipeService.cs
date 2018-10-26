@@ -21,10 +21,18 @@ namespace DAL.Services {
             return connection.ExecuteReader(command, (dr) => dr.ToMessageEquipe());
         }
 
+        public IEnumerable<MessageEquipe> GetByEquipe(int id) {
+            Connection connection = new Connection(providerName, connString);
+            Command command = new Command("EXEC SP_MsgEquipeByEquipe @id = @i;");
+            command.AddParameter("i", id);
+
+            return connection.ExecuteReader(command, (dr) => dr.ToMessageEquipe());
+        }
+
         public MessageEquipe GetById(int id) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("SELECT * FROM Message_Equipe WHERE Id_Message_Equipe = @Id;");
-            command.AddParameter("Id", id);
+            Command command = new Command("SELECT * FROM Message_Equipe WHERE Id_Message_Equipe = @id;");
+            command.AddParameter("id", id);
 
             return connection.ExecuteReader(command, (dr) => dr.ToMessageEquipe()).SingleOrDefault();
         }

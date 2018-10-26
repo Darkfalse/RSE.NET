@@ -21,10 +21,18 @@ namespace DAL.Services {
             return connection.ExecuteReader(command, (dr) => dr.ToTacheEquipe());
         }
 
+        public IEnumerable<TacheEquipe> GetByProjet(int id) {
+            Connection connection = new Connection(providerName, connString);
+            Command command = new Command("EXEC SP_TacheDEquipeByProjet @id = @i;");
+            command.AddParameter("i", id);
+
+            return connection.ExecuteReader(command, (dr) => dr.ToTacheEquipe());
+        }
+
         public TacheEquipe GetById(int id) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("SELECT * FROM Tache_Equipe WHERE Id_Tache_Equipe = @Id;");
-            command.AddParameter("Id", id);
+            Command command = new Command("SELECT * FROM Tache_Equipe WHERE Id_Tache_Equipe = @id;");
+            command.AddParameter("id", id);
 
             return connection.ExecuteReader(command, (dr) => dr.ToTacheEquipe()).SingleOrDefault();
         }

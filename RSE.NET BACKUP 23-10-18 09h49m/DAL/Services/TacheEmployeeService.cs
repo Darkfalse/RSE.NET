@@ -21,10 +21,18 @@ namespace DAL.Services {
             return connection.ExecuteReader(command, (dr) => dr.ToTacheEmployee());
         }
 
+        public IEnumerable<TacheEmployee> GetByEmployee(int id) {
+            Connection connection = new Connection(providerName, connString);
+            Command command = new Command("SELECT * FROM Tache_Employee WHERE Id_Tache_Employee = @id;");
+            command.AddParameter("id", id);
+
+            return connection.ExecuteReader(command, (dr) => dr.ToTacheEmployee());
+        }
+
         public TacheEmployee GetById(int id) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("SELECT * FROM Tache_Employee WHERE Id_Tache_Employee = @Id;");
-            command.AddParameter("Id", id);
+            Command command = new Command("SELECT * FROM Tache_Employee WHERE Id_Tache_Employee = @id;");
+            command.AddParameter("id", id);
 
             return connection.ExecuteReader(command, (dr) => dr.ToTacheEmployee()).SingleOrDefault();
         }

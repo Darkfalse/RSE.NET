@@ -17,6 +17,10 @@ namespace Client.Models {
         public int Id_Emp_Creee { get; set; }
         public int? Id_Emp_Maj { get; set; }
 
+        public Document() {
+
+        }
+
         public Document(string nom, string des, DateTime date, string lien, float taille, string format, int idEmpCree, int? idEmpMaj) {
             Nom = nom;
             Description = des;

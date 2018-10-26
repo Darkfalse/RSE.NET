@@ -14,6 +14,10 @@ namespace Client.Models {
         public int Id_Employee { get; set; }
         public int Id_Projet { get; set; }
 
+        public MessageProjet() {
+
+        }
+
         public MessageProjet(string titre, DateTime date, string contenu, int? precedent, int idemp, int idproj) {
             Titre = titre;
             Date = date;

@@ -15,6 +15,10 @@ namespace Client.Models {
         public int? TachePrecedente { get; set; }
         public int Projet { get; set; }
 
+        public TacheEmployee() {
+
+        }
+
         public TacheEmployee(string nom, string des, DateTime debut, DateTime? fin, DateTime? final, int? precedente, int projet) {
             Nom = nom;
             Description = des;

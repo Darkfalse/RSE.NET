@@ -19,10 +19,13 @@ namespace _WebApp.Controllers
         {
             MemberIndex mi = new MemberIndex();
             int IdEmp = (int) EmployeeSession.CurrentEmployee.Id;
+
             ProjetService ps = new ProjetService();
             mi.ListP = ps.GetByIdEmpl(IdEmp);
+
             EmployeeService es = new EmployeeService();
             mi.ListE = es.GetByEquipe(IdEmp);
+
             MessageEmployeeService mes = new MessageEmployeeService();
             mi.ListME = mes.GetByDestinataire(IdEmp);
 
@@ -32,14 +35,25 @@ namespace _WebApp.Controllers
         /***********************************************************************************************************
          ***********************************************Equipe******************************************************
          ***********************************************************************************************************/
-        public ActionResult Equipe()
-        {
-            EmployeeService es = new EmployeeService();
-            return View(es.GetByEquipe((int) EmployeeSession.CurrentEmployee.Id).First().Id);
-        }
+        //public ActionResult Equipe()
+        //{
+        //    EmployeeService es = new EmployeeService();
+        //    return View(es.GetByEquipe((int) EmployeeSession.CurrentEmployee.Id).First().Id);
+        //}
 
         public ActionResult Equipe(int id)
         {
+            MemberEquipe me = new MemberEquipe();
+
+            EmployeeService es = new EmployeeService();
+            me.ListE = es.GetByEquipe(id);
+
+            MessageEquipeService mes = new MessageEquipeService();
+            me.ListMEq = mes.GetByEquipe(id);
+
+            DocumentService ds = new DocumentService();
+            me.ListD = ds.GetAll(); //TODO XAV trier les docs GetByEquipe(id)
+
             return View();
         }
 
@@ -54,15 +68,33 @@ namespace _WebApp.Controllers
         /***********************************************************************************************************
          ***********************************************Projet******************************************************
          ***********************************************************************************************************/
-        public ActionResult Projet()
-        {
-            ProjetService ps = new ProjetService();
-            return View(ps.GetByIdEmpl((int) EmployeeSession.CurrentEmployee.Id).First().Id);
-        }
+        //public ActionResult Projet()
+        //{
+        //    ProjetService ps = new ProjetService();
+        //    return View(ps.GetByIdEmpl((int) EmployeeSession.CurrentEmployee.Id).First().Id);
+        //}
 
         public ActionResult Projet(int id)
         {
-            return View();
+            MemberProjet mp = new MemberProjet();
+            int IdEmp = (int)EmployeeSession.CurrentEmployee.Id;
+
+            ProjetService ps = new ProjetService();
+            mp.p = ps.GetById(id);
+
+            TacheEmployeeService tes = new TacheEmployeeService();
+            mp.TacheEmployees = tes.GetByEmployee(IdEmp); //TODO XAV utile d'afficher les msg employee dans projet ?
+
+            TacheEquipeService teq = new TacheEquipeService();
+            mp.TacheEquipes = teq.GetByProjet(id);
+
+            MessageProjetService mps = new MessageProjetService();
+            mp.MessageProjets = mps.GetByProjet(id);
+
+            DocumentService ds = new DocumentService();
+            mp.Documents = ds.GetAll(); //TODO XAV trier les docs GetByProjet(id)
+
+            return View(mp);
         }
 
         public ActionResult CreateProjet()
@@ -83,26 +115,6 @@ namespace _WebApp.Controllers
             }
 
             return View(form);
-        }
-
-        public ActionResult EditProjet(int id)
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult EditProjet(int id, ProjetForms collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }
