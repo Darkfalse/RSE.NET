@@ -45,6 +45,9 @@ namespace _WebApp.Controllers
         {
             MemberEquipe me = new MemberEquipe();
 
+            EquipeService eqs = new EquipeService();
+            me.eq = eqs.GetById(id);
+
             EmployeeService es = new EmployeeService();
             me.ListE = es.GetByEquipe(id);
 
@@ -54,7 +57,7 @@ namespace _WebApp.Controllers
             DocumentService ds = new DocumentService();
             me.ListD = ds.GetAll(); //TODO XAV trier les docs GetByEquipe(id)
 
-            return View();
+            return View(me);
         }
 
         /***********************************************************************************************************
@@ -115,6 +118,22 @@ namespace _WebApp.Controllers
             }
 
             return View(form);
+        }
+
+        /***********************************************************************************************************
+         ***********************************************Taches******************************************************
+         ***********************************************************************************************************/
+
+        public ActionResult Tache(int id) {
+            MemberTache mt = new MemberTache();
+
+            TacheEquipeService teqs = new TacheEquipeService(); //TODO XAV différentier tache equipe et employee
+            mt.te = teqs.GetById(id);
+
+            MessageTacheService mteq = new MessageTacheService();
+            mt.ListM = mteq.GetAll(); //TODO XAV GetByTache(id)
+
+            return View();
         }
     }
 }
