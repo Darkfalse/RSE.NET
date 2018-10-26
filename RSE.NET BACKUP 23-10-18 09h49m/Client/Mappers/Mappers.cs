@@ -278,90 +278,121 @@ namespace Client.Mappers
         {
             if (e != null)
                 return new C.Projet(e.Id, e.Nom, e.Description, e.Debut, e.Fin, e.Admin);
-            else
-                return null;
+            return null;
         }
 
         internal static C.Administrateur ToClient(this D.Administrateur e)
         {
-            
-            return new C.Administrateur(e.Id, e.NumeroAdmin, e.Employee);
+            if (e != null)
+                return new C.Administrateur(e.Id, e.NumeroAdmin, e.Employee);
+            return null;
         }
 
         internal static C.Adresse ToClient(this D.Adresse e)
         {
-            return new C.Adresse(e.Id, e.Nom_Rue, e.Boite_Postal,e.Id_Ville);
+            if (e != null)
+                return new C.Adresse(e.Id, e.Nom_Rue, e.Boite_Postal, e.Id_Ville);
+            return null;
         }
 
         internal static C.Coordonnee ToClient(this D.Coordonnee e)
         {
-            return new C.Coordonnee(e.Id,e.Longitude,e.Latitude);
+            if (e != null)
+                return new C.Coordonnee(e.Id,e.Longitude,e.Latitude);
+            return null;
         }
 
         internal static C.Departement ToClient(this D.Departement e)
         {
-            return new C.Departement(e.Id, e.Nom, e.Description, e.Admin);
+            if (e != null)
+                return new C.Departement(e.Id, e.Nom, e.Description, e.Admin);
+            return null;
         }
         internal static C.Document ToClient(this D.Document e)
         {
-            return new C.Document(e.Id, e.Nom, e.Description, e.Date, e.Lien, e.Taille, e.Format, e.Id_Emp_Creee,
+            if (e != null)
+                return new C.Document(e.Id, e.Nom, e.Description, e.Date, e.Lien, e.Taille, e.Format, e.Id_Emp_Creee,
                 e.Id_Emp_Maj);
+            return null;
         }
         internal static C.Employee ToClient(this D.Employee e)
         {
             if (e != null)
                 return new C.Employee(e.Id, e.Nom, e.Prenom, e.Email, e.Password, e.Birthday, e.RegNat, e.Adresse,
                 e.HireDate, e.Tel, e.Coordonnee, e.Valide);
-            else
-                return null;
+            return null;
         }
         internal static C.Equipe ToClient(this D.Equipe e)
         {
-            return new C.Equipe(e.Id, e.Nom, e.Creee, e.Projet);
+            if (e != null)
+                return new C.Equipe(e.Id, e.Nom, e.Creee, e.Projet);
+            return null;
         }
         internal static C.Event ToClient(this D.Event e)
         {
-            return new C.Event(e.Id, e.Nom, e.Description, e.Lieu, e.DateDebut, e.DateFin, e.FullDay, e.Id_Employee);
+            if (e != null)
+                return new C.Event(e.Id, e.Nom, e.Description, e.Lieu, e.DateDebut, e.DateFin, e.FullDay, e.Id_Employee);
+            return null;
         }
         internal static C.MessageEmployee ToClient(this D.MessageEmployee e)
         {
-            return new C.MessageEmployee(e.Id, e.Titre, e.Date, e.Contenu, e.MessagePrecedent, e.Id_Employee, e.Id_Destinataire);
+            if (e != null)
+                return new C.MessageEmployee(e.Id, e.Titre, e.Date, e.Contenu, e.MessagePrecedent, e.Id_Employee, e.Id_Destinataire);
+            return null;
         }
         internal static C.MessageEquipe ToClient(this D.MessageEquipe e)
         {
-            return new C.MessageEquipe(e.Id, e.Titre, e.Date, e.Contenu, e.MessagePrecedent, e.Id_Employee, e.Id_Equipe);
+            if (e != null)
+                return new C.MessageEquipe(e.Id, e.Titre, e.Date, e.Contenu, e.MessagePrecedent, e.Id_Employee, e.Id_Equipe);
+            return null;
         }
         internal static C.MessageProjet ToClient(this D.MessageProjet e)
         {
-            return new C.MessageProjet(e.Id, e.Titre, e.Date, e.Contenu, e.MessagePrecedent, e.Id_Employee, e.Id_Projet);
+            if (e != null)
+                return new C.MessageProjet(e.Id, e.Titre, e.Date, e.Contenu, e.MessagePrecedent, e.Id_Employee, e.Id_Projet);
+            return null;
         }
         internal static C.MessageTache ToClient(this D.MessageTache e)
         {
-            return new C.MessageTache(e.Id, e.Titre, e.Date, e.Contenu, e.MessagePrecedent, e.Id_Employee, e.Id_Tache_Equipe,e.Id_Tache_Emplopyee);
+            if (e != null)
+                return new C.MessageTache(e.Id, e.Titre, e.Date, e.Contenu, e.MessagePrecedent, e.Id_Employee, e.Id_Tache_Equipe,e.Id_Tache_Emplopyee);
+            return null;
         }
         internal static C.Pays ToClient(this D.Pays e)
         {
-            return new C.Pays(e.Id,e.Code, e.Alpha2, e.Alpha3, e.Nom_FR, e.Nom_EN);
+            if (e != null)
+                return new C.Pays(e.Id,e.Code, e.Alpha2, e.Alpha3, e.Nom_FR, e.Nom_EN);
+            return null;
         }
         internal static C.StatutEmployee ToClient(this D.StatutEmployee e)
         {
-            return new C.StatutEmployee(e.Id, e.NomStatut);
+            if (e != null)
+                return new C.StatutEmployee(e.Id, e.NomStatut);
+            return null;
         }
         internal static C.StatutTache ToClient(this D.StatutTache e)
         {
-            return new C.StatutTache(e.Id, e.NomStatut);
+            if (e != null)
+                return new C.StatutTache(e.Id, e.NomStatut);
+            return null;
         }
         internal static C.TacheEmployee ToClient(this D.TacheEmployee e)
         {
-            return new C.TacheEmployee(e.Id, e.Nom, e.Description, e.Debut, e.Fin, e.Final, e.TachePrecedente,e.Projet);
+            if (e != null)
+                return new C.TacheEmployee(e.Id, e.Nom, e.Description, e.Debut, e.Fin, e.Final, e.TachePrecedente,e.Projet);
+            return null;
         }
         internal static C.TacheEquipe ToClient(this D.TacheEquipe e)
         {
-            return new C.TacheEquipe(e.Id, e.Nom, e.Description, e.Debut, e.Fin, e.Final, e.TachePrecedente, e.Projet);
+            if (e != null)
+                return new C.TacheEquipe(e.Id, e.Nom, e.Description, e.Debut, e.Fin, e.Final, e.TachePrecedente, e.Projet);
+            return null;
         }
         internal static C.Ville ToClient(this D.Ville e)
         {
-            return new C.Ville(e.Id, e.Nom, e.Zip, e.Id_Pays);
+            if (e != null)
+                return new C.Ville(e.Id, e.Nom, e.Zip, e.Id_Pays);
+            return null;
         }
 
     }

@@ -165,6 +165,7 @@
     <Compile Include="Models\Formulaires\ProjetForms.cs" />
     <Compile Include="Models\Formulaires\TacheForms.cs" />
     <Compile Include="Models\ViewModels\MemberIndex.cs" />
+    <Compile Include="Models\ViewModels\MemberProjet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
