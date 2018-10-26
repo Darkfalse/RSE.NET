@@ -16,6 +16,10 @@ namespace Client.Models
         public int Id_Employee { get; set; }
         public int Id_Destinataire { get; set; }
 
+        public MessageEmployee() {
+
+        }
+
         public MessageEmployee(string titre, DateTime date, string contenu, int? precedent, int idemp, int iddest) {
             Titre = titre;
             Date = date;

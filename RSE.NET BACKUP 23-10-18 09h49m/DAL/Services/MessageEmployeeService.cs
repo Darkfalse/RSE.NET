@@ -21,6 +21,14 @@ namespace DAL.Services {
             return connection.ExecuteReader(command, (dr) => dr.ToMessageEmployee());
         }
 
+        public IEnumerable<MessageEmployee> GetByDestinataire(int id) {
+            Connection connection = new Connection(providerName, connString);
+            Command command = new Command("SELECT * FROM Message_Employee WHERE Id_Employee_Destinataire = @ied;");
+            command.AddParameter("ied", id);
+
+            return connection.ExecuteReader(command, (dr) => dr.ToMessageEmployee());
+        }
+
         public MessageEmployee GetById(int id) {
             Connection connection = new Connection(providerName, connString);
             Command command = new Command("SELECT * FROM Message_Employee WHERE Id_Message_Employee = @Id;");

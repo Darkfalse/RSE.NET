@@ -7,7 +7,7 @@
 <h2>Index</h2>
 <div class="list-group">
     <p>
-        @Html.ActionLink("Créer nouveau", "CreateProjet")
+        @Html.ActionLink("Créer nouveau projet", "CreateProjet")
     </p>
     <table class="table">
 
@@ -42,14 +42,15 @@
                 </td>
 
                 <td>
-                    @Html.ActionLink("Edit", "EditProjet", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "DetailsProjet", new { id = item.Id })
+                    @Html.ActionLink("Editer", "EditProjet", new { id = item.Id }) |
+                    @Html.ActionLink("Détails", "DetailsProjet", new { id = item.Id })
                 </td>
             </tr>
         }
 
     </table>
 </div>
+
 <div class="list-group">
     <table class="table">
         <tr>
@@ -107,7 +108,39 @@
                     @Html.DisplayFor(modelItem => item.Tel)
                 </td>
                 <td>
-                    @Html.ActionLink("Details", "DetailsEmployee", new { id = item.Id })
+                    @Html.ActionLink("Détails", "DetailsEmployee", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<div class="list-group">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.me.Titre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.me.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.me.Contenu)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.ListME) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contenu)
                 </td>
             </tr>
         }

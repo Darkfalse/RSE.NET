@@ -17,22 +17,48 @@ namespace _WebApp.Controllers
         public ActionResult Index()
         {
             MemberIndex mi = new MemberIndex();
+            int IdEmp = (int)EmployeeSession.CurrentEmployee.Id;
             ProjetService ps = new ProjetService();
-            mi.ListP = ps.GetByIdEmpl((int)EmployeeSession.CurrentEmployee.Id);
+            mi.ListP = ps.GetByIdEmpl(IdEmp);
             EmployeeService es = new EmployeeService();
-            mi.ListE = es.GetByEquipe((int)EmployeeSession.CurrentEmployee.Id);
+            mi.ListE = es.GetByEquipe(IdEmp);
+            MessageEmployeeService mes = new MessageEmployeeService();
+            mi.ListME = mes.GetByDestinataire(IdEmp);
 
             return View(mi);
         }
 
-        public ActionResult DetailsProjet(int id) {
+        /***********************************************************************************************************
+         ***********************************************Equipe******************************************************
+         ***********************************************************************************************************/
+        public ActionResult Equipe() {
+            EmployeeService es = new EmployeeService();
+            return View(es.GetByEquipe((int)EmployeeSession.CurrentEmployee.Id).First().Id);
+        }
+
+        public ActionResult Equipe(int id) {
             return View();
         }
 
-        public ActionResult DetailsEmployee(int id) {
+        /***********************************************************************************************************
+         ***********************************************Employee****************************************************
+         ***********************************************************************************************************/
+        public ActionResult Employee(int id) {
             return View();
         }
-        
+
+        /***********************************************************************************************************
+         ***********************************************Projet******************************************************
+         ***********************************************************************************************************/
+        public ActionResult Projet() {
+            ProjetService ps = new ProjetService();
+            return View(ps.GetByIdEmpl((int)EmployeeSession.CurrentEmployee.Id).First().Id);
+        }
+
+        public ActionResult Projet(int id) {
+            return View();
+        }
+
         public ActionResult CreateProjet() {
             return View();
         }
