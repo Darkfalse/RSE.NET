@@ -157,6 +157,8 @@
     <Compile Include="Infrastructure\AnonymousRequiredAttribute.cs" />
     <Compile Include="Infrastructure\AuthRequiredAttribute.cs" />
     <Compile Include="Infrastructure\EmployeeSession.cs" />
+    <Compile Include="Models\Formulaires\EditProjetFrorms.cs" />
+    <Compile Include="Models\Formulaires\EventForms.cs" />
     <Compile Include="Models\Formulaires\InscriptionForms.cs" />
     <Compile Include="Models\Formulaires\LoginForms.cs" />
     <Compile Include="Models\Formulaires\ProjetForms.cs" />

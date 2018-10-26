@@ -6,23 +6,13 @@ using System.Web;
 
 namespace _WebApp.Models.Formulaires
 {
-    public class ProjetForms
+    public class EditProjetFrorms
     {
-        [Required]
-        [MaxLength(50)]
-        public string Nom { get; set; }
-
         [Required]
         [MaxLength(250)]
         [DataType(DataType.Text)]
         public string Description { get; set; }
-
-        [DataType(DataType.Date)]
-        [Required]
-        [DisplayFormat(DataFormatString = "{dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Date de début")]
-        public DateTime Debut { get; set; }
-
+        
         [DataType(DataType.Date)]
         [Required]
         [DisplayFormat(DataFormatString = "{dd-MM-yyyy}", ApplyFormatInEditMode = true)]
@@ -30,10 +20,5 @@ namespace _WebApp.Models.Formulaires
         public DateTime? Fin { get; set; }
 
         public int? Admin { get; set; }
-
-
-
-
-
     }
 }

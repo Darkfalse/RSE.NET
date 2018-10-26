@@ -30,9 +30,11 @@ namespace _WebApp.Models.Formulaires
         [MinLength(8)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        
-        [Required]
+
         [DataType(DataType.Date)]
+        [Required]
+        [DisplayFormat(DataFormatString = "{dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Date de naissance")]
         public DateTime Birthday { get; set; }
 
         [Required]
@@ -56,8 +58,10 @@ namespace _WebApp.Models.Formulaires
         [Required]
         public string Pays { get; set; }
 
-        [Required]
         [DataType(DataType.Date)]
+        [Required]
+        [DisplayFormat(DataFormatString = "{dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Date d'embauche !")]
         public DateTime HireDate { get; set; }
 
         [Required]
