@@ -67,21 +67,24 @@ namespace DAL.Mappers
         }
         internal static Employee ToEmployee(this IDataRecord dr)
         {
-            return new Employee()
-            {
-                Adresse = dr["Id_Adresse"] == DBNull.Value ? 0 : (int) dr["Id_Adresse"],
-                Birthday = (DateTime) dr["Birthday"],
-                Coordonnee = dr["Id_Coordonee"] == DBNull.Value ? 0 : (int) dr["Id_Coordonee"],
-                Email = (string) dr["Email"],
-                HireDate = (DateTime) dr["HireDate"],
-                Id = (int) dr["Id_Employee"],
-                Nom = (string) dr["Nom_Employee"],
-                Password = null,
-                Prenom = (string) dr["Prenom"],
-                RegNat = (string) dr["RegNat"],
-                Tel = (string) dr["Tel"],
-                Valide = (bool) dr["Valide"]
-            };
+            if (dr != null) {
+                return new Employee() {
+                    Adresse = dr["Id_Adresse"] == DBNull.Value ? 0 : (int)dr["Id_Adresse"],
+                    Birthday = (DateTime)dr["Birthday"],
+                    Coordonnee = dr["Id_Coordonee"] == DBNull.Value ? 0 : (int)dr["Id_Coordonee"],
+                    Email = (string)dr["Email"],
+                    HireDate = (DateTime)dr["HireDate"],
+                    Id = (int)dr["Id_Employee"],
+                    Nom = (string)dr["Nom_Employee"],
+                    Password = null,
+                    Prenom = (string)dr["Prenom"],
+                    RegNat = (string)dr["RegNat"],
+                    Tel = (string)dr["Tel"],
+                    Valide = (bool)dr["Valide"]
+                };
+            }
+            else
+                return null;
         }
         internal static StatutEmployee ToStatutEmployee(this IDataRecord dr)
         {

@@ -305,8 +305,11 @@ namespace Client.Mappers
         }
         internal static C.Employee ToClient(this D.Employee e)
         {
-            return new C.Employee(e.Id, e.Nom, e.Prenom, e.Email, e.Password, e.Birthday, e.RegNat, e.Adresse,
-                e.HireDate, e.Tel, e.Coordonnee,e.Valide);
+            if (e != null)
+                return new C.Employee(e.Id, e.Nom, e.Prenom, e.Email, e.Password, e.Birthday, e.RegNat, e.Adresse,
+                e.HireDate, e.Tel, e.Coordonnee, e.Valide);
+            else
+                return null;
         }
         internal static C.Equipe ToClient(this D.Equipe e)
         {

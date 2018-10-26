@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ToolBox;
 using System.Configuration;
+using System.Data;
 
 namespace DAL.Services {
     public class EmployeeService {
@@ -43,6 +44,12 @@ namespace DAL.Services {
             command.AddParameter("em", email);
             command.AddParameter("pa", password);
 
+            //IEnumerable<IDataRecord> drs = connection.ExecuteReader(command, (dr) => dr);
+            //if (drs != null && drs.SingleOrDefault() != null)
+            //    return drs.SingleOrDefault().ToEmployee();
+            //else
+            //    return null;
+            
             return connection.ExecuteReader(command, (dr) => dr.ToEmployee()).SingleOrDefault();
         }
 

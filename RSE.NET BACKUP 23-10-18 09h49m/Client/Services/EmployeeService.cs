@@ -32,6 +32,11 @@ namespace Client.Services {
 
         public Employee GetByEmailPassword(string email, string password) {
             return service.GetByEmailPassword(email, password).ToClient();
+            //DAL.Models.Employee e = service.GetByEmailPassword(email, password);
+            //if (e != null)
+            //    return e.ToClient();
+            //else
+            //    return null;
         }
 
         public Employee Insert(Employee a) {
