@@ -1,0 +1,154 @@
+﻿@model _WebApp.Models.ViewModels.MemberEquipe
+
+@{
+    ViewBag.Title = "Equipe";
+}
+
+<h2>DétailsEquipe</h2>
+
+<div>
+    <h4>Equipe</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.eq.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eq.Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.eq.Creee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eq.Creee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emp.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emp.Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emp.Prenom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emp.Prenom)
+        </dd>
+    </dl>
+</div>
+
+<div class="list-group">
+    <h4>Employee</h4>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.emp.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.emp.Prenom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.emp.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.emp.Tel)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.ListE) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prenom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tel)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<div class="list-group">
+    <h4>Messages d'équipe</h4>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.msgeq.Titre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.msgeq.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.msgeq.Contenu)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.ListMEq) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contenu)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<div class="list-group">
+    <h4 class="menumilieu">Documents</h4>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.d.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.d.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.d.Lien)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.ListD) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lien)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<p>
+    @Html.ActionLink("Retour", "Index")
+</p>

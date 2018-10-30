@@ -26,6 +26,10 @@ namespace Client.Services {
             return service.GetById(id).ToClient();
         }
 
+        public Equipe GetByEmployee(int id) {
+            return service.GetByEmployee(id).ToClient();
+        }
+
         public Equipe Insert(Equipe a) {
             return service.Insert(a.ToDal()).ToClient();
         }

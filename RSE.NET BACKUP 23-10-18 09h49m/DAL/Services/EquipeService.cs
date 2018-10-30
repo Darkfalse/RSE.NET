@@ -23,8 +23,16 @@ namespace DAL.Services {
 
         public Equipe GetById(int id) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("SELECT * FROM Equipe WHERE Id_Equipe = @Id;");
-            command.AddParameter("Id", id);
+            Command command = new Command("SELECT * FROM Equipe WHERE Id_Equipe = @id;");
+            command.AddParameter("id", id);
+
+            return connection.ExecuteReader(command, (dr) => dr.ToEquipe()).SingleOrDefault();
+        }
+
+        public Equipe GetByEmployee(int id) {
+            Connection connection = new Connection(providerName, connString);
+            Command command = new Command("EXEC SP_EquipeByEmployee @id = @i;");
+            command.AddParameter("ii", id);
 
             return connection.ExecuteReader(command, (dr) => dr.ToEquipe()).SingleOrDefault();
         }

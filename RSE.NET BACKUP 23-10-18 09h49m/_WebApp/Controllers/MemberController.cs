@@ -41,21 +41,25 @@ namespace _WebApp.Controllers
         //    return View(es.GetByEquipe((int) EmployeeSession.CurrentEmployee.Id).First().Id);
         //}
 
-        public ActionResult Equipe(int id)
+        public ActionResult Equipe()
         {
             MemberEquipe me = new MemberEquipe();
 
             EquipeService eqs = new EquipeService();
-            me.eq = eqs.GetById(id);
+            int? idEq = eqs.GetByEmployee((int)EmployeeSession.CurrentEmployee.Id).Id;
 
-            EmployeeService es = new EmployeeService();
-            me.ListE = es.GetByEquipe(id);
+            if (idEq != null && idEq != 0) {
+                me.eq = eqs.GetById((int)idEq);
 
-            MessageEquipeService mes = new MessageEquipeService();
-            me.ListMEq = mes.GetByEquipe(id);
+                EmployeeService es = new EmployeeService();
+                me.ListE = es.GetByEquipe((int)idEq);
 
-            DocumentService ds = new DocumentService();
-            me.ListD = ds.GetAll(); //TODO XAV trier les docs GetByEquipe(id)
+                MessageEquipeService mes = new MessageEquipeService();
+                me.ListMEq = mes.GetByEquipe((int)idEq);
+
+                DocumentService ds = new DocumentService();
+                me.ListD = ds.GetByEquipe((int)idEq);
+            }
 
             return View(me);
         }
