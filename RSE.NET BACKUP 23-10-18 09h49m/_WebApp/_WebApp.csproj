@@ -232,6 +232,7 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Views\Member\Equipe.cshtml" />
     <Content Include="Views\Member\TacheEquipe.cshtml" />
+    <Content Include="Views\Member\TacheEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

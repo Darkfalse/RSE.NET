@@ -12,13 +12,9 @@ namespace _WebApp.Models.ViewModels
 
         public TacheEmployee te { get; set; }
         public MessageTache mt { get; set; }
-        public Employee em { get; set; }
-        public Equipe eq { get; set; }
         public Document doc { get; set; }
 
         public IEnumerable<MessageTache> ListM { get; set; }
-        public IEnumerable<Employee> ListEp { get; set; }
-
         public IEnumerable<Document> ListD { get; set; }
         
     }

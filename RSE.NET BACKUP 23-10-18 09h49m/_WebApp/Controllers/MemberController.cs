@@ -91,7 +91,7 @@ namespace _WebApp.Controllers
             ProjetService ps = new ProjetService();
             if (id == 0)
                 id = (int)ps.GetByIdEmpl(IdEmp).First().Id;
-            mp.p = ps.GetById(id);
+            mp.p = ps.GetById(id);//TODO à faire pour ne pas planter quand nous avons aucun projet
 
             EmployeeService ems = new EmployeeService();
             mp.chef = ems.GetManagerByProjet(id);
