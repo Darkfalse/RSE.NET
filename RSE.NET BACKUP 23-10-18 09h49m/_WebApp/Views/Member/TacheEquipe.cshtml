@@ -1,0 +1,54 @@
+﻿@model _WebApp.Models.ViewModels.MemberTacheEquipe
+
+@{
+    ViewBag.Title = "TacheEquipe";
+}
+
+<h2>TacheEquipe</h2>
+
+
+<div>
+    <h4>Tache - Equipe</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(Model => Model.te.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.te.Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.te.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.te.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.te.Debut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.te.Debut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.te.Fin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.te.Fin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.te.Final)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.te.Final)
+        </dd>
+    </dl>
+</div>

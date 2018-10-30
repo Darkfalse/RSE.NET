@@ -107,40 +107,51 @@ namespace _WebApp.Controllers
             return View(mp);
         }
 
-        public ActionResult CreateProjet()
-        {
-            return View();
-        }
+        //public ActionResult CreateProjet()
+        //{
+        //    return View();
+        //}
 
-        [HttpPost]
-        public ActionResult CreateProjet(ProjetForms form)
-        {
-            if (ModelState.IsValid)
-            {
-                Projet p = new Projet(form.Nom, form.Description, form.Debut, form.Fin, form.Admin);
-                ProjetService ps = new ProjetService();
-                ps.Insert(p);
+        //[HttpPost]
+        //public ActionResult CreateProjet(ProjetForms form)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        Projet p = new Projet(form.Nom, form.Description, form.Debut, form.Fin, form.Admin);
+        //        ProjetService ps = new ProjetService();
+        //        ps.Insert(p);
 
-                return RedirectToAction("Index", "Member");
-            }
+        //        return RedirectToAction("Index", "Member");
+        //    }
 
-            return View(form);
-        }
+        //    return View(form);
+        //}
 
         /***********************************************************************************************************
          ***********************************************Taches******************************************************
          ***********************************************************************************************************/
 
-        public ActionResult Tache(int id) {
-            MemberTache mt = new MemberTache();
+        public ActionResult TacheEquipe(int id) {
+            MemberTacheEquipe mteq = new MemberTacheEquipe();
 
-            TacheEquipeService teqs = new TacheEquipeService(); //TODO XAV différentier tache equipe et employee
-            mt.te = teqs.GetById(id);
+            TacheEquipeService teqs = new TacheEquipeService();
+            mteq.te = teqs.GetById(id);
 
-            MessageTacheService mteq = new MessageTacheService();
-            mt.ListM = mteq.GetAll(); //TODO XAV GetByTache(id)
+            MessageTacheService mteqq = new MessageTacheService();
+            mteq.ListM = mteqq.GetByTacheId(id);
 
-            return View(mt);
+            return View(mteq);
+        }
+        public ActionResult TacheEmployee(int id) {
+            MemberTacheEmployee mte = new MemberTacheEmployee();
+
+            TacheEmployeeService teqs = new TacheEmployeeService();
+            mte.te = teqs.GetById(id);
+
+            MessageTacheService mtes = new MessageTacheService();
+            mte.ListM = mtes.GetByTacheId(id);
+
+            return View(mte);
         }
     }
 }

@@ -22,6 +22,12 @@ namespace Client.Services {
             return service.GetAll().Select(a => a.ToClient());
         }
 
+        public IEnumerable<MessageTache> GetByTacheId(int id)
+        {
+
+            return service.GetByTacheId(id).Select(a => a.ToClient());
+        }
+
         public MessageTache GetById(int id) {
             return service.GetById(id).ToClient();
         }

@@ -21,7 +21,17 @@ namespace DAL.Services {
             return connection.ExecuteReader(command, (dr) => dr.ToMessageTache());
         }
 
-        public MessageTache GetById(int id) {
+        public IEnumerable<MessageTache> GetByTacheId(int id)
+        {
+            Connection connection = new Connection(providerName, connString);
+            Command command = new Command("EXEC SP_MsgTacheByTache @id = @i");
+            command.AddParameter("i", id);
+
+            return  connection.ExecuteReader(command, (dr) => dr.ToMessageTache());
+        }
+
+        public MessageTache GetById(int id)
+        {
             Connection connection = new Connection(providerName, connString);
             Command command = new Command("SELECT * FROM Message_Tache WHERE Id_Message_Tache = @Id;");
             command.AddParameter("Id", id);
@@ -67,5 +77,7 @@ namespace DAL.Services {
 
             return connection.ExecuteNonQuery(command) == 1;
         }
+
+       
     }
 }
