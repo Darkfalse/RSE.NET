@@ -32,7 +32,7 @@ namespace DAL.Services {
         public Equipe GetByEmployee(int id) {
             Connection connection = new Connection(providerName, connString);
             Command command = new Command("EXEC SP_EquipeByEmployee @id = @i;");
-            command.AddParameter("ii", id);
+            command.AddParameter("i", id);
 
             return connection.ExecuteReader(command, (dr) => dr.ToEquipe()).SingleOrDefault();
         }
