@@ -30,21 +30,29 @@ namespace _WebApp.Controllers
                 //Récupere le pays et la ville depuis la base de données
                 PaysService ps = new PaysService();
                 Pays p = ps.GetByName(form.Pays);
-                VilleService vs = new VilleService();
-                Ville v = vs.GetByNomZipPays(form.Ville, form.Zip, (int)p.Id);
 
-                if (p != null && v != null) {
-                    AdresseService ads = new AdresseService();
-                    Adresse a = new Adresse(form.Nom_Rue, form.Boite_Postal, (int)v.Id);
-                    int idads = (int)ads.Insert(a).Id;
-                    EmployeeService ur = new EmployeeService();
-                    Employee e = new Employee(form.Nom, form.Prenom, form.Email, form.Password, form.Birthday, form.RegNat, idads, form.HireDate, form.Tel, null, false);
-                    ur.Insert(e);
-                    ModelState.Clear();
-                    return RedirectToAction("Index", "Home");
+                if (p != null) {
+                    VilleService vs = new VilleService();
+                    Ville v = vs.GetByNomZipPays(form.Ville, form.Zip, (int)p.Id);
+
+                    if (v != null) {
+                        AdresseService ads = new AdresseService();
+                        Adresse a = new Adresse(form.Nom_Rue, form.Boite_Postal, (int)v.Id);
+                        int idads = (int)ads.Insert(a).Id;
+
+                        if (idads != 0) {
+                            EmployeeService ur = new EmployeeService();
+                            Employee e = new Employee(form.Nom, form.Prenom, form.Email, form.Password, form.Birthday, form.RegNat, idads, form.HireDate, form.Tel, null, false);
+                            int idemp = (int)ur.Insert(e).Id;
+
+                            if (idemp != 0) {
+                                //TODO Sucess else msg erreur
+                                ModelState.Clear();
+                                return RedirectToAction("Index", "Home");
+                            }
+                        }
+                    }
                 }
-                else
-                    return View(form);
             }
             return View(form);
         }
