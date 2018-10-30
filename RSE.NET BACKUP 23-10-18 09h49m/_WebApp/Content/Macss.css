@@ -1,6 +1,17 @@
 ﻿body {
+    background-color: rgba(107, 59, 111, 0.21);
+    font-family: Montserrat;
+    font-size: large;
+    font-weight: lighter;
 }
 .menumilieu{
     margin:auto;
-    align-items:center;
+}
+.list-group {
+    color: darkblue;
+    background-color: dimgrey;
+    margin-top:125px;
+    }
+.btn-lien {
+    color: whitesmoke;
 }
