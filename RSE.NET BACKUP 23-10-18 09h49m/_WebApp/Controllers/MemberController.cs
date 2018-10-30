@@ -29,6 +29,9 @@ namespace _WebApp.Controllers
             MessageEmployeeService mes = new MessageEmployeeService();
             mi.ListME = mes.GetByDestinataire(IdEmp);
 
+            //TODO XAV LUC Liste contact avec dernier message
+            //TODO XAV Ajouter details employer avec la discution complete
+
             return View(mi);
         }
 
@@ -144,6 +147,9 @@ namespace _WebApp.Controllers
             MessageTacheService mteqq = new MessageTacheService();
             mteq.ListM = mteqq.GetByTacheId(id);
 
+            DocumentService ds = new DocumentService();
+            mteq.ListD = ds.GetByTache(id);
+
             return View(mteq);
         }
         public ActionResult TacheEmployee(int id) {
@@ -154,6 +160,9 @@ namespace _WebApp.Controllers
 
             MessageTacheService mtes = new MessageTacheService();
             mte.ListM = mtes.GetByTacheId(id);
+
+            DocumentService ds = new DocumentService();
+            mte.ListD = ds.GetByTache(id);
 
             return View(mte);
         }

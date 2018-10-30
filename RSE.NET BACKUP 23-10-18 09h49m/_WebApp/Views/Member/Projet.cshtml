@@ -185,6 +185,15 @@
                 @Html.DisplayNameFor(model => model.d.Nom)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.d.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.d.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.d.Taille)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.d.Lien)
             </th>
             <th></th>
@@ -194,6 +203,15 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Taille)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Lien)

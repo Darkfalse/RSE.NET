@@ -29,6 +29,10 @@ namespace Client.Services {
             return service.GetByEquipe(id).Select(a => a.ToClient());
         }
 
+        public IEnumerable<Document> GetByTache(int id) {
+            return service.GetByTache(id).Select(a => a.ToClient());
+        }
+
         public Document GetById(int id) {
             return service.GetById(id).ToClient();
         }

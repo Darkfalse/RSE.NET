@@ -28,10 +28,18 @@ namespace DAL.Services {
 
             return connection.ExecuteReader(command, (dr) => dr.ToDocument());
         }
-
+        
         public IEnumerable<Document> GetByEquipe(int id) {
             Connection connection = new Connection(providerName, connString);
             Command command = new Command("EXEC SP_DocumentByEquipe @id = @i;");
+            command.AddParameter("i", id);
+
+            return connection.ExecuteReader(command, (dr) => dr.ToDocument());
+        }
+
+        public IEnumerable<Document> GetByTache(int id) {
+            Connection connection = new Connection(providerName, connString);
+            Command command = new Command("EXEC SP_DocumentByTache @id = @i;");
             command.AddParameter("i", id);
 
             return connection.ExecuteReader(command, (dr) => dr.ToDocument());
