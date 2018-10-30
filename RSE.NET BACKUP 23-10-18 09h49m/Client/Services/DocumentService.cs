@@ -22,6 +22,10 @@ namespace Client.Services {
             return service.GetAll().Select(a => a.ToClient());
         }
 
+        public IEnumerable<Document> GetByProjet(int id) {
+            return service.GetByProjet(id).Select(a => a.ToClient());
+        }
+
         public Document GetById(int id) {
             return service.GetById(id).ToClient();
         }

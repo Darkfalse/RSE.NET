@@ -13,6 +13,7 @@ namespace _WebApp.Models.ViewModels
         public TacheEmployee t { get; } = new TacheEmployee();
         public Document d { get; } = new Document();
         public MessageProjet mp { get; } = new MessageProjet();
+        public Employee chef { get; set; }
 
 
         public IEnumerable<TacheEmployee> TacheEmployees { get; set; }

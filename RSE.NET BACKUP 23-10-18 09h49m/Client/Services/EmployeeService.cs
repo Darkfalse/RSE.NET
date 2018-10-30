@@ -39,6 +39,10 @@ namespace Client.Services {
             //    return null;
         }
 
+        public Employee GetManagerByProjet(int idProjet) {
+            return service.GetManagerByProjet(idProjet).ToClient();
+        }
+
         public Employee Insert(Employee a) {
             return service.Insert(a.ToDal()).ToClient();
         }

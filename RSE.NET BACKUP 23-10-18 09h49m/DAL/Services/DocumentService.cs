@@ -21,10 +21,18 @@ namespace DAL.Services {
             return connection.ExecuteReader(command, (dr) => dr.ToDocument());
         }
 
+        public IEnumerable<Document> GetByProjet(int id) {
+            Connection connection = new Connection(providerName, connString);
+            Command command = new Command("EXEC SP_DocumentByProjet @id = @i;");
+            command.AddParameter("i", id);
+
+            return connection.ExecuteReader(command, (dr) => dr.ToDocument());
+        }
+
         public Document GetById(int id) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("SELECT * FROM Document WHERE Id_Document = @Id;");
-            command.AddParameter("Id", id);
+            Command command = new Command("SELECT * FROM Document WHERE Id_Document = @id;");
+            command.AddParameter("id", id);
 
             return connection.ExecuteReader(command, (dr) => dr.ToDocument()).SingleOrDefault();
         }

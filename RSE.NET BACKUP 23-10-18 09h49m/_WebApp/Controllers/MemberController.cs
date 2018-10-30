@@ -12,7 +12,7 @@ using System.Web.Mvc;
 
 namespace _WebApp.Controllers
 {
-    [AuthRequiredAttribute]
+    [AuthRequired]
     public class MemberController : Controller
     {
         public ActionResult Index()
@@ -69,7 +69,7 @@ namespace _WebApp.Controllers
         }
 
         /***********************************************************************************************************
-         ***********************************************Projet******************************************************
+         ************************************************Projet*****************************************************
          ***********************************************************************************************************/
         //public ActionResult Projet()
         //{
@@ -85,8 +85,11 @@ namespace _WebApp.Controllers
             ProjetService ps = new ProjetService();
             mp.p = ps.GetById(id);
 
+            EmployeeService ems = new EmployeeService();
+            mp.chef = ems.GetManagerByProjet(id);
+
             TacheEmployeeService tes = new TacheEmployeeService();
-            mp.TacheEmployees = tes.GetByEmployee(IdEmp); //TODO XAV utile d'afficher les msg employee dans projet ?
+            mp.TacheEmployees = tes.GetByEmployee(IdEmp);
 
             TacheEquipeService teq = new TacheEquipeService();
             mp.TacheEquipes = teq.GetByProjet(id);
@@ -95,7 +98,7 @@ namespace _WebApp.Controllers
             mp.MessageProjets = mps.GetByProjet(id);
 
             DocumentService ds = new DocumentService();
-            mp.Documents = ds.GetAll(); //TODO XAV trier les docs GetByProjet(id)
+            mp.Documents = ds.GetByProjet(id);
 
             return View(mp);
         }
@@ -133,7 +136,7 @@ namespace _WebApp.Controllers
             MessageTacheService mteq = new MessageTacheService();
             mt.ListM = mteq.GetAll(); //TODO XAV GetByTache(id)
 
-            return View();
+            return View(mt);
         }
     }
 }

@@ -32,8 +32,8 @@ namespace DAL.Services {
 
         public Employee GetById(int id) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("SELECT * FROM Employee WHERE Id_Equipe = @Id;");
-            command.AddParameter("Id", id);
+            Command command = new Command("SELECT * FROM Employee WHERE Id_Equipe = @id;");
+            command.AddParameter("id", id);
 
             return connection.ExecuteReader(command, (dr) => dr.ToEmployee()).SingleOrDefault();
         }
@@ -50,6 +50,14 @@ namespace DAL.Services {
             //else
             //    return null;
             
+            return connection.ExecuteReader(command, (dr) => dr.ToEmployee()).SingleOrDefault();
+        }
+
+        public Employee GetManagerByProjet(int idProjet) {
+            Connection connection = new Connection(providerName, connString);
+            Command command = new Command("EXEC SP_SelectManagerByProjet @id = @i;");
+            command.AddParameter("i", idProjet);
+
             return connection.ExecuteReader(command, (dr) => dr.ToEmployee()).SingleOrDefault();
         }
 
