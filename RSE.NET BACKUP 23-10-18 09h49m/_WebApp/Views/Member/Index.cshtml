@@ -6,9 +6,6 @@
 
 <h2>Index</h2>
 <div class="list-group">
-    <p>
-        @Html.ActionLink("Créer nouveau projet", "CreateProjet")
-    </p>
     <table class="table">
 
         <tr>
@@ -42,7 +39,6 @@
                 </td>
 
                 <td>
-                    @Html.ActionLink("Editer", "EditProjet", new { id = item.Id }) |
                     @Html.ActionLink("Détails", "Projet", new { id = item.Id })
                 </td>
             </tr>
@@ -106,9 +102,6 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Tel)
-                </td>
-                <td>
-                    @Html.ActionLink("Détails", "DetailsEmployee", new { id = item.Id })
                 </td>
             </tr>
         }
