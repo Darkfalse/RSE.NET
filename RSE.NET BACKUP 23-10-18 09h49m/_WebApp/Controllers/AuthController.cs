@@ -27,11 +27,12 @@ namespace _WebApp.Controllers
         [HttpPost]
         public ActionResult Register(InscriptionForms form) {
             if (ModelState.IsValid) {
-                //Récupere le pays et la ville depuis la base de données
+                //Récupere le pays depuis la base de données
                 PaysService ps = new PaysService();
                 Pays p = ps.GetByName(form.Pays);
 
                 if (p != null) {
+                    //Récupere la ville depuis la base de données
                     VilleService vs = new VilleService();
                     Ville v = vs.GetByNomZipPays(form.Ville, form.Zip, (int)p.Id);
 
