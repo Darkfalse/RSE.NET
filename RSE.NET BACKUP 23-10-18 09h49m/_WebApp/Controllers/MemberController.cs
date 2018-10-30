@@ -67,26 +67,30 @@ namespace _WebApp.Controllers
         /***********************************************************************************************************
          ***********************************************Employee****************************************************
          ***********************************************************************************************************/
-        public ActionResult Employee(int id)
-        {
-            return View();
-        }
+        //public ActionResult Employee(int id)
+        //{
+        //    return View();
+        //}
 
         /***********************************************************************************************************
          ************************************************Projet*****************************************************
          ***********************************************************************************************************/
-        //public ActionResult Projet()
-        //{
+        //public ActionResult Projet() {
+        //    int IdEmp = (int)EmployeeSession.CurrentEmployee.Id;
+
         //    ProjetService ps = new ProjetService();
-        //    return View(ps.GetByIdEmpl((int) EmployeeSession.CurrentEmployee.Id).First().Id);
+
+        //    return View(ps.GetByIdEmpl(IdEmp).First().Id);
         //}
 
-        public ActionResult Projet(int id)
+        public ActionResult Projet(int id = 0)
         {
             MemberProjet mp = new MemberProjet();
             int IdEmp = (int)EmployeeSession.CurrentEmployee.Id;
 
             ProjetService ps = new ProjetService();
+            if (id == 0)
+                id = (int)ps.GetByIdEmpl(IdEmp).First().Id;
             mp.p = ps.GetById(id);
 
             EmployeeService ems = new EmployeeService();
