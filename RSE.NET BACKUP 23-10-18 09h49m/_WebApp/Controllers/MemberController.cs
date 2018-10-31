@@ -74,10 +74,19 @@ namespace _WebApp.Controllers
         /***********************************************************************************************************
          ***********************************************Employee****************************************************
          ***********************************************************************************************************/
-        //public ActionResult Employee(int id)
-        //{
-        //    return View();
-        //}
+        public ActionResult Employee(int id) {
+            MemberDiscussion md = new MemberDiscussion();
+
+            EmployeeService es = new EmployeeService();
+            md.employee = es.GetById(id);
+
+            int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
+            MessageEmployeeService mes = new MessageEmployeeService();
+
+            md.ListeMessageEmployees = mes.GetDiscution(idMoi, id);
+
+            return View(md);
+        }
 
         /***********************************************************************************************************
          ************************************************Projet*****************************************************

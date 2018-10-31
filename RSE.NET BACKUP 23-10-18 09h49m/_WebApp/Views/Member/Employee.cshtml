@@ -1,4 +1,4 @@
-﻿@model Client.Models.Employee
+﻿@model _WebApp.Models.ViewModels.MemberDiscussion
 
 @{
     ViewBag.Title = "DetailsEmployee";
@@ -11,95 +11,61 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Nom)
+            @Html.DisplayNameFor(model => model.employee.Nom)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Nom)
+            @Html.DisplayFor(model => model.employee.Nom)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Prenom)
+            @Html.DisplayNameFor(model => model.employee.Prenom)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Prenom)
+            @Html.DisplayFor(model => model.employee.Prenom)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.employee.Email)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Email)
+            @Html.DisplayFor(model => model.employee.Email)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Password)
+            @Html.DisplayNameFor(model => model.employee.Birthday)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Password)
+            @Html.DisplayFor(model => model.employee.Birthday)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Birthday)
+            @Html.DisplayNameFor(model => model.employee.Tel)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Birthday)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RegNat)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RegNat)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Adresse)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Adresse)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HireDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HireDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tel)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tel)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Coordonnee)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Coordonnee)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Valide)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Valide)
+            @Html.DisplayFor(model => model.employee.Tel)
         </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Retour", "Index")
-</p>
+
+<div>
+    <table class="table">
+
+        @foreach (var item in Model.ListeMessageEmployees) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contenu)
+                </td>                        
+           </tr>  
+        }
+
+    </table>
+</div>

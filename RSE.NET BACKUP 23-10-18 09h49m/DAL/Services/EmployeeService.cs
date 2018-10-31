@@ -32,7 +32,7 @@ namespace DAL.Services {
 
         public Employee GetById(int id) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("SELECT * FROM Employee WHERE Id_Equipe = @id;");
+            Command command = new Command("SELECT * FROM Employee WHERE Id_Employee = @id;");
             command.AddParameter("id", id);
 
             return connection.ExecuteReader(command, (dr) => dr.ToEmployee()).SingleOrDefault();
