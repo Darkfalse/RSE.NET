@@ -24,3 +24,10 @@ hr {
     color: aliceblue;
 
 }
+dt {
+    width:160px;
+    background-color: #302929;
+    border-color: #ff6a00;
+    border-style: solid;
+    border-width: 1pt;
+}

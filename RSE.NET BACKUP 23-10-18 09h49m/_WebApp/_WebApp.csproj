@@ -156,6 +156,7 @@
     <Compile Include="Models\Formulaires\LoginForms.cs" />
     <Compile Include="Models\Formulaires\ProjetForms.cs" />
     <Compile Include="Models\Formulaires\TacheForms.cs" />
+    <Compile Include="Models\ViewModels\MemberDiscussion.cs" />
     <Compile Include="Models\ViewModels\MemberEquipe.cs" />
     <Compile Include="Models\ViewModels\MemberIndex.cs" />
     <Compile Include="Models\ViewModels\MemberProjet.cs" />
