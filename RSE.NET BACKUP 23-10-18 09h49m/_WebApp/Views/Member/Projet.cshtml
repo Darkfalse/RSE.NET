@@ -3,8 +3,8 @@
 @{
     ViewBag.Title = "Projet";
 }
-
-<h2>DetailsProjet</h2>
+<div class="detproj">
+    <h2>DetailsProjet</h2>
 
 @if (Model.chef != null) {
 <div>
@@ -15,50 +15,44 @@
             @Html.DisplayNameFor(model => model.p.Nom)
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.p.Nom)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.p.Nom)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.p.Description)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.p.Description)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.p.Description)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.p.Description)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.p.Debut)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.p.Debut)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.p.Debut)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.p.Debut)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.p.Fin)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.p.Fin)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.p.Fin)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.p.Fin)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.chef.Nom)
-        </dt>
+            <dt>
+                Chef de Projet 
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.chef.Nom)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.chef.Nom)  @Html.DisplayFor(model => model.chef.Prenom)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.chef.Prenom)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.chef.Prenom)
-        </dd>
-    </dl>
+        </dl>
+    </div>
 </div>
 
 <div class="list-group">

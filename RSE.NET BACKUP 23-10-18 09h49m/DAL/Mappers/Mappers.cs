@@ -64,18 +64,21 @@ namespace DAL.Mappers
         }
         internal static Document ToDocument(this IDataRecord dr)
         {
-            if (dr != null) {
-                return new Document() {
-                    Date = (DateTime)dr["Date"],
-                    Description = (string)dr["Description"],
-                    Format = (string)dr["Format"],
-                    Id = (int)dr["Id_Document"],
-                    Id_Emp_Creee = (int)dr["Id_Employee_Cree"],
-                    Id_Emp_Maj = (int)dr["Id_Employee_Maj"],
-                    Lien = (string)dr["Lien"],
-                    Nom = (string)dr["Nom_Document"],
-                    Taille = (float)dr["Taille"]
-                };
+            if (dr != null)
+            {
+                Document d = new Document();
+
+                d.Date = (DateTime) dr["Date"];
+                d.Description = (string) dr["Description"];
+                d.Format = (string) dr["Format"];
+                d.Id = (int) dr["Id_Document"];
+                d.Id_Emp_Creee = (int) dr["Id_Employee_Cree"];
+                d.Id_Emp_Maj =  dr["Id_Employee_Maj"] as int?;
+                d.Lien = (string) dr["Lien"];
+                d.Nom = (string) dr["Nom_Document"];
+                d.Taille = (double) dr["Taille"];
+
+                return d;
             }
             else
                 return null;

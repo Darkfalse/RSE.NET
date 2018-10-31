@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using _WebApp.Infrastructure
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -26,6 +27,14 @@
                     <li>@Html.ActionLink("Equipe", "Equipe", "Member")</li>
                     <li>@Html.ActionLink("À propos de", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if(EmployeeSession.CurrentEmployee != null && (EmployeeSession.CurrentEmployee.Id != null || EmployeeSession.CurrentEmployee.Id != 0))
+                    {
+                        <li class="text-right">@Html.ActionLink("Logout","Logout","Auth")</li>
+                    }
+                    else{ <li class="text-right">@Html.ActionLink("Login","Login","Auth")</li> }
+
+                    
+
                 </ul>
             </div>
         </div>

@@ -1,5 +1,6 @@
 ﻿body {
-    background-color: rgba(107, 59, 111, 0.21);
+    color:#eceaed;
+    background-color: #20132b;
     font-family: Montserrat;
     font-size: large;
     font-weight: lighter;
@@ -8,10 +9,18 @@
     margin:auto;
 }
 .list-group {
-    color: darkblue;
-    background-color: dimgrey;
+    color: #9c9898;
+    background-color: #0e0a3c;
     margin-top:125px;
     }
 .btn-lien {
     color: whitesmoke;
+}
+hr {
+    border-color: #ae0d0d;
+}
+
+.detproj {
+    color: aliceblue;
+
 }
