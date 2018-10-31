@@ -103,6 +103,10 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Tel)
                 </td>
+
+                <td>
+                    @Html.ActionLink("Détails", "Employee", new { id = item.Id })
+                </td>
             </tr>
         }
 
