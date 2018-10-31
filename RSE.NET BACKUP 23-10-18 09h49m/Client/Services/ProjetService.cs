@@ -22,8 +22,12 @@ namespace Client.Services {
             return service.GetAll().Select(a => a.ToClient());
         }
 
-        public IEnumerable<Projet> GetByIdEmpl(int id) {
-            return service.GetByIdEmpl(id).Select(a => a.ToClient());
+        public IEnumerable<Projet> GetListByIdEmpl(int id) {
+            return service.GetListByIdEmpl(id).Select(a => a.ToClient());
+        }
+
+        public Projet GetByIdEmpl(int id) {
+            return service.GetByIdEmpl(id).ToClient();
         }
 
         public Projet GetById(int id) {

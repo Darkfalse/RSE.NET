@@ -21,7 +21,7 @@ namespace _WebApp.Controllers
             int IdEmp = (int) EmployeeSession.CurrentEmployee.Id;
 
             ProjetService ps = new ProjetService();
-            mi.ListP = ps.GetByIdEmpl(IdEmp);
+            mi.ListP = ps.GetListByIdEmpl(IdEmp);
 
             EmployeeService es = new EmployeeService();
             mi.ListE = es.GetByEquipe(IdEmp);
@@ -98,10 +98,11 @@ namespace _WebApp.Controllers
             ProjetService ps = new ProjetService();
 
             if (id == 0) {
-                IEnumerable<Projet> projets = ps.GetByIdEmpl(IdEmp);
+                Projet p = ps.GetByIdEmpl(IdEmp);
 
-                if (projets != null && projets.Count() >= 1 && projets.First() != null && projets.First().Id != null) {
-                    mp.p = ps.GetById((int)projets.First().Id);
+                if (p != null && p.Id != null) {
+                    mp.p = ps.GetById((int)p.Id);
+                    id = (int)mp.p.Id;
                 }
             }
 

@@ -3,224 +3,224 @@
 @{
     ViewBag.Title = "Projet";
 }
+
 <div class="detproj">
     <h2>DetailsProjet</h2>
 
-@if (Model.chef != null) {
-<div>
-    <h4>Projet</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.p.Nom)
-        </dt>
+    @if (Model.chef != null) {
+        <div>
+            <h4>Projet</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.p.Nom)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.p.Nom)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.p.Nom)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.p.Description)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.p.Description)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.p.Description)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.p.Description)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.p.Debut)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.p.Debut)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.p.Debut)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.p.Debut)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.p.Fin)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.p.Fin)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.p.Fin)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.p.Fin)
+                </dd>
 
-            <dt>
-                Chef de Projet 
-            </dt>
+                <dt>
+                    Chef de Projet
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.chef.Nom)  @Html.DisplayFor(model => model.chef.Prenom)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.chef.Nom)  @Html.DisplayFor(model => model.chef.Prenom)
+                </dd>
+            </dl>
+        </div>
 
-        </dl>
-    </div>
+        <div class="list-group">
+            <h4>Taches employée</h4>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.t.Nom)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.t.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.t.Debut)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.t.Fin)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model.TacheEmployees) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nom)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Debut)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Fin)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Détails", "TacheEmployee", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+
+        <div class="list-group">
+            <h4>Taches équipe</h4>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.t.Nom)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.t.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.t.Debut)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.t.Fin)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model.TacheEquipes) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nom)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Debut)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Fin)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Détails", "TacheEquipe", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+
+        <div class="list-group">
+            <h4>Messages du projet</h4>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.mp.Titre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.mp.Date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.mp.Contenu)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model.MessageProjets) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Titre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Contenu)
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+
+        <div class="list-group">
+            <h4 class="menumilieu">Documents</h4>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.d.Nom)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.d.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.d.Date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.d.Taille)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.d.Lien)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model.Documents) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nom)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Taille)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Lien)
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    }
+
+    else {
+        <p>Vous n'êtes actuellement affecter à aucun projet</p>
+    }
 </div>
-
-<div class="list-group">
-    <h4>Taches employée</h4>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.t.Nom)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.t.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.t.Debut)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.t.Fin)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model.TacheEmployees) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nom)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Debut)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Fin)
-                </td>
-                <td>
-                    @Html.ActionLink("Détails", "TacheEmployee", new { id = item.Id })
-                </td>
-            </tr>
-        }
-
-    </table>
-</div>
-
-<div class="list-group">
-    <h4>Taches équipe</h4>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.t.Nom)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.t.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.t.Debut)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.t.Fin)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model.TacheEquipes) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nom)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Debut)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Fin)
-                </td>
-                <td>
-                    @Html.ActionLink("Détails", "TacheEquipe", new { id = item.Id })
-                </td>
-            </tr>
-        }
-
-    </table>
-</div>
-
-<div class="list-group">
-    <h4>Messages du projet</h4>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.mp.Titre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.mp.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.mp.Contenu)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model.MessageProjets) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Titre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Contenu)
-                </td>
-            </tr>
-        }
-
-    </table>
-</div>
-
-<div class="list-group">
-    <h4 class="menumilieu">Documents</h4>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.d.Nom)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.d.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.d.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.d.Taille)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.d.Lien)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model.Documents) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nom)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Taille)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Lien)
-                </td>
-            </tr>
-        }
-
-    </table>
-</div>
-}
-else {
-    <p>Vous n'êtes actuellement affecter à aucun projet</p>
-}
-
 <p>
     @Html.ActionLink("Retour", "Index")
 </p>
