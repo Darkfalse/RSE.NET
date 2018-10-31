@@ -1,4 +1,5 @@
 ﻿@using System.ServiceModel.Channels
+@using _WebApp.Infrastructure
 @model _WebApp.Models.ViewModels.MemberDiscussion
 
 @{
@@ -58,16 +59,37 @@
     <table class="table">
         @{int? dern = 0;}
         @{int? emp = Model.employee.Id;}
+        
 
         @foreach (var item in Model.ListeMessageEmployees) {
+            
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Contenu)
+                <td class="clearboth">
+                    @if (item.Id_Destinataire == emp)
+                    {
+                        <div class="rowlongueur1">
+                            @Html.DisplayFor(modelItem => item.Contenu)
+                        </div>
+                        <div class="rowdate">
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </div>
+
+                    }
+                    else
+                    {
+                        <div class="rowlongueur2">
+                            @Html.DisplayFor(modelItem => item.Contenu)
+                        </div>
+                        <div class="rowdate">
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </div>
+
+                    }
+
+
                 </td>
             </tr>
+
             dern = item.Id;
         }
 

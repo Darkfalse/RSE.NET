@@ -4,6 +4,9 @@
     font-family: Montserrat;
     font-size: large;
     font-weight: lighter;
+    width:950px;
+    margin-left:120px;
+    margin-right:120px;
 }
 .menumilieu{
     margin:auto;
@@ -33,7 +36,9 @@ dt {
     text-align:center;
     margin-top:12px;
     padding-right:1%;
-    padding-left:1%
+    padding-left: 1%;
+    max-width:360px;
+
 }
 dd{
 
@@ -47,4 +52,31 @@ dd{
 .btnEnvoyez {
 
     background-color: #050202;
+}
+
+.rowlongueur1 {
+    width: 700px;
+    float: left;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+    background-color: #ce1919;
+}
+.rowlongueur2 {
+    width: 700px;
+    float: left;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+    background-color: #54bf13;
+} 
+.rowdate {
+    font-size:11pt;
+    position:relative;
+    float:right;
+    width:250px;
+
+}
+.clearboth {
+    clear: both;
 }
