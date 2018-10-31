@@ -21,7 +21,7 @@ namespace _WebApp.Controllers
             int IdEmp = (int) EmployeeSession.CurrentEmployee.Id;
 
             ProjetService ps = new ProjetService();
-            mi.ListP = ps.GetByIdEmpl(IdEmp);
+            mi.ListP = ps.GetListByIdEmpl(IdEmp);
 
             EmployeeService es = new EmployeeService();
             mi.ListE = es.GetByEquipe(IdEmp);
@@ -49,19 +49,23 @@ namespace _WebApp.Controllers
             MemberEquipe me = new MemberEquipe();
 
             EquipeService eqs = new EquipeService();
-            int? idEq = eqs.GetByEmployee((int)EmployeeSession.CurrentEmployee.Id).Id;
+            Equipe eq = eqs.GetByEmployee((int)EmployeeSession.CurrentEmployee.Id);
 
-            if (idEq != null && idEq != 0) {
-                me.eq = eqs.GetById((int)idEq);
+            if (eq != null) {
+                int? idEq = eq.Id;
 
-                EmployeeService es = new EmployeeService();
-                me.ListE = es.GetByEquipe((int)idEq);
+                if (idEq != null && idEq != 0) {
+                    me.eq = eqs.GetById((int)idEq);
 
-                MessageEquipeService mes = new MessageEquipeService();
-                me.ListMEq = mes.GetByEquipe((int)idEq);
+                    EmployeeService es = new EmployeeService();
+                    me.ListE = es.GetByEquipe((int)idEq);
 
-                DocumentService ds = new DocumentService();
-                me.ListD = ds.GetByEquipe((int)idEq);
+                    MessageEquipeService mes = new MessageEquipeService();
+                    me.ListMEq = mes.GetByEquipe((int)idEq);
+
+                    DocumentService ds = new DocumentService();
+                    me.ListD = ds.GetByEquipe((int)idEq);
+                }
             }
 
             return View(me);
@@ -92,24 +96,32 @@ namespace _WebApp.Controllers
             int IdEmp = (int)EmployeeSession.CurrentEmployee.Id;
 
             ProjetService ps = new ProjetService();
-            if (id == 0)
-                id = (int)ps.GetByIdEmpl(IdEmp).First().Id;
-            mp.p = ps.GetById(id);//TODO à faire pour ne pas planter quand nous avons aucun projet
 
-            EmployeeService ems = new EmployeeService();
-            mp.chef = ems.GetManagerByProjet(id);
+            if (id == 0) {
+                Projet p = ps.GetByIdEmpl(IdEmp);
 
-            TacheEmployeeService tes = new TacheEmployeeService();
-            mp.TacheEmployees = tes.GetByEmployee(IdEmp);
+                if (p != null && p.Id != null) {
+                    mp.p = ps.GetById((int)p.Id);
+                    id = (int)mp.p.Id;
+                }
+            }
 
-            TacheEquipeService teq = new TacheEquipeService();
-            mp.TacheEquipes = teq.GetByProjet(id);
+            if (id != 0) {
+                EmployeeService ems = new EmployeeService();
+                mp.chef = ems.GetManagerByProjet(id);
 
-            MessageProjetService mps = new MessageProjetService();
-            mp.MessageProjets = mps.GetByProjet(id);
+                TacheEmployeeService tes = new TacheEmployeeService();
+                mp.TacheEmployees = tes.GetByEmployee(IdEmp);
 
-            DocumentService ds = new DocumentService();
-            mp.Documents = ds.GetByProjet(id);
+                TacheEquipeService teq = new TacheEquipeService();
+                mp.TacheEquipes = teq.GetByProjet(id);
+
+                MessageProjetService mps = new MessageProjetService();
+                mp.MessageProjets = mps.GetByProjet(id);
+
+                DocumentService ds = new DocumentService();
+                mp.Documents = ds.GetByProjet(id);
+            }     
 
             return View(mp);
         }

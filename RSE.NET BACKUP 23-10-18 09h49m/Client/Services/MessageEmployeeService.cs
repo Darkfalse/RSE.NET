@@ -26,6 +26,10 @@ namespace Client.Services {
             return service.GetByDestinataire(id).Select(a => a.ToClient());
         }
 
+        public IEnumerable<MessageEmployee> GetDiscution(int idenv, int iddest) {
+            return service.GetDiscution(idenv, iddest).Select(a => a.ToClient());
+        }
+
         public MessageEmployee GetById(int id) {
             return service.GetById(id).ToClient();
         }
