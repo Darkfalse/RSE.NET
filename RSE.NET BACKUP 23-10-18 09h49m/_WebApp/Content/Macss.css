@@ -39,10 +39,13 @@ dd{
 
    border-style:groove;
    border-width:2pt;
-   border-left-color:#3e978c,#bdab40;
+   border-left-color:#3e978c;
    border-bottom-color:rgba(38, 169, 61, 0.71);
    width:auto;
    padding-left:65px;   
    margin-top:12px;
-   
+}
+.btnEnvoyez {
+
+    background-color: #050202;
 }

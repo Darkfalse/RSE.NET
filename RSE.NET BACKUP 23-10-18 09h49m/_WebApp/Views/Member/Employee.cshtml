@@ -55,17 +55,33 @@
 
 <div>
     <table class="table">
+        @{int? dern = 0;}
+        @{int? emp = Model.employee.Id;}
 
-        @foreach (var item in Model.ListeMessageEmployees) {
+        @foreach (var item in Model.ListeMessageEmployees)
+        {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Contenu)
-                </td>                        
-           </tr>  
+                </td>
+            </tr>
+                dern = item.Id;
         }
 
     </table>
+    <div>
+
+        <input class="btnEnvoyez" type="text" size="1500" name="Message" id="1"/>
+
+
+        @Html.ActionLink("Envoyez", "RepondreEmployee", new {idDest = emp, idMsg = dern })
+
+    </div>
+    
+      
+   
+    
 </div>
