@@ -12,7 +12,7 @@ namespace Client.Models
         public int? Id { get; private set; }
         public string Titre { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:dddd, MMMM d, yyyy hh:mm:ss}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dddd, MMMM d, yyyy HH:mm:ss}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
         public string Contenu { get; set; }
         public int? MessagePrecedent { get; set; }
