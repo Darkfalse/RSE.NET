@@ -48,7 +48,7 @@ namespace DAL.Services {
 
         public MessageEmployee Insert(MessageEmployee me) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("INSERT INTO Message_Employee (Titre_Message, Date_Message, Texte_Message, Id_Message, Id_Employee_Destinataire, Id_Employee) OUTPUT INSERTED.ID VALUES (@tim, @dm, @tm, @im, @idd, @ie);");
+            Command command = new Command("INSERT INTO Message_Employee (Titre_Message_Employee, Date_Message_Employee, Texte_Message_Employee, Id_Message, Id_Employee_Destinataire, Id_Employee) OUTPUT INSERTED.ID VALUES (@tim, @dm, @tm, @im, @idd, @ie);");
             command.AddParameter("tim", me.Titre);
             command.AddParameter("dm", me.Date);
             command.AddParameter("tm", me.Contenu);

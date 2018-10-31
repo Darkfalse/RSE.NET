@@ -58,8 +58,7 @@
         @{int? dern = 0;}
         @{int? emp = Model.employee.Id;}
 
-        @foreach (var item in Model.ListeMessageEmployees)
-        {
+        @foreach (var item in Model.ListeMessageEmployees) {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Date)
@@ -68,20 +67,16 @@
                     @Html.DisplayFor(modelItem => item.Contenu)
                 </td>
             </tr>
-                dern = item.Id;
+            dern = item.Id;
         }
 
     </table>
     <div>
-
-        <input class="btnEnvoyez" type="text" size="1500" name="Message" id="1"/>
-
-
-        @Html.ActionLink("Envoyez", "RepondreEmployee", new {idDest = emp, idMsg = dern })
-
+        <form action="~/Member/RepondreEmployee" method="post">
+            <input type="hidden" name="idDest" id="idDest" value='@Model.employee.Id' />
+            <input type="hidden" name="idMsg" id="idMsg" value='@dern' />
+            <input class="btnEnvoyez" type="text" size="1500" name="msg" id="msg" />
+            <input type="submit" name="Envoyer" />
+        </form>
     </div>
-    
-      
-   
-    
 </div>
