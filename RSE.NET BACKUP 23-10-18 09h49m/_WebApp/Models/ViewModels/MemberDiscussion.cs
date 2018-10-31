@@ -11,6 +11,7 @@ namespace _WebApp.Models.ViewModels
         public MessageEmployee messageEmployee { get; set; }
         public Employee employee { get; set; }
 
+
         public IEnumerable<MessageEmployee> ListeMessageEmployees { get; set; }
 
 

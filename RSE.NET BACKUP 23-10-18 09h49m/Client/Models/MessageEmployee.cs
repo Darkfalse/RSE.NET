@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,8 @@ namespace Client.Models
     {
         public int? Id { get; private set; }
         public string Titre { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:dddd, MMMM d, yyyy hh:mm:ss}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
         public string Contenu { get; set; }
         public int? MessagePrecedent { get; set; }
