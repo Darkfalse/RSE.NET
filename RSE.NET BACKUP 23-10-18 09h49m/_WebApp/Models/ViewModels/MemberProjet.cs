@@ -9,10 +9,10 @@ namespace _WebApp.Models.ViewModels
     public class MemberProjet
     {
 
-        public Projet p { get; set; } = new Projet();
-        public TacheEmployee t { get; } = new TacheEmployee();
-        public Document d { get; } = new Document();
-        public MessageProjet mp { get; } = new MessageProjet();
+        public Projet p { get; set; }
+        public TacheEmployee t { get; }
+        public Document d { get; }
+        public MessageProjet mp { get; }
         public Employee chef { get; set; }
 
 
