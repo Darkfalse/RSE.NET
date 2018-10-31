@@ -193,12 +193,12 @@ namespace _WebApp.Controllers
          ***********************************************Message*****************************************************
          ***********************************************************************************************************/
 
-        [HttpPost]
-        public ActionResult RepondreEmployee(int idDest, int? idMsg, string Message) {
+     
+        public ActionResult RepondreEmployee(int idDest, int? idMsg, string msg) {
             int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
 
-            if (!string.IsNullOrWhiteSpace(Message) && idDest != null) {
-                MessageEmployee me = new MessageEmployee { Titre = idMoi + "" + idDest, Contenu = Message, Date = new DateTime(), Id_Employee = idMoi, Id_Destinataire = idDest, MessagePrecedent = idMsg };
+            if (!string.IsNullOrWhiteSpace(msg) && idDest != null) {
+                MessageEmployee me = new MessageEmployee { Titre = idMoi + "" + idDest, Contenu = msg, Date = new DateTime(), Id_Employee = idMoi, Id_Destinataire = idDest, MessagePrecedent = idMsg };
 
                 MessageEmployeeService mes = new MessageEmployeeService();
                 mes.Insert(me);

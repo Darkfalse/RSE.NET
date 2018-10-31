@@ -1,4 +1,5 @@
-﻿@model _WebApp.Models.ViewModels.MemberDiscussion
+﻿@using System.ServiceModel.Channels
+@model _WebApp.Models.ViewModels.MemberDiscussion
 
 @{
     ViewBag.Title = "DetailsEmployee";
@@ -73,11 +74,13 @@
 
     </table>
     <div>
+        <form action="~/Member/RepondreEmployee" method="post"></form>
 
-        <input class="btnEnvoyez" type="text" size="1500" name="Message" id="1"/>
+        <input type="text" name="mesa" value="messages" size="250" class="btnEnvoyez"/>
 
+        @{string mes = Request["mesa"];}
 
-        @Html.ActionLink("Envoyez", "RepondreEmployee", new {idDest = emp, idMsg = dern })
+        @Html.ActionLink("Envoyez", "RepondreEmployee", new {idDest = emp, idMsg = dern, msg = mes})
 
     </div>
     
