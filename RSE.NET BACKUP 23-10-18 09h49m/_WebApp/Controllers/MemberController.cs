@@ -188,5 +188,23 @@ namespace _WebApp.Controllers
             return View(mte);
 
         }
+
+        /***********************************************************************************************************
+         ***********************************************Message*****************************************************
+         ***********************************************************************************************************/
+
+        [HttpPost]
+        public ActionResult RepondreEmployee(int idDest, int? idMsg, string Message) {
+            int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
+
+            if (!string.IsNullOrWhiteSpace(Message) && idDest != null) {
+                MessageEmployee me = new MessageEmployee { Titre = idMoi + "" + idDest, Contenu = Message, Date = new DateTime(), Id_Employee = idMoi, Id_Destinataire = idDest, MessagePrecedent = idMsg };
+
+                MessageEmployeeService mes = new MessageEmployeeService();
+                mes.Insert(me);
+            }
+
+            return RedirectToAction("Employee", "Member", new { id = idDest});
+        }
     }
 }
