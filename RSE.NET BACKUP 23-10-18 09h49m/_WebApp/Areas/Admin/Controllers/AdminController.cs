@@ -38,12 +38,22 @@ namespace _WebApp.Areas.Admin.Controllers
             return View(form);
         }
 
-        public ActionResult DeleteDep(int id) {
+        public ActionResult DeleteDep(int id)
+        {
+            if (id != 0)
+            {
+                DepartementService ds = new DepartementService();
+                
+                return View(ds.GetById(id));
+            }
+
             return View();
+
+
         }
 
-        [HttpPost]
-        public ActionResult DeleteDep(int id) {
+        
+        public ActionResult DeleteDep2(int id) {
             DepartementService ds = new DepartementService();
             if (ds.Delete(id))
                 return RedirectToAction("Index", "Admin");
