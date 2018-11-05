@@ -38,18 +38,36 @@ namespace _WebApp.Areas.Admin.Controllers
             return View(form);
         }
 
+        public ActionResult ModifyDep(int id) {
+            DepartementService ds = new DepartementService();
+            Departement d = ds.GetById(id);
+
+            ModifyDepForm form = new ModifyDepForm();
+            form.Nom = d.Nom;
+            form.Description = d.Description;
+
+            return View(form);
+        }
+
+        [HttpPost]
+        public ActionResult ModifyDep(ModifyDepForm form) {
+            if (ModelState.IsValid) {
+                DepartementService ds = new DepartementService();
+                Departement d = new Departement(form.Nom, form.Description, AdminSession.CurrentAdmin.NumeroAdmin);
+                if (ds.Update(d))
+                    return RedirectToAction("Index", "Admin");
+            }
+            return View(form);
+        }
+
         public ActionResult DeleteDep(int id)
         {
             if (id != 0)
             {
                 DepartementService ds = new DepartementService();
-                
                 return View(ds.GetById(id));
             }
-
             return View();
-
-
         }
 
         
