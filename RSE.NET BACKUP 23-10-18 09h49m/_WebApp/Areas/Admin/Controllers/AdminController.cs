@@ -43,7 +43,7 @@ namespace _WebApp.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult DeleteDep(int id) {
+        public ActionResult DeleteDep(int id, bool verif) {
             DepartementService ds = new DepartementService();
             if (ds.Delete(id))
                 return RedirectToAction("Index", "Admin");
