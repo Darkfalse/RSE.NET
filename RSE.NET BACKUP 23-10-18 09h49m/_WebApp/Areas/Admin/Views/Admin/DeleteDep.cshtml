@@ -11,6 +11,7 @@
     <h4>Departement</h4>
     <hr />
     <dl class="dl-horizontal">
+      
         <dt>
             @Html.DisplayNameFor(model => model.Nom)
         </dt>
@@ -37,11 +38,11 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
+        @{ int ID = (int) Model.Id; }
+        
+        
         <div class="form-actions no-color">
-            @Html.ActionLink("Delete", "DeleteDep", "Admin", new { id = Model.Id, verif = true})
+            @Html.ActionLink("Delete", "DeleteDep2", "Admin", new { id = ID},null)
         </div>
-    }
+    
 </div>
