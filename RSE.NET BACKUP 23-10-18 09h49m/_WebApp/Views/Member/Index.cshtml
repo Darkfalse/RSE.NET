@@ -48,6 +48,7 @@
 </div>
 
 <div class="list-group">
+    <h2>Membre d'équipes</h2>
     <table class="table">
         <tr>
             <th>
@@ -63,13 +64,7 @@
                 @Html.DisplayNameFor(model => model.e.Birthday)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.e.RegNat)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.e.Adresse)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.e.HireDate)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.e.Tel)
@@ -92,13 +87,7 @@
                     @Html.DisplayFor(modelItem => item.Birthday)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.RegNat)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.Adresse)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HireDate)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Tel)
@@ -113,6 +102,22 @@
 </div>
 
 <div class="list-group">
+    <h2>Discussions</h2>
+    <table class="table">
+
+        @foreach (var item in Model.ListEWDiscussion) {
+            <tr>
+                <td>
+                    @Html.ActionLink(Html.DisplayFor(modelItem => item.Prenom).ToString()+" "+Html.DisplayFor(modelItem => item.Nom).ToString(), "Employee", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+@*<div class="list-group"> //TODO Supprimer ??
+    <h2>Messages</h2>
     <table class="table">
         <tr>
             <th>
@@ -142,4 +147,4 @@
         }
 
     </table>
-</div>
+</div>*@

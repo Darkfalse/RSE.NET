@@ -25,6 +25,10 @@ namespace Client.Services {
             return service.GetById(id).ToClient();
         }
 
+        public Administrateur GetByIdEmployee(int id) {
+            return service.GetByIdEmployee(id).ToClient();
+        }
+
         public Administrateur Insert(Administrateur a) {
             return service.Insert(a.ToDal()).ToClient();
         }

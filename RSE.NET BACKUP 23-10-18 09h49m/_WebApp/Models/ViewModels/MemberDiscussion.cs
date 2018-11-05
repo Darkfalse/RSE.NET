@@ -8,15 +8,8 @@ namespace _WebApp.Models.ViewModels
 {
     public class MemberDiscussion
     {
-        
         public Employee employee { get; set; }
-
-
+        
         public IEnumerable<MessageEmployee> ListeMessageEmployees { get; set; }
-
-
-       
-
-
     }
 }

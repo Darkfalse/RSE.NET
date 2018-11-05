@@ -31,7 +31,7 @@ namespace DAL.Services {
 
         public Departement Insert(Departement d) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("INSERT INTO Departement (Nom_Departement, Description, Id_Admin) OUTPUT INSERTED.ID VALUES (@nd, @d, @ia);");
+            Command command = new Command("EXEC SP_AddDepartement @nom = @nd, @des = @d, @idadmin = @ia;");
             command.AddParameter("nd", d.Nom);
             command.AddParameter("d", d.Description);
             command.AddParameter("ia", d.Admin);

@@ -26,11 +26,12 @@ namespace _WebApp.Controllers
             EmployeeService es = new EmployeeService();
             mi.ListE = es.GetByEquipe(IdEmp);
 
-            MessageEmployeeService mes = new MessageEmployeeService();
-            mi.ListME = mes.GetByDestinataire(IdEmp);
+            mi.ListEWDiscussion = es.GetWithDiscussion(IdEmp);
 
-            //TODO XAV LUC Liste contact avec dernier message
-            //TODO XAV Ajouter details employer avec la discution complete
+            //MessageEmployeeService mes = new MessageEmployeeService();
+            //mi.ListME = mes.GetByDestinataire(IdEmp);
+
+            //TODO XAV LUC Liste contact V, avec dernier message
 
             return View(mi);
         }
@@ -93,9 +94,7 @@ namespace _WebApp.Controllers
          ***********************************************************************************************************/
         //public ActionResult Projet() {
         //    int IdEmp = (int)EmployeeSession.CurrentEmployee.Id;
-
         //    ProjetService ps = new ProjetService();
-
         //    return View(ps.GetByIdEmpl(IdEmp).First().Id);
         //}
 
@@ -151,7 +150,6 @@ namespace _WebApp.Controllers
 
         //        return RedirectToAction("Index", "Member");
         //    }
-
         //    return View(form);
         //}
 

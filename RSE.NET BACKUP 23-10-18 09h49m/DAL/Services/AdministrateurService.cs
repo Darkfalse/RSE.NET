@@ -23,8 +23,16 @@ namespace DAL.Services {
 
         public Administrateur GetById(int id) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("SELECT * FROM Administrateur WHERE Id_Admin = @Id;");
-            command.AddParameter("Id", id);
+            Command command = new Command("SELECT * FROM Administrateur WHERE Id_Admin = @id;");
+            command.AddParameter("id", id);
+
+            return connection.ExecuteReader(command, (dr) => dr.ToAdministrateur()).SingleOrDefault();
+        }
+
+        public Administrateur GetByIdEmployee(int id) {
+            Connection connection = new Connection(providerName, connString);
+            Command command = new Command("SELECT * FROM Administrateur WHERE Id_Employee = @id;");
+            command.AddParameter("id", id);
 
             return connection.ExecuteReader(command, (dr) => dr.ToAdministrateur()).SingleOrDefault();
         }

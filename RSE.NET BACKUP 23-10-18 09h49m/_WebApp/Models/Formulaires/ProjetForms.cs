@@ -30,10 +30,5 @@ namespace _WebApp.Models.Formulaires
         public DateTime? Fin { get; set; }
 
         public int? Admin { get; set; }
-
-
-
-
-
     }
 }
