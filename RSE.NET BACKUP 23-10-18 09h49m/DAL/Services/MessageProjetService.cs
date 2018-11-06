@@ -39,12 +39,12 @@ namespace DAL.Services {
 
         public MessageProjet Insert(MessageProjet mp) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("INSERT INTO Message_Projet (Titre_Message, Date_Message, Texte_Message, Id_Message, Id_Projet, Id_Employee) OUTPUT INSERTED.ID VALUES (@tim, @dm, @tm, @im, @ip, @ie);");
-            command.AddParameter("tim", mp.Titre);
-            command.AddParameter("dm", mp.Date);
-            command.AddParameter("tm", mp.Contenu);
+            Command command = new Command("EXEC SP_InsertMsgProjet @titre = @ti, @date = @da, @texte = @txt, @idmsg = @im, @idemp = @ie, @idpro = @idp;");
+            command.AddParameter("ti", mp.Titre);
+            command.AddParameter("da", mp.Date);
+            command.AddParameter("txt", mp.Contenu);
             command.AddParameter("im", mp.MessagePrecedent);
-            command.AddParameter("ip", mp.Id_Projet);
+            command.AddParameter("idp", mp.Id_Projet);
             command.AddParameter("ie", mp.Id_Employee);
 
             mp.Id = (int)connection.ExecuteScalar(command);
