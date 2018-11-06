@@ -14,6 +14,10 @@ namespace Client.Models {
         public int Id_Employee { get; set; }
         public int Id_Equipe { get; set; }
 
+        public MessageEquipe() {
+
+        }
+
         public MessageEquipe(string titre, DateTime date, string contenu, int? precedent, int idemp, int ideq) {
             Titre = titre;
             Date = date;

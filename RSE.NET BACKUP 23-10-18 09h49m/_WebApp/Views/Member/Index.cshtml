@@ -115,7 +115,8 @@
                 <td>
                     @{
                         MessageEmployee message = Model.ListME
-                            .Where(r => (r.Id_Destinataire == item.Id && r.Id_Employee == EmployeeSession.CurrentEmployee.Id)||(r.Id_Employee == item.Id && EmployeeSession.CurrentEmployee.Id == r.Id_Destinataire))
+                            .Where(r => (r.Id_Destinataire == item.Id && r.Id_Employee == EmployeeSession.CurrentEmployee.Id)
+                                        ||(r.Id_Employee == item.Id && r.Id_Destinataire == EmployeeSession.CurrentEmployee.Id))
                             .OrderBy(r => r.Date)
                             .LastOrDefault();
                     }
@@ -126,7 +127,7 @@
                     }
                     else
                     {
-                        <span> il y a rien pour vous ici dégage !!!</span>
+                        <span> Vous n'avez aucun messages !</span>
                     }
                 </td>
             </tr>
@@ -134,36 +135,3 @@
 
     </table>
 </div>
-
-@*<div class="list-group"> //TODO Supprimer2 ??
-    <h2>Messages</h2>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.me.Titre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.me.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.me.Contenu)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model.ListME) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Titre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Contenu)
-                </td>
-            </tr>
-        }
-
-    </table>
-</div>*@

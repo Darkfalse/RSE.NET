@@ -141,6 +141,9 @@
         <div class="list-group">
             <h4>Messages du projet</h4>
             <table class="table">
+                @{int? dern = null;}
+                @{int? pr = Model.p.Id;}
+
                 <tr>
                     <th>
                         @Html.DisplayNameFor(model => model.mp.Titre)
@@ -166,9 +169,19 @@
                             @Html.DisplayFor(modelItem => item.Contenu)
                         </td>
                     </tr>
+                    dern = item.Id;
                 }
 
             </table>
+            <br class="clearboth" />
+            <div>
+                <form action="~/Member/RepondreProjet" method="post">
+                    <input type="hidden" name="idPr" id="idPr" value='@pr' />
+                    <input type="hidden" name="idMsg" id="idMsg" value='@dern' />
+                    <input class="btnEnvoyez" type="text" size="4000" name="msg" id="msg" />
+                    <input class="btnEnvoyez" type="submit" name="Envoyer" value="Envoyez" />
+                </form>
+            </div>
         </div>
 
         <div class="list-group">

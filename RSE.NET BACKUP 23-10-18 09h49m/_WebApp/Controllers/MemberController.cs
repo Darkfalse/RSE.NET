@@ -31,8 +31,6 @@ namespace _WebApp.Controllers
             MessageEmployeeService mes = new MessageEmployeeService();
             mi.ListME = mes.GetAll();
 
-           // TODO XAV LUC Liste contact V, avec dernier message
-
             return View(mi);
         }
 
@@ -204,6 +202,34 @@ namespace _WebApp.Controllers
             }
 
             return RedirectToAction("Employee", "Member", new { id = idDest});
+        }
+
+        [HttpPost]
+        public ActionResult RepondreEquipe(int idEq, int? idMsg, string msg) {
+            int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
+
+            if (!string.IsNullOrWhiteSpace(msg) && idEq != 0) {
+                MessageEquipe me = new MessageEquipe { Titre = idMoi + "" + idEq, Contenu = msg, Date = DateTime.Now, Id_Employee = idMoi, Id_Equipe = idEq, MessagePrecedent = idMsg };
+
+                MessageEquipeService mes = new MessageEquipeService();
+                mes.Insert(me);
+            }
+
+            return RedirectToAction("Equipe", "Member", new { id = idEq });
+        }
+
+        [HttpPost]
+        public ActionResult RepondreProjet(int idPr, int? idMsg, string msg) {
+            int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
+
+            if (!string.IsNullOrWhiteSpace(msg) && idPr != 0) {
+                MessageProjet mp = new MessageProjet { Titre = idMoi + "" + idPr, Contenu = msg, Date = DateTime.Now, Id_Employee = idMoi, Id_Projet = idPr, MessagePrecedent = idMsg };
+
+                MessageProjetService mps = new MessageProjetService();
+                mps.Insert(mp);
+            }
+
+            return RedirectToAction("Projet", "Member", new { id = idPr });
         }
     }
 }
