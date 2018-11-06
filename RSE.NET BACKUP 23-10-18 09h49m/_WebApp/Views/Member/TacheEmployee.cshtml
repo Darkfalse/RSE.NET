@@ -67,6 +67,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.mt.Contenu)
             </th>
+            <th>
+                Auteur
+            </th>
             <th></th>
         </tr>
 
@@ -74,16 +77,19 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Titre)
+                    @Html.DisplayFor(modelItem => item.Key.Titre)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Date)
+                    @Html.DisplayFor(modelItem => item.Key.Date)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Contenu)
+                    @Html.DisplayFor(modelItem => item.Key.Contenu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Value.Nom) @Html.DisplayFor(modelItem => item.Value.Prenom)
                 </td>
             </tr>
-            dern = item.Id;
+            dern = item.Key.Id;
         }
 
     </table>

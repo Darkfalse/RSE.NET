@@ -154,22 +154,28 @@
                     <th>
                         @Html.DisplayNameFor(model => model.mp.Contenu)
                     </th>
+                    <th>
+                        Auteur
+                    </th>
                     <th></th>
                 </tr>
 
                 @foreach (var item in Model.MessageProjets) {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Titre)
+                            @Html.DisplayFor(modelItem => item.Key.Titre)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Date)
+                            @Html.DisplayFor(modelItem => item.Key.Date)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Contenu)
+                            @Html.DisplayFor(modelItem => item.Key.Contenu)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Value.Nom) @Html.DisplayFor(modelItem => item.Value.Prenom)
                         </td>
                     </tr>
-                    dern = item.Id;
+                    dern = item.Key.Id;
                 }
 
             </table>

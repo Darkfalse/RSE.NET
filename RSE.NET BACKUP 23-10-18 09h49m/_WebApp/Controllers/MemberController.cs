@@ -126,7 +126,11 @@ namespace _WebApp.Controllers
                 mp.TacheEquipes = teq.GetByProjet(id);
 
                 MessageProjetService mps = new MessageProjetService();
-                mp.MessageProjets = mps.GetByProjet(id);
+                IDictionary<MessageProjet, Employee> listDic = new Dictionary<MessageProjet, Employee>();
+                foreach(MessageProjet msg in mps.GetByProjet(id)) {
+                    listDic.Add(msg, ems.GetById(msg.Id_Employee));
+                }
+                mp.MessageProjets = listDic;
 
                 DocumentService ds = new DocumentService();
                 mp.Documents = ds.GetByProjet(id);
@@ -159,33 +163,63 @@ namespace _WebApp.Controllers
          ***********************************************************************************************************/
 
         public ActionResult TacheEquipe(int id) {
-            MemberTacheEquipe mteq = new MemberTacheEquipe();
+            int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
+            
+            try {
+                EmployeeService ems = new EmployeeService();
+                Employee e = ems.GetByTacheEquipe(id).Where(r => r.Id == idMoi).Single();
 
-            TacheEquipeService teqs = new TacheEquipeService();
-            mteq.te = teqs.GetById(id);
+                MemberTacheEquipe mteq = new MemberTacheEquipe();
 
-            MessageTacheService mteqq = new MessageTacheService();
-            mteq.ListM = mteqq.GetByTacheId(id);
+                TacheEquipeService teqs = new TacheEquipeService();
+                mteq.te = teqs.GetById(id);
 
-            DocumentService ds = new DocumentService();
-            mteq.ListD = ds.GetByTache(id);
+                MessageTacheService mteqq = new MessageTacheService();
 
-            return View(mteq);
+                IDictionary<MessageTache, Employee> listDic = new Dictionary<MessageTache, Employee>();
+                foreach (MessageTache msg in mteqq.GetByTacheEquipeId(id)) {
+                    listDic.Add(msg, ems.GetById(msg.Id_Employee));
+                }
+                mteq.ListM = listDic;
+
+                DocumentService ds = new DocumentService();
+                mteq.ListD = ds.GetByTache(id);
+
+                return View(mteq);
+            }
+            catch (Exception e) when (e is ArgumentNullException || e is InvalidOperationException){
+                return RedirectToAction("Index", "Error");
+            }
+            
         }
         public ActionResult TacheEmployee(int id) {
-            MemberTacheEmployee mte = new MemberTacheEmployee();
+            int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
 
-            TacheEmployeeService teqs = new TacheEmployeeService();
-            mte.te = teqs.GetById(id);
+            try {
+                EmployeeService ems = new EmployeeService();
+                Employee e = ems.GetByTacheEmployee(id).Where(r => r.Id == idMoi).Single();
 
-            MessageTacheService mtes = new MessageTacheService();
-            mte.ListM = mtes.GetByTacheId(id);
+                MemberTacheEmployee mte = new MemberTacheEmployee();
 
-            DocumentService ds = new DocumentService();
-            mte.ListD = ds.GetByTache(id);
+                TacheEmployeeService teqs = new TacheEmployeeService();
+                mte.te = teqs.GetById(id);
 
-            return View(mte);
+                MessageTacheService mtes = new MessageTacheService();
 
+                IDictionary<MessageTache, Employee> listDic = new Dictionary<MessageTache, Employee>();
+                foreach (MessageTache msg in mtes.GetByTacheEmployeeId(id)) {
+                    listDic.Add(msg, ems.GetById(msg.Id_Employee));
+                }
+                mte.ListM = listDic;
+
+                DocumentService ds = new DocumentService();
+                mte.ListD = ds.GetByTache(id);
+
+                return View(mte);
+            }
+                catch (Exception e) when(e is ArgumentNullException || e is InvalidOperationException) {
+                return RedirectToAction("Index", "Error");
+            }
         }
 
         /***********************************************************************************************************

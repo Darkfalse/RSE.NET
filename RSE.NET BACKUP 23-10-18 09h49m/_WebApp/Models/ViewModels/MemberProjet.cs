@@ -19,7 +19,7 @@ namespace _WebApp.Models.ViewModels
         public IEnumerable<TacheEmployee> TacheEmployees { get; set; }
         public IEnumerable<TacheEquipe> TacheEquipes { get; set; }
         public IEnumerable<Document> Documents { get; set; }
-        public IEnumerable<MessageProjet> MessageProjets { get; set; }
+        public IDictionary<MessageProjet, Employee> MessageProjets { get; set; }
 
     }
 }

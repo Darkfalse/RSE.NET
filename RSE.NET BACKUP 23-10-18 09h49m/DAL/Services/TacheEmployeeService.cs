@@ -23,8 +23,8 @@ namespace DAL.Services {
 
         public IEnumerable<TacheEmployee> GetByEmployee(int id) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("SELECT * FROM Tache_Employee WHERE Id_Tache_Employee = @id;");
-            command.AddParameter("id", id);
+            Command command = new Command("EXEC SP_TacheDEmployee @id = @i;");
+            command.AddParameter("i", id);
 
             return connection.ExecuteReader(command, (dr) => dr.ToTacheEmployee());
         }

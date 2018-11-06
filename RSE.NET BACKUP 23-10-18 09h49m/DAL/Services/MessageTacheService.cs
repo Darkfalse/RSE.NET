@@ -24,10 +24,26 @@ namespace DAL.Services {
         public IEnumerable<MessageTache> GetByTacheId(int id)
         {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("EXEC SP_MsgTacheByTache @id = @i");
+            Command command = new Command("EXEC SP_MsgTacheByTache @id = @i;");
             command.AddParameter("i", id);
 
             return  connection.ExecuteReader(command, (dr) => dr.ToMessageTache());
+        }
+
+        public IEnumerable<MessageTache> GetByTacheEmployeeId(int id) {
+            Connection connection = new Connection(providerName, connString);
+            Command command = new Command("EXEC SP_MsgTacheByTacheEmployee @id = @i;");
+            command.AddParameter("i", id);
+
+            return connection.ExecuteReader(command, (dr) => dr.ToMessageTache());
+        }
+
+        public IEnumerable<MessageTache> GetByTacheEquipeId(int id) {
+            Connection connection = new Connection(providerName, connString);
+            Command command = new Command("EXEC SP_MsgTacheByTacheEquipe @id = @i;");
+            command.AddParameter("i", id);
+
+            return connection.ExecuteReader(command, (dr) => dr.ToMessageTache());
         }
 
         public MessageTache GetById(int id)
