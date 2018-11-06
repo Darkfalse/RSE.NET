@@ -1,4 +1,6 @@
-﻿@model _WebApp.Models.ViewModels.MemberIndex
+﻿@using Client.Models
+@using _WebApp.Infrastructure
+@model _WebApp.Models.ViewModels.MemberIndex
 
 @{
     ViewBag.Title = "Index";
@@ -108,15 +110,32 @@
         @foreach (var item in Model.ListEWDiscussion) {
             <tr>
                 <td>
-                    @Html.ActionLink(Html.DisplayFor(modelItem => item.Prenom).ToString()+" "+Html.DisplayFor(modelItem => item.Nom).ToString(), "Employee", new { id = item.Id })
+                    @Html.ActionLink(Html.DisplayFor(modelItem => item.Prenom).ToString() + " " + Html.DisplayFor(modelItem => item.Nom).ToString(), "Employee", new {id = item.Id})
+                </td>
+                <td>
+                    @{
+                        MessageEmployee message = Model.ListME
+                            .Where(r => (r.Id_Destinataire == item.Id && (EmployeeSession.CurrentEmployee.Id == r.Id_Employee)||(r.Id_Employee == item.Id && EmployeeSession.CurrentEmployee.Id == r.Id_Destinataire)))
+                            .OrderBy(r => r.Date)
+                            .Last();
+                    }
+                    
+                    @if (message != null)
+                    {
+                        @message.Contenu;
+                    }
+                    else
+                    {
+                        <span> il y a rien pour vous ici dégage !!!</span>
+                    }
                 </td>
             </tr>
-        }
+                        }
 
     </table>
 </div>
 
-@*<div class="list-group"> //TODO Supprimer ??
+@*<div class="list-group"> //TODO Supprimer2 ??
     <h2>Messages</h2>
     <table class="table">
         <tr>

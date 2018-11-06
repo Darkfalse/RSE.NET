@@ -45,12 +45,12 @@ dd{
 
 .rowlongueur1 {
 
-    position:absolute;
+    
     right:30px;
     bottom: 30px;
     max-width: 650px;
     margin-left: 35px;
-    border-radius: 10px;
+    border-radius: 7px;
     padding-left: 15px;
     color: #adadb2;
     word-wrap: break-word;
@@ -64,7 +64,7 @@ dd{
     
     max-width:650px;
     margin-right:35px;
-    border-radius: 35px;
+    border-radius: 7px;
     padding-left: 15px;
     color: #007acc;
     border-style: ridge;
