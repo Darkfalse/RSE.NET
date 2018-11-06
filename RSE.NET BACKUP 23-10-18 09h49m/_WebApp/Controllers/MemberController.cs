@@ -114,6 +114,8 @@ namespace _WebApp.Controllers
             }
 
             if (id != 0) {
+                mp.p = ps.GetById(id);
+
                 EmployeeService ems = new EmployeeService();
                 mp.chef = ems.GetManagerByProjet(id);
 
@@ -230,6 +232,34 @@ namespace _WebApp.Controllers
             }
 
             return RedirectToAction("Projet", "Member", new { id = idPr });
+        }
+
+        [HttpPost]
+        public ActionResult RepondreTacheEmployee(int idTa, int? idMsg, string msg) {
+            int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
+
+            if (!string.IsNullOrWhiteSpace(msg) && idTa != 0) {
+                MessageTache mt = new MessageTache { Titre = idMoi + "" + idTa, Contenu = msg, Date = DateTime.Now, Id_Employee = idMoi, Id_Tache_Employee = idTa, Id_Tache_Equipe = null, MessagePrecedent = idMsg };
+
+                MessageTacheService mps = new MessageTacheService();
+                mps.Insert(mt);
+            }
+
+            return RedirectToAction("TacheEmployee", "Member", new { id = idTa });
+        }
+
+        [HttpPost]
+        public ActionResult RepondreTacheEquipe(int idTa, int? idMsg, string msg) {
+            int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
+
+            if (!string.IsNullOrWhiteSpace(msg) && idTa != 0) {
+                MessageTache mt = new MessageTache { Titre = idMoi + "" + idTa, Contenu = msg, Date = DateTime.Now, Id_Employee = idMoi, Id_Tache_Employee = null, Id_Tache_Equipe = idTa, MessagePrecedent = idMsg };
+
+                MessageTacheService mps = new MessageTacheService();
+                mps.Insert(mt);
+            }
+
+            return RedirectToAction("TacheEquipe", "Member", new { id = idTa });
         }
     }
 }

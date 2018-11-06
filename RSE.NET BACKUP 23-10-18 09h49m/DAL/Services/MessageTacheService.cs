@@ -47,7 +47,7 @@ namespace DAL.Services {
             command.AddParameter("txt", mt.Contenu);
             command.AddParameter("im", mt.MessagePrecedent);
             command.AddParameter("idtaq", mt.Id_Tache_Equipe);
-            command.AddParameter("idtea", mt.Id_Tache_Emplopyee);
+            command.AddParameter("idtea", mt.Id_Tache_Employee);
             command.AddParameter("ie", mt.Id_Employee);
 
             mt.Id = (int)connection.ExecuteScalar(command);
@@ -63,7 +63,7 @@ namespace DAL.Services {
             command.AddParameter("tm", mt.Contenu);
             command.AddParameter("im", mt.MessagePrecedent);
             command.AddParameter("ite", mt.Id_Tache_Equipe);
-            command.AddParameter("itemp", mt.Id_Tache_Emplopyee);
+            command.AddParameter("itemp", mt.Id_Tache_Employee);
             command.AddParameter("ie", mt.Id_Employee);
             command.AddParameter("id", mt.Id);
 

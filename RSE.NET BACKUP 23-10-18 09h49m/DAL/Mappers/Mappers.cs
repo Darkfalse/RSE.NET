@@ -203,7 +203,7 @@ namespace DAL.Mappers
                     MessagePrecedent = dr["Id_Message"] == DBNull.Value ? 0 : (int)dr["Id_Message"],
                     Titre = (string)dr["Titre_Message_Tache"],
                     Id_Employee = (int)dr["Id_Employee"],
-                    Id_Tache_Emplopyee = dr["Id_Tache_Employee"] == DBNull.Value ? 0 : (int)dr["Id_Tache_Employee"],
+                    Id_Tache_Employee = dr["Id_Tache_Employee"] == DBNull.Value ? 0 : (int)dr["Id_Tache_Employee"],
                     Id_Tache_Equipe = dr["Id_Tache_Equipe"] == DBNull.Value ? 0 : (int)dr["Id_Tache_Equipe"]
                 };
             }

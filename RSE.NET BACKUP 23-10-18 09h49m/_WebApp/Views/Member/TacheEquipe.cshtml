@@ -55,6 +55,9 @@
 <div class="list-group">
     <h4>Messages de la tâche</h4>
     <table class="table">
+        @{int? dern = null;}
+        @{int? ta = Model.te.Id;}
+
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.mt.Titre)
@@ -81,9 +84,19 @@
                     @Html.DisplayFor(modelItem => item.Contenu)
                 </td>
             </tr>
+            dern = item.Id;
         }
 
     </table>
+    <br class="clearboth" />
+    <div>
+        <form action="~/Member/RepondreTacheEquipe" method="post">
+            <input type="hidden" name="idTa" id="idTa" value='@ta' />
+            <input type="hidden" name="idMsg" id="idMsg" value='@dern' />
+            <input class="btnEnvoyez" type="text" size="4000" name="msg" id="msg" />
+            <input class="btnEnvoyez" type="submit" name="Envoyer" value="Envoyez" />
+        </form>
+    </div>
 </div>
 
 <div class="list-group">
