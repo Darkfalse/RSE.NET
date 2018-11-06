@@ -154,34 +154,40 @@
                     <th>
                         @Html.DisplayNameFor(model => model.mp.Contenu)
                     </th>
+                    <th>
+                        Auteur
+                    </th>
                     <th></th>
                 </tr>
 
                 @foreach (var item in Model.MessageProjets) {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Titre)
+                            @Html.DisplayFor(modelItem => item.Key.Titre)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Date)
+                            @Html.DisplayFor(modelItem => item.Key.Date)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Contenu)
+                            @Html.DisplayFor(modelItem => item.Key.Contenu)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Value.Nom) @Html.DisplayFor(modelItem => item.Value.Prenom)
                         </td>
                     </tr>
-                    dern = item.Id;
+                    dern = item.Key.Id;
                 }
 
             </table>
-            <br class="clearboth" />
-            <div>
-                <form action="~/Member/RepondreProjet" method="post">
-                    <input type="hidden" name="idPr" id="idPr" value='@pr' />
-                    <input type="hidden" name="idMsg" id="idMsg" value='@dern' />
-                    <input class="btnEnvoyez" type="text" size="4000" name="msg" id="msg" />
-                    <input class="btnEnvoyez" type="submit" name="Envoyer" value="Envoyez" />
-                </form>
-            </div>
+        </div>
+        <br class="clearboth" />
+        <div>
+            <form action="~/Member/RepondreProjet" method="post">
+                <input type="hidden" name="idPr" id="idPr" value='@pr' />
+                <input type="hidden" name="idMsg" id="idMsg" value='@dern' />
+                <input class="btnEnvoyez" type="text" size="4000" name="msg" id="msg" />
+                <input class="btnEnvoyez" type="submit" name="Envoyer" value="Envoyez" />
+            </form>
         </div>
 
         <div class="list-group">

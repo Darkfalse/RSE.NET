@@ -189,7 +189,7 @@ namespace Client.Mappers
                 MessagePrecedent = e.MessagePrecedent,
                 Titre = e.Titre,
                 Id_Employee = e.Id_Employee,
-                Id_Tache_Emplopyee = e.Id_Tache_Emplopyee,
+                Id_Tache_Employee = e.Id_Tache_Employee,
                 Id_Tache_Equipe = e.Id_Tache_Equipe
             };
         }
@@ -355,7 +355,7 @@ namespace Client.Mappers
         internal static C.MessageTache ToClient(this D.MessageTache e)
         {
             if (e != null)
-                return new C.MessageTache(e.Id, e.Titre, e.Date, e.Contenu, e.MessagePrecedent, e.Id_Employee, e.Id_Tache_Equipe,e.Id_Tache_Emplopyee);
+                return new C.MessageTache(e.Id, e.Titre, e.Date, e.Contenu, e.MessagePrecedent, e.Id_Employee, e.Id_Tache_Equipe,e.Id_Tache_Employee);
             return null;
         }
         internal static C.Pays ToClient(this D.Pays e)

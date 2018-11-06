@@ -24,10 +24,26 @@ namespace DAL.Services {
         public IEnumerable<MessageTache> GetByTacheId(int id)
         {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("EXEC SP_MsgTacheByTache @id = @i");
+            Command command = new Command("EXEC SP_MsgTacheByTache @id = @i;");
             command.AddParameter("i", id);
 
             return  connection.ExecuteReader(command, (dr) => dr.ToMessageTache());
+        }
+
+        public IEnumerable<MessageTache> GetByTacheEmployeeId(int id) {
+            Connection connection = new Connection(providerName, connString);
+            Command command = new Command("EXEC SP_MsgTacheByTacheEmployee @id = @i;");
+            command.AddParameter("i", id);
+
+            return connection.ExecuteReader(command, (dr) => dr.ToMessageTache());
+        }
+
+        public IEnumerable<MessageTache> GetByTacheEquipeId(int id) {
+            Connection connection = new Connection(providerName, connString);
+            Command command = new Command("EXEC SP_MsgTacheByTacheEquipe @id = @i;");
+            command.AddParameter("i", id);
+
+            return connection.ExecuteReader(command, (dr) => dr.ToMessageTache());
         }
 
         public MessageTache GetById(int id)
@@ -47,7 +63,7 @@ namespace DAL.Services {
             command.AddParameter("txt", mt.Contenu);
             command.AddParameter("im", mt.MessagePrecedent);
             command.AddParameter("idtaq", mt.Id_Tache_Equipe);
-            command.AddParameter("idtea", mt.Id_Tache_Emplopyee);
+            command.AddParameter("idtea", mt.Id_Tache_Employee);
             command.AddParameter("ie", mt.Id_Employee);
 
             mt.Id = (int)connection.ExecuteScalar(command);
@@ -63,7 +79,7 @@ namespace DAL.Services {
             command.AddParameter("tm", mt.Contenu);
             command.AddParameter("im", mt.MessagePrecedent);
             command.AddParameter("ite", mt.Id_Tache_Equipe);
-            command.AddParameter("itemp", mt.Id_Tache_Emplopyee);
+            command.AddParameter("itemp", mt.Id_Tache_Employee);
             command.AddParameter("ie", mt.Id_Employee);
             command.AddParameter("id", mt.Id);
 

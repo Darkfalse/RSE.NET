@@ -17,8 +17,7 @@ namespace _WebApp.Areas.Admin.Controllers
         public ActionResult Index()
         {
             DepartementService ds = new DepartementService();
-
-            //TODO Afficher les departements
+            
             return View(ds.GetAll());
         }
 

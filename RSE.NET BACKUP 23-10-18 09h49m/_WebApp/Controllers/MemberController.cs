@@ -47,6 +47,7 @@ namespace _WebApp.Controllers
 
         public ActionResult Equipe()
         {
+            //TODO Try Catch
             MemberEquipe me = new MemberEquipe();
 
             EquipeService eqs = new EquipeService();
@@ -105,38 +106,50 @@ namespace _WebApp.Controllers
 
         public ActionResult Projet(int id = 0)
         {
-            MemberProjet mp = new MemberProjet();
-            int IdEmp = (int)EmployeeSession.CurrentEmployee.Id;
+            int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
 
-            ProjetService ps = new ProjetService();
+            try {
+                MemberProjet mp = new MemberProjet();
 
-            if (id == 0) {
-                Projet p = ps.GetByIdEmpl(IdEmp);
+                ProjetService ps = new ProjetService();
 
-                if (p != null && p.Id != null) {
-                    mp.p = ps.GetById((int)p.Id);
-                    id = (int)mp.p.Id;
+                if (id == 0) {
+                    Projet p = ps.GetByIdEmpl(idMoi);
+
+                    if (p != null && p.Id != null) {
+                        mp.p = ps.GetById((int)p.Id);
+                        id = (int)mp.p.Id;
+                    }
                 }
+
+                if (id != 0) {
+                    mp.p = ps.GetById(id);
+
+                    EmployeeService ems = new EmployeeService();
+                    mp.chef = ems.GetManagerByProjet(id);
+
+                    TacheEmployeeService tes = new TacheEmployeeService();
+                    mp.TacheEmployees = tes.GetByEmployee(idMoi);
+
+                    TacheEquipeService teq = new TacheEquipeService();
+                    mp.TacheEquipes = teq.GetByProjet(id);
+
+                    MessageProjetService mps = new MessageProjetService();
+                    IDictionary<MessageProjet, Employee> listDic = new Dictionary<MessageProjet, Employee>();
+                    foreach(MessageProjet msg in mps.GetByProjet(id)) {
+                        listDic.Add(msg, ems.GetById(msg.Id_Employee));
+                    }
+                    mp.MessageProjets = listDic;
+
+                    DocumentService ds = new DocumentService();
+                    mp.Documents = ds.GetByProjet(id);
+                }     
+
+                return View(mp);
             }
-
-            if (id != 0) {
-                EmployeeService ems = new EmployeeService();
-                mp.chef = ems.GetManagerByProjet(id);
-
-                TacheEmployeeService tes = new TacheEmployeeService();
-                mp.TacheEmployees = tes.GetByEmployee(IdEmp);
-
-                TacheEquipeService teq = new TacheEquipeService();
-                mp.TacheEquipes = teq.GetByProjet(id);
-
-                MessageProjetService mps = new MessageProjetService();
-                mp.MessageProjets = mps.GetByProjet(id);
-
-                DocumentService ds = new DocumentService();
-                mp.Documents = ds.GetByProjet(id);
-            }     
-
-            return View(mp);
+            catch (Exception e) when (e is ArgumentNullException || e is InvalidOperationException) {
+                return RedirectToAction("Index", "Error");
+            }
         }
 
         //public ActionResult CreateProjet()
@@ -163,33 +176,63 @@ namespace _WebApp.Controllers
          ***********************************************************************************************************/
 
         public ActionResult TacheEquipe(int id) {
-            MemberTacheEquipe mteq = new MemberTacheEquipe();
+            int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
+            
+            try {
+                EmployeeService ems = new EmployeeService();
+                Employee e = ems.GetByTacheEquipe(id).Where(r => r.Id == idMoi).Single();
 
-            TacheEquipeService teqs = new TacheEquipeService();
-            mteq.te = teqs.GetById(id);
+                MemberTacheEquipe mteq = new MemberTacheEquipe();
 
-            MessageTacheService mteqq = new MessageTacheService();
-            mteq.ListM = mteqq.GetByTacheId(id);
+                TacheEquipeService teqs = new TacheEquipeService();
+                mteq.te = teqs.GetById(id);
 
-            DocumentService ds = new DocumentService();
-            mteq.ListD = ds.GetByTache(id);
+                MessageTacheService mteqq = new MessageTacheService();
 
-            return View(mteq);
+                IDictionary<MessageTache, Employee> listDic = new Dictionary<MessageTache, Employee>();
+                foreach (MessageTache msg in mteqq.GetByTacheEquipeId(id)) {
+                    listDic.Add(msg, ems.GetById(msg.Id_Employee));
+                }
+                mteq.ListM = listDic;
+
+                DocumentService ds = new DocumentService();
+                mteq.ListD = ds.GetByTache(id);
+
+                return View(mteq);
+            }
+            catch (Exception e) when (e is ArgumentNullException || e is InvalidOperationException){
+                return RedirectToAction("Index", "Error");
+            }
+            
         }
         public ActionResult TacheEmployee(int id) {
-            MemberTacheEmployee mte = new MemberTacheEmployee();
+            int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
 
-            TacheEmployeeService teqs = new TacheEmployeeService();
-            mte.te = teqs.GetById(id);
+            try {
+                EmployeeService ems = new EmployeeService();
+                Employee e = ems.GetByTacheEmployee(id).Where(r => r.Id == idMoi).Single();
 
-            MessageTacheService mtes = new MessageTacheService();
-            mte.ListM = mtes.GetByTacheId(id);
+                MemberTacheEmployee mte = new MemberTacheEmployee();
 
-            DocumentService ds = new DocumentService();
-            mte.ListD = ds.GetByTache(id);
+                TacheEmployeeService teqs = new TacheEmployeeService();
+                mte.te = teqs.GetById(id);
 
-            return View(mte);
+                MessageTacheService mtes = new MessageTacheService();
 
+                IDictionary<MessageTache, Employee> listDic = new Dictionary<MessageTache, Employee>();
+                foreach (MessageTache msg in mtes.GetByTacheEmployeeId(id)) {
+                    listDic.Add(msg, ems.GetById(msg.Id_Employee));
+                }
+                mte.ListM = listDic;
+
+                DocumentService ds = new DocumentService();
+                mte.ListD = ds.GetByTache(id);
+
+                return View(mte);
+            }
+            catch (Exception e) when(e is ArgumentNullException || e is InvalidOperationException) {
+                return RedirectToAction("Index", "Error");
+            }
         }
 
         /***********************************************************************************************************
@@ -236,6 +279,34 @@ namespace _WebApp.Controllers
             }
 
             return RedirectToAction("Projet", "Member", new { id = idPr });
+        }
+
+        [HttpPost]
+        public ActionResult RepondreTacheEmployee(int idTa, int? idMsg, string msg) {
+            int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
+
+            if (!string.IsNullOrWhiteSpace(msg) && idTa != 0) {
+                MessageTache mt = new MessageTache { Titre = idMoi + "" + idTa, Contenu = msg, Date = DateTime.Now, Id_Employee = idMoi, Id_Tache_Employee = idTa, Id_Tache_Equipe = null, MessagePrecedent = idMsg };
+
+                MessageTacheService mps = new MessageTacheService();
+                mps.Insert(mt);
+            }
+
+            return RedirectToAction("TacheEmployee", "Member", new { id = idTa });
+        }
+
+        [HttpPost]
+        public ActionResult RepondreTacheEquipe(int idTa, int? idMsg, string msg) {
+            int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
+
+            if (!string.IsNullOrWhiteSpace(msg) && idTa != 0) {
+                MessageTache mt = new MessageTache { Titre = idMoi + "" + idTa, Contenu = msg, Date = DateTime.Now, Id_Employee = idMoi, Id_Tache_Employee = null, Id_Tache_Equipe = idTa, MessagePrecedent = idMsg };
+
+                MessageTacheService mps = new MessageTacheService();
+                mps.Insert(mt);
+            }
+
+            return RedirectToAction("TacheEquipe", "Member", new { id = idTa });
         }
     }
 }

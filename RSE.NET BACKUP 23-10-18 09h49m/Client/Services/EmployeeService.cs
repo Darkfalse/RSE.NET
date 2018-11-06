@@ -26,6 +26,14 @@ namespace Client.Services {
             return service.GetByEquipe(id).Select(a => a.ToClient());
         }
 
+        public IEnumerable<Employee> GetByTacheEquipe(int id) {
+            return service.GetByTacheEquipe(id).Select(a => a.ToClient());
+        }
+
+        public IEnumerable<Employee> GetByTacheEmployee(int id) {
+            return service.GetByTacheEmployee(id).Select(a => a.ToClient());
+        }
+
         public IEnumerable<Employee> GetWithDiscussion(int id) {
             return service.GetWithDiscussion(id).Select(a => a.ToClient());
         }

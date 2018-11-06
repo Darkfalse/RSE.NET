@@ -55,6 +55,9 @@
 <div class="list-group">
     <h4>Messages de la tâche</h4>
     <table class="table">
+        @{int? dern = null;}
+        @{int? ta = Model.te.Id;}
+
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.mt.Titre)
@@ -65,6 +68,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.mt.Contenu)
             </th>
+            <th>
+                Auteur
+            </th>
             <th></th>
         </tr>
 
@@ -72,18 +78,31 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Titre)
+                    @Html.DisplayFor(modelItem => item.Key.Titre)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Date)
+                    @Html.DisplayFor(modelItem => item.Key.Date)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Contenu)
+                    @Html.DisplayFor(modelItem => item.Key.Contenu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Value.Nom) @Html.DisplayFor(modelItem => item.Value.Prenom)
                 </td>
             </tr>
+            dern = item.Key.Id;
         }
 
     </table>
+</div>
+<br class="clearboth" />
+<div>
+    <form action="~/Member/RepondreTacheEquipe" method="post">
+        <input type="hidden" name="idTa" id="idTa" value='@ta' />
+        <input type="hidden" name="idMsg" id="idMsg" value='@dern' />
+        <input class="btnEnvoyez" type="text" size="4000" name="msg" id="msg" />
+        <input class="btnEnvoyez" type="submit" name="Envoyer" value="Envoyez" />
+    </form>
 </div>
 
 <div class="list-group">

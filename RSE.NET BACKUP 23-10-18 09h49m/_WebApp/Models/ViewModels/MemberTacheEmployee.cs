@@ -14,7 +14,7 @@ namespace _WebApp.Models.ViewModels
         public MessageTache mt { get; set; }
         public Document doc { get; set; }
 
-        public IEnumerable<MessageTache> ListM { get; set; }
+        public IDictionary<MessageTache, Employee> ListM { get; set; }
         public IEnumerable<Document> ListD { get; set; }
         
     }
