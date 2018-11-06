@@ -99,44 +99,50 @@ namespace _WebApp.Controllers
 
         public ActionResult Projet(int id = 0)
         {
-            MemberProjet mp = new MemberProjet();
-            int IdEmp = (int)EmployeeSession.CurrentEmployee.Id;
+            int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
 
-            ProjetService ps = new ProjetService();
+            try {
+                MemberProjet mp = new MemberProjet();
 
-            if (id == 0) {
-                Projet p = ps.GetByIdEmpl(IdEmp);
+                ProjetService ps = new ProjetService();
 
-                if (p != null && p.Id != null) {
-                    mp.p = ps.GetById((int)p.Id);
-                    id = (int)mp.p.Id;
+                if (id == 0) {
+                    Projet p = ps.GetByIdEmpl(idMoi);
+
+                    if (p != null && p.Id != null) {
+                        mp.p = ps.GetById((int)p.Id);
+                        id = (int)mp.p.Id;
+                    }
                 }
+
+                if (id != 0) {
+                    mp.p = ps.GetById(id);
+
+                    EmployeeService ems = new EmployeeService();
+                    mp.chef = ems.GetManagerByProjet(id);
+
+                    TacheEmployeeService tes = new TacheEmployeeService();
+                    mp.TacheEmployees = tes.GetByEmployee(idMoi);
+
+                    TacheEquipeService teq = new TacheEquipeService();
+                    mp.TacheEquipes = teq.GetByProjet(id);
+
+                    MessageProjetService mps = new MessageProjetService();
+                    IDictionary<MessageProjet, Employee> listDic = new Dictionary<MessageProjet, Employee>();
+                    foreach(MessageProjet msg in mps.GetByProjet(id)) {
+                        listDic.Add(msg, ems.GetById(msg.Id_Employee));
+                    }
+                    mp.MessageProjets = listDic;
+
+                    DocumentService ds = new DocumentService();
+                    mp.Documents = ds.GetByProjet(id);
+                }     
+
+                return View(mp);
             }
-
-            if (id != 0) {
-                mp.p = ps.GetById(id);
-
-                EmployeeService ems = new EmployeeService();
-                mp.chef = ems.GetManagerByProjet(id);
-
-                TacheEmployeeService tes = new TacheEmployeeService();
-                mp.TacheEmployees = tes.GetByEmployee(IdEmp);
-
-                TacheEquipeService teq = new TacheEquipeService();
-                mp.TacheEquipes = teq.GetByProjet(id);
-
-                MessageProjetService mps = new MessageProjetService();
-                IDictionary<MessageProjet, Employee> listDic = new Dictionary<MessageProjet, Employee>();
-                foreach(MessageProjet msg in mps.GetByProjet(id)) {
-                    listDic.Add(msg, ems.GetById(msg.Id_Employee));
-                }
-                mp.MessageProjets = listDic;
-
-                DocumentService ds = new DocumentService();
-                mp.Documents = ds.GetByProjet(id);
-            }     
-
-            return View(mp);
+            catch (Exception e) when (e is ArgumentNullException || e is InvalidOperationException) {
+                return RedirectToAction("Index", "Error");
+            }
         }
 
         //public ActionResult CreateProjet()
@@ -217,7 +223,7 @@ namespace _WebApp.Controllers
 
                 return View(mte);
             }
-                catch (Exception e) when(e is ArgumentNullException || e is InvalidOperationException) {
+            catch (Exception e) when(e is ArgumentNullException || e is InvalidOperationException) {
                 return RedirectToAction("Index", "Error");
             }
         }
