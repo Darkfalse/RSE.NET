@@ -15,6 +15,6 @@ namespace _WebApp.Models.ViewModels {
         public IEnumerable<Projet> ListP { get; set; }
         public IEnumerable<Employee> ListE { get; set; }
         public IEnumerable<Employee> ListEWDiscussion { get; set; }
-        public IEnumerable<MessageEmployee> ListME { get; set; }//TODO supprimer ??
+        public IEnumerable<MessageEmployee> ListME { get; set; }
     }
 }

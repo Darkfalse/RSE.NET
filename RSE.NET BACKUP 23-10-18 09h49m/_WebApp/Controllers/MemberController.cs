@@ -46,6 +46,7 @@ namespace _WebApp.Controllers
 
         public ActionResult Equipe()
         {
+            //TODO Try Catch
             MemberEquipe me = new MemberEquipe();
 
             EquipeService eqs = new EquipeService();
