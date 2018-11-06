@@ -1,7 +1,8 @@
 ﻿body {
     color:#0e0a3c;
     background-color: #d1e8fb;
-    font-family: Montserrat;
+    font-family:Consolas;
+    /*font-family: Montserrat;*/
     font-size: large;
     font-weight: lighter;
     width:950px;
@@ -10,6 +11,11 @@
 }
 .menumilieu{
     margin:auto;
+}
+.list_message {
+    color: #efd17f;
+    background-color: #0e0a3c;
+    margin-top:125px;
 }
 .list-group {
     color: #9c9898;
@@ -39,19 +45,21 @@ dd{
     
 }
 .btnEnvoyez {
+    border-style: solid;
+    border-color: #a31818;
+    font-weight: bold;
 
     
 }
 
 .rowlongueur1 {
 
-    
+    padding:5px;
     right:30px;
     bottom: 30px;
     max-width: 650px;
     margin-left: 35px;
     border-radius: 7px;
-    padding-left: 15px;
     color: #adadb2;
     word-wrap: break-word;
     word-break: break-all;
@@ -61,7 +69,8 @@ dd{
     border-color: #adadb2;
 }
 .rowlongueur2 {
-    
+
+    padding:5px;
     max-width:650px;
     margin-right:35px;
     border-radius: 7px;
@@ -88,7 +97,27 @@ dd{
 }
 .floatdepanR {
     float: right;
+    width: 300px;
 }
 .floatdepanL {
+    margin:auto;
     float: left;
+    max-width: 500px;
+}
+.lien_div {
+    width :800px
+}
+.champtext {
+    font-family: 'Old English Text MT';
+    font-size: x-large;
+    background-color: #cbca87;
+    color:#3d3c04;
+    border-radius:15px;
+    border-style: dashed;
+    border-color: #1e3445;
+    border-width:4px;
+    text-align:start;
+    height:115px;
+    max-width:650pt;
+    min-width:650pt;
 }

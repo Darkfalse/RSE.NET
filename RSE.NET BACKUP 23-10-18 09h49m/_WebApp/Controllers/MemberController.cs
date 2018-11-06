@@ -4,6 +4,7 @@ using _WebApp.Models.ViewModels;
 using Client.Models;
 using Client.Services;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -61,8 +62,13 @@ namespace _WebApp.Controllers
                     me.ListE = es.GetByEquipe((int)idEq);
 
                     MessageEquipeService mes = new MessageEquipeService();
-                    me.ListMEq = mes.GetByEquipe((int)idEq);
-
+                    IDictionary<MessageEquipe, Employee> mesemp = new Dictionary<MessageEquipe, Employee>();
+                    foreach (MessageEquipe item in mes.GetByEquipe((int)idEq))
+                    {
+                        mesemp.Add(item,es.GetById(item.Id_Employee));
+                    }
+                    me.ListMEq = mesemp;
+                    //TODO OPTIMISATION CODE MESSAGE + AUTEUR
                     DocumentService ds = new DocumentService();
                     me.ListD = ds.GetByEquipe((int)idEq);
                 }

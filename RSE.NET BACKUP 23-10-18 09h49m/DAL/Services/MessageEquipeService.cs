@@ -39,7 +39,7 @@ namespace DAL.Services {
 
         public MessageEquipe Insert(MessageEquipe me) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("EXEC SP_InsertMsgEquipe @titre = @ti, @date = @da, @texte = @txt, @idmsg = @im, @idemp = @ie, @ideq = @ide;);");
+            Command command = new Command("EXEC SP_InsertMsgEquipe @titre = @ti, @date = @da, @texte = @txt, @idmsg = @im, @idemp = @ie, @ideq = @ide;");
             command.AddParameter("ti", me.Titre);
             command.AddParameter("da", me.Date);
             command.AddParameter("txt", me.Contenu);

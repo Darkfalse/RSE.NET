@@ -1,4 +1,5 @@
-﻿@model _WebApp.Models.ViewModels.MemberEquipe
+﻿@using Client.Models
+@model _WebApp.Models.ViewModels.MemberEquipe
 
 @{
     ViewBag.Title = "Equipe";
@@ -88,7 +89,7 @@
     </table>
 </div>
 
-<div class="list-group">
+<div class="list_message">
     <h4>Messages d'équipe</h4>
     <table class="table">
         @{int? dern = null;}
@@ -104,35 +105,41 @@
             <th>
                 @Html.DisplayNameFor(model => model.msgeq.Contenu)
             </th>
-            <th></th>
+            <th>
+                Auteur
+            </th>
         </tr>
 
         @foreach (var item in Model.ListMEq) {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Titre)
+                    @Html.DisplayFor(modelItem => item.Key.Titre)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Date)
+                    @Html.DisplayFor(modelItem => item.Key.Date)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Contenu)
+                    @Html.DisplayFor(modelItem => item.Key.Contenu)
+                </td>
+                <td>
+                    <span>@item.Value.Fullname()</span>
                 </td>
             </tr>
-            dern = item.Id;
+            dern = item.Key.Id;
         }
 
     </table>
+    </div>
     <br class="clearboth" />
     <div>
         <form action="~/Member/RepondreEquipe" method="post">
             <input type="hidden" name="idEq" id="idEq" value='@eq' />
             <input type="hidden" name="idMsg" id="idMsg" value='@dern' />
-            <input class="btnEnvoyez" type="text" size="4000" name="msg" id="msg" />
+            <textarea name="msg" id="msg" class="champtext" maxlength="4000" placeholder="Entrez votre messages ici !"></textarea>
+            @*<input class="champtext" type="text" size="4000" name="msg" id="msg" />*@
             <input class="btnEnvoyez" type="submit" name="Envoyer" value="Envoyez" />
         </form>
     </div>
-</div>
 
 <div class="list-group">
     <h4 class="menumilieu">Documents</h4>
