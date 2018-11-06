@@ -115,7 +115,7 @@
                 <td>
                     @{
                         MessageEmployee message = Model.ListME
-                            .Where(r => (r.Id_Destinataire == item.Id && (EmployeeSession.CurrentEmployee.Id == r.Id_Employee)||(r.Id_Employee == item.Id && EmployeeSession.CurrentEmployee.Id == r.Id_Destinataire)))
+                            .Where(r => ((r.Id_Destinataire == item.Id && (EmployeeSession.CurrentEmployee.Id == r.Id_Employee))||(r.Id_Employee == item.Id && EmployeeSession.CurrentEmployee.Id == r.Id_Destinataire)))
                             .OrderBy(r => r.Date)
                             .Last();
                     }
