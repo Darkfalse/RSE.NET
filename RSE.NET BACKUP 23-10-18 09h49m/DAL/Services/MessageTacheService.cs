@@ -41,13 +41,13 @@ namespace DAL.Services {
 
         public MessageTache Insert(MessageTache mt) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("INSERT INTO Message_Tache (Titre_Message, Date_Message, Texte_Message, Id_Message, Id_Tache_Equipe, Id_Tache_Employee, Id_Employee) OUTPUT INSERTED.ID VALUES (@tim, @dm, @tm, @im, @ite, @itemp, @ie);");
-            command.AddParameter("tim", mt.Titre);
-            command.AddParameter("dm", mt.Date);
-            command.AddParameter("tm", mt.Contenu);
+            Command command = new Command("EXEC SP_InsertMsgTache @titre = @ti, @date = @da, @texte = @txt, @idmsg = @im, @idemp = @ie, @idtq = @idtaq, @idte = @idtea;");
+            command.AddParameter("ti", mt.Titre);
+            command.AddParameter("da", mt.Date);
+            command.AddParameter("txt", mt.Contenu);
             command.AddParameter("im", mt.MessagePrecedent);
-            command.AddParameter("ite", mt.Id_Tache_Equipe);
-            command.AddParameter("itemp", mt.Id_Tache_Emplopyee);
+            command.AddParameter("idtaq", mt.Id_Tache_Equipe);
+            command.AddParameter("idtea", mt.Id_Tache_Emplopyee);
             command.AddParameter("ie", mt.Id_Employee);
 
             mt.Id = (int)connection.ExecuteScalar(command);

@@ -39,12 +39,12 @@ namespace DAL.Services {
 
         public MessageEquipe Insert(MessageEquipe me) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("INSERT INTO Message_Equipe (Titre_Message, Date_Message, Texte_Message, Id_Message, Id_Equipe, Id_Employee) OUTPUT INSERTED.ID VALUES (@tim, @dm, @tm, @im, @ieq, @ie);");
-            command.AddParameter("tim", me.Titre);
-            command.AddParameter("dm", me.Date);
-            command.AddParameter("tm", me.Contenu);
+            Command command = new Command("EXEC SP_InsertMsgEquipe @titre = @ti, @date = @da, @texte = @txt, @idmsg = @im, @idemp = @ie, @ideq = @ide;);");
+            command.AddParameter("ti", me.Titre);
+            command.AddParameter("da", me.Date);
+            command.AddParameter("txt", me.Contenu);
             command.AddParameter("im", me.MessagePrecedent);
-            command.AddParameter("ieq", me.Id_Equipe);
+            command.AddParameter("ide", me.Id_Equipe);
             command.AddParameter("ie", me.Id_Employee);
 
             me.Id = (int)connection.ExecuteScalar(command);
