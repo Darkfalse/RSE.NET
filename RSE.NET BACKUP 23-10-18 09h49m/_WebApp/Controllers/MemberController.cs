@@ -29,7 +29,7 @@ namespace _WebApp.Controllers
             mi.ListEWDiscussion = es.GetWithDiscussion(IdEmp);
 
             MessageEmployeeService mes = new MessageEmployeeService();
-            mi.ListME = mes.GetByDestinataire(IdEmp);
+            mi.ListME = mes.GetAll();
 
            // TODO XAV LUC Liste contact V, avec dernier message
 
