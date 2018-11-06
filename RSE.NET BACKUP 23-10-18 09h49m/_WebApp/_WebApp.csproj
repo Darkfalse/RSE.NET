@@ -148,7 +148,7 @@
     <Compile Include="Areas\Admin\Infrastructure\AdminSession.cs" />
     <Compile Include="Areas\Admin\Models\Formulaires\CreateDepForm.cs" />
     <Compile Include="Areas\Admin\Models\Formulaires\LoginForms.cs" />
-    <Compile Include="Areas\Admin\Models\Formulaires\ModifyDepForm.cs" />
+    <Compile Include="Areas\Admin\Models\Formulaires\EditDepForm.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
@@ -203,7 +203,7 @@
     <Content Include="Areas\Admin\Views\Admin\CreateDep.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\DeleteDep.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\ModifyDep.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\EditDep.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

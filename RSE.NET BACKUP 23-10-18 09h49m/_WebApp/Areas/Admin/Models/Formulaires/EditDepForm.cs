@@ -5,7 +5,9 @@ using System.Linq;
 using System.Web;
 
 namespace _WebApp.Areas.Admin.Models.Formulaires {
-    public class ModifyDepForm {
+    public class EditDepForm {
+
+        public int Id { get; set; }
 
         [MaxLength(50)]
         public string Nom { get; set; }

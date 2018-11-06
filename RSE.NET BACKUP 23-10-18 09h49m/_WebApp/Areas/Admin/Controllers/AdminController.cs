@@ -38,11 +38,12 @@ namespace _WebApp.Areas.Admin.Controllers
             return View(form);
         }
 
-        public ActionResult ModifyDep(int id) {
+        public ActionResult EditDep(int id) {
             DepartementService ds = new DepartementService();
             Departement d = ds.GetById(id);
 
-            ModifyDepForm form = new ModifyDepForm();
+            EditDepForm form = new EditDepForm();
+            form.Id = (int)d.Id;
             form.Nom = d.Nom;
             form.Description = d.Description;
 
@@ -50,10 +51,10 @@ namespace _WebApp.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult ModifyDep(ModifyDepForm form) {
+        public ActionResult EditDep(EditDepForm form) {
             if (ModelState.IsValid) {
                 DepartementService ds = new DepartementService();
-                Departement d = new Departement(form.Nom, form.Description, AdminSession.CurrentAdmin.NumeroAdmin);
+                Departement d = new Departement(form.Id, form.Nom, form.Description, AdminSession.CurrentAdmin.NumeroAdmin);
                 if (ds.Update(d))
                     return RedirectToAction("Index", "Admin");
             }
