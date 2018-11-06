@@ -28,14 +28,15 @@ namespace _WebApp.Controllers
 
             mi.ListEWDiscussion = es.GetWithDiscussion(IdEmp);
 
-            //MessageEmployeeService mes = new MessageEmployeeService();
-            //mi.ListME = mes.GetByDestinataire(IdEmp);
+            MessageEmployeeService mes = new MessageEmployeeService();
+            mi.ListME = mes.GetByDestinataire(IdEmp);
 
-            //TODO XAV LUC Liste contact V, avec dernier message
+           // TODO XAV LUC Liste contact V, avec dernier message
 
             return View(mi);
         }
 
+        
         /***********************************************************************************************************
          ***********************************************Equipe******************************************************
          ***********************************************************************************************************/
