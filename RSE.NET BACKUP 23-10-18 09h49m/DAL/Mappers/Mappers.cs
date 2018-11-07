@@ -171,7 +171,8 @@ namespace DAL.Mappers
                     Id_Equipe = (int)dr["Id_Equipe"],
                     MessagePrecedent = dr["Id_Message"] == DBNull.Value ? 0 : (int)dr["Id_Message"],
                     Titre = (string)dr["Titre_Message_Equipe"],
-                    Id_Employee = (int)dr["Id_Employee"]
+                    Id_Employee = (int)dr["Id_Employee"],
+                    Auteur = (string) dr["Auteur"]
                 };
             }
             else
@@ -187,7 +188,8 @@ namespace DAL.Mappers
                     MessagePrecedent = dr["Id_Message"] == DBNull.Value ? 0 : (int)dr["Id_Message"],
                     Titre = (string)dr["Titre_Message_Projet"],
                     Id_Employee = (int)dr["Id_Employee"],
-                    Id_Projet = (int)dr["Id_Projet"]
+                    Id_Projet = (int)dr["Id_Projet"],
+                    Auteur = (string) dr["Auteur"]
                 };
             }
             else
@@ -204,7 +206,8 @@ namespace DAL.Mappers
                     Titre = (string)dr["Titre_Message_Tache"],
                     Id_Employee = (int)dr["Id_Employee"],
                     Id_Tache_Employee = dr["Id_Tache_Employee"] == DBNull.Value ? 0 : (int)dr["Id_Tache_Employee"],
-                    Id_Tache_Equipe = dr["Id_Tache_Equipe"] == DBNull.Value ? 0 : (int)dr["Id_Tache_Equipe"]
+                    Id_Tache_Equipe = dr["Id_Tache_Equipe"] == DBNull.Value ? 0 : (int)dr["Id_Tache_Equipe"],
+                    Auteur = (string) dr["Auteur"]
                 };
             }
             else

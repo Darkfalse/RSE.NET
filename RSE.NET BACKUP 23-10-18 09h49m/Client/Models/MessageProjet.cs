@@ -13,21 +13,23 @@ namespace Client.Models {
         public int? MessagePrecedent { get; set; }
         public int Id_Employee { get; set; }
         public int Id_Projet { get; set; }
+        public string Auteur { get; set; }
 
         public MessageProjet() {
 
         }
 
-        public MessageProjet(string titre, DateTime date, string contenu, int? precedent, int idemp, int idproj) {
+        public MessageProjet(string titre, DateTime date, string contenu, int? precedent, int idemp, int idproj, string aut) {
             Titre = titre;
             Date = date;
             Contenu = contenu;
             MessagePrecedent = precedent;
             Id_Employee = idemp;
             Id_Projet = idproj;
+            Auteur = aut;
         }
 
-        public MessageProjet(int? id, string titre, DateTime date, string contenu, int? precedent, int idemp, int idproj) : this(titre, date, contenu, precedent, idemp, idproj) {
+        public MessageProjet(int? id, string titre, DateTime date, string contenu, int? precedent, int idemp, int idproj, string aut) : this(titre, date, contenu, precedent, idemp, idproj, aut) {
             Id = id;
         }
     }

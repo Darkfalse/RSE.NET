@@ -162,7 +162,8 @@ namespace Client.Mappers
                 Date = e.Date,
                 MessagePrecedent = e.MessagePrecedent,
                 Titre = e.Titre,
-                Id_Employee = e.Id_Employee
+                Id_Employee = e.Id_Employee,
+                Auteur = e.Auteur
             };
         }
 
@@ -176,7 +177,9 @@ namespace Client.Mappers
                 Date = e.Date,
                 MessagePrecedent = e.MessagePrecedent,
                 Titre = e.Titre,
-                Id_Employee = e.Id_Employee
+                Id_Employee = e.Id_Employee,
+                Auteur = e.Auteur
+
             };
         }
         internal static D.MessageTache ToDal(this C.MessageTache e)
@@ -190,7 +193,9 @@ namespace Client.Mappers
                 Titre = e.Titre,
                 Id_Employee = e.Id_Employee,
                 Id_Tache_Employee = e.Id_Tache_Employee,
-                Id_Tache_Equipe = e.Id_Tache_Equipe
+                Id_Tache_Equipe = e.Id_Tache_Equipe,
+                Auteur = e.Auteur
+
             };
         }
 
@@ -343,19 +348,19 @@ namespace Client.Mappers
         internal static C.MessageEquipe ToClient(this D.MessageEquipe e)
         {
             if (e != null)
-                return new C.MessageEquipe(e.Id, e.Titre, e.Date, e.Contenu, e.MessagePrecedent, e.Id_Employee, e.Id_Equipe);
+                return new C.MessageEquipe(e.Id, e.Titre, e.Date, e.Contenu, e.MessagePrecedent, e.Id_Employee, e.Id_Equipe,e.Auteur);
             return null;
         }
         internal static C.MessageProjet ToClient(this D.MessageProjet e)
         {
             if (e != null)
-                return new C.MessageProjet(e.Id, e.Titre, e.Date, e.Contenu, e.MessagePrecedent, e.Id_Employee, e.Id_Projet);
+                return new C.MessageProjet(e.Id, e.Titre, e.Date, e.Contenu, e.MessagePrecedent, e.Id_Employee, e.Id_Projet,e.Auteur);
             return null;
         }
         internal static C.MessageTache ToClient(this D.MessageTache e)
         {
             if (e != null)
-                return new C.MessageTache(e.Id, e.Titre, e.Date, e.Contenu, e.MessagePrecedent, e.Id_Employee, e.Id_Tache_Equipe,e.Id_Tache_Employee);
+                return new C.MessageTache(e.Id, e.Titre, e.Date, e.Contenu, e.MessagePrecedent, e.Id_Employee, e.Id_Tache_Equipe,e.Id_Tache_Employee,e.Auteur);
             return null;
         }
         internal static C.Pays ToClient(this D.Pays e)

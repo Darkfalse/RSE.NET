@@ -13,5 +13,6 @@ namespace DAL.Models {
         public int? MessagePrecedent { get; set; }
         public int Id_Employee { get; set; }
         public int Id_Equipe { get; set; }
+        public string Auteur { get; set; }
     }
 }
