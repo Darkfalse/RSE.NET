@@ -66,7 +66,7 @@ namespace _WebApp.Controllers
                         me.ListE = es.GetByEquipe((int)idEq);
                         
                         MessageEquipeService mes = new MessageEquipeService();
-                        me.ListMEq = mes.GetByEquipe((int)idEq);
+                        me.ListMEq = mes.GetSujetByEquipe((int)idEq);
 
                         DocumentService ds = new DocumentService();
                         me.ListD = ds.GetByEquipe((int)idEq);
@@ -144,7 +144,7 @@ namespace _WebApp.Controllers
                     mp.TacheEquipes = teq.GetByProjet(id);
 
                     MessageProjetService mps = new MessageProjetService();
-                    mp.MessageProjets = mps.GetByProjet(id);
+                    mp.MessageProjets = mps.GetSujetByProjet(id);
 
                     DocumentService ds = new DocumentService();
                     mp.Documents = ds.GetByProjet(id);
@@ -234,6 +234,28 @@ namespace _WebApp.Controllers
 
         /***********************************************************************************************************
          ***********************************************Message*****************************************************
+         ***********************************************************************************************************/
+
+        public ActionResult MessageEquipe(int id) {
+            MessageEquipeService mes = new MessageEquipeService();
+
+            return View(mes.GetByEquipe(id));
+        }
+
+        public ActionResult MessageProjet(int id) {
+            MessageProjetService mps = new MessageProjetService();
+
+            return View(mps.GetByProjet(id));
+        }
+
+        public ActionResult MessageTacheEquipe(int id) {
+            MessageTacheService mts = new MessageTacheService();
+
+            return View(mts.GetByTacheEquipeId(id));
+        }
+
+        /***********************************************************************************************************
+         *******************************************RéponseMessage**************************************************
          ***********************************************************************************************************/
 
         [HttpPost]

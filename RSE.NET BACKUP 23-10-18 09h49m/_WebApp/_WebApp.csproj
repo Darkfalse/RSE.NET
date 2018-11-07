@@ -255,6 +255,9 @@
     <Content Include="Views\Member\TacheEquipe.cshtml" />
     <Content Include="Views\Member\TacheEmployee.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Member\MessageEquipe.cshtml" />
+    <Content Include="Views\Member\MessageTacheEquipe.cshtml" />
+    <Content Include="Views\Member\MessageProjet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

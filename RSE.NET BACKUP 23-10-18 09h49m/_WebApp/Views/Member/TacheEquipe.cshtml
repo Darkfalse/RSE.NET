@@ -55,54 +55,27 @@
 <div class="list-group">
     <h4>Messages de la tâche</h4>
     <table class="table">
-        @{int? dern = null;}
-        @{int? ta = Model.te.Id;}
-
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.mt.Titre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.mt.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.mt.Contenu)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.mt.Auteur)
             </th>
             <th></th>
         </tr>
-
         @foreach (var item in Model.ListM)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Titre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Contenu)
+                    @Html.ActionLink(item.Titre.ToString(), "MessageTacheEquipe", new { id = item.Id })
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Auteur)
                 </td>
             </tr>
-            dern = item.Id;
         }
-
     </table>
-</div>
-<br class="clearboth" />
-<div>
-    <form action="~/Member/RepondreTacheEquipe" method="post">
-        <input type="hidden" name="idTa" id="idTa" value='@ta' />
-        <input type="hidden" name="idMsg" id="idMsg" value='@dern' />
-        <input class="btnEnvoyez" type="text" size="4000" name="msg" id="msg" />
-        <input class="btnEnvoyez" type="submit" name="Envoyer" value="Envoyez" />
-    </form>
 </div>
 
 <div class="list-group">

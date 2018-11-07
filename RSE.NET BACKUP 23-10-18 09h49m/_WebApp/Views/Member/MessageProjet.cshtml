@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Client.Models.MessageProjet>
+
+@{
+    ViewBag.Title = "MessageProjet";
+}
+
+<h2>MessageProjet</h2>
+
+<table class="table">
+    @{int? dern = null;}
+    @{int? pr = null;}
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Titre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contenu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Auteur)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contenu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Auteur)
+        </td>
+        @{ 
+            dern = item.Id;
+            pr = item.Id_Projet;
+        }
+    </tr>
+}
+
+</table>
+<br class="clearboth" />
+<div>
+    <form action="~/Member/RepondreProjet" method="post">
+        <input type="hidden" name="idPr" id="idPr" value='@pr' />
+        <input type="hidden" name="idMsg" id="idMsg" value='@dern' />
+        <textarea name="msg" id="msg" class="champtext" maxlength="4000" placeholder="Entrez votre messages ici !"></textarea>
+        @*<input class="champtext" type="text" size="4000" name="msg" id="msg" />*@
+        <input class="btnEnvoyez" type="submit" name="Envoyer" value="Envoyez" />
+    </form>
+</div>

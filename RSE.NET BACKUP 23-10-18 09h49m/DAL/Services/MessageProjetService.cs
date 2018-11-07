@@ -29,6 +29,14 @@ namespace DAL.Services {
             return connection.ExecuteReader(command, (dr) => dr.ToMessageProjet());
         }
 
+        public IEnumerable<MessageProjet> GetSujetByProjet(int id) {
+            Connection connection = new Connection(providerName, connString);
+            Command command = new Command("EXEC SP_SujetByProjet @id = @i;");
+            command.AddParameter("i", id);
+
+            return connection.ExecuteReader(command, (dr) => dr.ToMessageProjet());
+        }        
+
         public MessageProjet GetById(int id) {
             Connection connection = new Connection(providerName, connString);
             Command command = new Command("SELECT * FROM Message_Projet WHERE Id_Message_Projet = @id;");

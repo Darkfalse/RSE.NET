@@ -92,54 +92,29 @@
 <div class="list_message">
     <h4>Messages d'équipe</h4>
     <table class="table">
-        @{int? dern = null;}
-        @{int? eq = Model.eq.Id;}
-
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.msgeq.Titre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.msgeq.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.msgeq.Contenu)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.msgeq.Auteur)
             </th>
         </tr>
-
         @foreach (var item in Model.ListMEq) {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Titre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Contenu)
+                    @Html.ActionLink(item.Titre.ToString(), "MessageEquipe", new { id = item.Id})
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Auteur)
                 </td>
             </tr>
-            dern = item.Id;
         }
-
     </table>
-    </div>
-    <br class="clearboth" />
-    <div>
-        <form action="~/Member/RepondreEquipe" method="post">
-            <input type="hidden" name="idEq" id="idEq" value='@eq' />
-            <input type="hidden" name="idMsg" id="idMsg" value='@dern' />
-            <textarea name="msg" id="msg" class="champtext" maxlength="4000" placeholder="Entrez votre messages ici !"></textarea>
-            @*<input class="champtext" type="text" size="4000" name="msg" id="msg" />*@
-            <input class="btnEnvoyez" type="submit" name="Envoyer" value="Envoyez" />
-        </form>
-    </div>
+    <p>
+        @Html.ActionLink("Nouveau sujet", "CreateSujetEquipe")
+    </p>
+</div>
 
 <div class="list-group">
     <h4 class="menumilieu">Documents</h4>

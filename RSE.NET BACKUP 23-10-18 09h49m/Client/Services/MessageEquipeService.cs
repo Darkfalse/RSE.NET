@@ -26,6 +26,10 @@ namespace Client.Services {
             return service.GetByEquipe(id).Select(a => a.ToClient());
         }
 
+        public IEnumerable<MessageEquipe> GetSujetByEquipe(int id) {
+            return service.GetSujetByEquipe(id).Select(a => a.ToClient());
+        }
+
         public MessageEquipe GetById(int id) {
             return service.GetById(id).ToClient();
         }

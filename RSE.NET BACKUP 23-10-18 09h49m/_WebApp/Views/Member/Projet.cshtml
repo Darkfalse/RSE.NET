@@ -141,9 +141,6 @@
         <div class="list-group">
             <h4>Messages du projet</h4>
             <table class="table">
-                @{int? dern = null;}
-                @{int? pr = Model.p.Id;}
-
                 <tr>
                     <th>
                         @Html.DisplayNameFor(model => model.mp.Titre)
@@ -159,7 +156,6 @@
                     </th>
                     <th></th>
                 </tr>
-
                 @foreach (var item in Model.MessageProjets) {
                     <tr>
                         <td>
@@ -175,22 +171,13 @@
                             @Html.DisplayFor(modelItem => item.Auteur)
                         </td>
                     </tr>
-                    dern = item.Id;
                 }
-
             </table>
+            <p>
+                @Html.ActionLink("Nouveau sujet", "CreateSujetProjet")
+            </p>
         </div>
-        <br class="clearboth" />
-        <div>
-            <form action="~/Member/RepondreProjet" method="post">
-                <input type="hidden" name="idPr" id="idPr" value='@pr' />
-                <input type="hidden" name="idMsg" id="idMsg" value='@dern' />
-                <textarea name="msg" id="msg" class="champtext" maxlength="4000" placeholder="Entrez votre messages ici !"></textarea>
-                @*<input class="champtext" type="text" size="4000" name="msg" id="msg" />*@
-                <input class="btnEnvoyez" type="submit" name="Envoyer" value="Envoyez" />
-            </form>
-        </div>
-
+        
         <div class="list-group">
             <h4 class="menumilieu">Documents</h4>
             <table class="table">

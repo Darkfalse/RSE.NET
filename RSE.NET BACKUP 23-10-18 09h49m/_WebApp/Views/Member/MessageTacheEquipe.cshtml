@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Client.Models.MessageTache>
+
+@{
+    ViewBag.Title = "MessageTacheEquipe";
+}
+
+<h2>MessageTacheEquipe</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    @{int? dern = null;}
+    @{int? ta = null;}
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Titre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contenu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Auteur)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contenu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Auteur)
+        </td>
+        @{
+            dern = item.Id;
+            ta = item.Id_Tache_Equipe;
+        }
+    </tr>
+}
+
+</table>
+<br class="clearboth" />
+<div>
+    <form action="~/Member/RepondreTacheEquipe" method="post">
+        <input type="hidden" name="idTa" id="idTa" value='@ta' />
+        <input type="hidden" name="idMsg" id="idMsg" value='@dern' />
+        <input class="btnEnvoyez" type="text" size="4000" name="msg" id="msg" />
+        <input class="btnEnvoyez" type="submit" name="Envoyer" value="Envoyez" />
+    </form>
+</div>
