@@ -26,8 +26,8 @@ namespace Client.Services {
             return service.GetListByIdEmpl(id).Select(a => a.ToClient());
         }
 
-        public Projet GetByIdEmpl(int id) {
-            return service.GetByIdEmpl(id).ToClient();
+        public IEnumerable<Projet> GetByIdEmpl(int id) {
+            return service.GetByIdEmpl(id).Select(a => a.ToClient());
         }
 
         public Projet GetById(int id) {
