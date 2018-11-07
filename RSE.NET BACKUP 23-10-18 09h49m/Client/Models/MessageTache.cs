@@ -15,11 +15,14 @@ namespace Client.Models {
         public int? Id_Tache_Equipe { get; set; }
         public int? Id_Tache_Employee { get; set; }
 
+        //Donnée supplémentaire (db vue)
+        public string Auteur { get; set; }
+
         public MessageTache() {
 
         }
 
-        public MessageTache(string titre, DateTime date, string contenu, int? precedent, int idemp, int? idtaeq, int? idtaemp) {
+        public MessageTache(string titre, DateTime date, string contenu, int? precedent, int idemp, int? idtaeq, int? idtaemp, string aut) {
             Titre = titre;
             Date = date;
             Contenu = contenu;
@@ -27,9 +30,10 @@ namespace Client.Models {
             Id_Employee = idemp;
             Id_Tache_Equipe = idtaeq;
             Id_Tache_Employee = idtaemp;
+            Auteur = aut;
         }
 
-        public MessageTache(int? id, string titre, DateTime date, string contenu, int? precedent, int idemp, int? idtaeq, int? idtaemp) : this(titre, date, contenu, precedent, idemp, idtaeq, idtaemp) {
+        public MessageTache(int? id, string titre, DateTime date, string contenu, int? precedent, int idemp, int? idtaeq, int? idtaemp, string aut) : this(titre, date, contenu, precedent, idemp, idtaeq, idtaemp, aut) {
             Id = id;
         }
     }
