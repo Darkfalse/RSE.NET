@@ -13,7 +13,7 @@ namespace _WebApp.Models.ViewModels {
         public Document d { get; set; }
 
         public IEnumerable<Employee> ListE { get; set; }
-        public IDictionary<MessageEquipe,Employee> ListMEq { get; set; }
+        public IEnumerable<MessageEquipe> ListMEq { get; set; }
         public IEnumerable<Document> ListD { get; set; }
 
     }
