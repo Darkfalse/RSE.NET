@@ -61,20 +61,6 @@ namespace DAL.Services {
             return me;
         }
 
-        public bool Update(MessageEmployee me) {
-            Connection connection = new Connection(providerName, connString);
-            Command command = new Command("UPDATE Message_Employee SET Titre_Message = @tim, Date_Message = @dm, Texte_Message = @tm, Id_Message = @im, Id_Employee_Destinataire = @idd, Id_Employee = @ie WHERE Id_Message_Employee = @id;");
-            command.AddParameter("tim", me.Titre);
-            command.AddParameter("dm", me.Date);
-            command.AddParameter("tm", me.Contenu);
-            command.AddParameter("im", me.MessagePrecedent);
-            command.AddParameter("idd", me.Id_Destinataire);
-            command.AddParameter("ie", me.Id_Employee);
-            command.AddParameter("id", me.Id);
-
-            return connection.ExecuteNonQuery(command) == 1;
-        }
-
         public bool Delete(int id) {
             Connection connection = new Connection(providerName, connString);
             Command command = new Command("DELETE FROM Message_Employee WHERE Id_Message_Employee = @id;");

@@ -46,30 +46,37 @@ namespace _WebApp.Controllers
 
         public ActionResult Equipe()
         {
-            //TODO Try Catch
-            MemberEquipe me = new MemberEquipe();
+            int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
 
-            EquipeService eqs = new EquipeService();
-            Equipe eq = eqs.GetByEmployee((int)EmployeeSession.CurrentEmployee.Id);
+            try {
+                //TODO Try Catch
+                MemberEquipe me = new MemberEquipe();
 
-            if (eq != null) {
-                int? idEq = eq.Id;
+                EquipeService eqs = new EquipeService();
+                Equipe eq = eqs.GetByEmployee((int)EmployeeSession.CurrentEmployee.Id);
 
-                if (idEq != null && idEq != 0) {
-                    me.eq = eqs.GetById((int)idEq);
+                if (eq != null) {
+                    int? idEq = eq.Id;
 
-                    EmployeeService es = new EmployeeService();
-                    me.ListE = es.GetByEquipe((int)idEq);
+                    if (idEq != null && idEq != 0) {
+                        me.eq = eqs.GetById((int)idEq);
 
-                    MessageEquipeService mes = new MessageEquipeService();
-                    me.ListMEq = mes.GetByEquipe((int)idEq);
+                        EmployeeService es = new EmployeeService();
+                        me.ListE = es.GetByEquipe((int)idEq);
 
-                    DocumentService ds = new DocumentService();
-                    me.ListD = ds.GetByEquipe((int)idEq);
+                        MessageEquipeService mes = new MessageEquipeService();
+                        me.ListMEq = mes.GetByEquipe((int)idEq);
+
+                        DocumentService ds = new DocumentService();
+                        me.ListD = ds.GetByEquipe((int)idEq);
+                    }
                 }
-            }
 
-            return View(me);
+                return View(me);
+            }
+            catch (Exception e) when (e is ArgumentNullException || e is InvalidOperationException) {
+                return RedirectToAction("Index", "Error");
+            }
         }
 
         /***********************************************************************************************************
@@ -103,6 +110,10 @@ namespace _WebApp.Controllers
             int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
 
             try {
+                EmployeeService ems = new EmployeeService();
+                //Verifie si l'utilisateur courrant a accès au projet 'id'
+                Employee e = ems.GetByProjet(id).Where(r => r.Id == idMoi).Single();
+
                 MemberProjet mp = new MemberProjet();
 
                 ProjetService ps = new ProjetService();
@@ -118,8 +129,6 @@ namespace _WebApp.Controllers
 
                 if (id != 0) {
                     mp.p = ps.GetById(id);
-
-                    EmployeeService ems = new EmployeeService();
                     mp.chef = ems.GetManagerByProjet(id);
 
                     TacheEmployeeService tes = new TacheEmployeeService();
@@ -174,6 +183,7 @@ namespace _WebApp.Controllers
             
             try {
                 EmployeeService ems = new EmployeeService();
+                //Verifie si l'utilisateur courrant a accès a la tache equipe 'id'
                 Employee e = ems.GetByTacheEquipe(id).Where(r => r.Id == idMoi).Single();
 
                 MemberTacheEquipe mteq = new MemberTacheEquipe();
@@ -204,6 +214,7 @@ namespace _WebApp.Controllers
 
             try {
                 EmployeeService ems = new EmployeeService();
+                //Verifie si l'utilisateur courrant a accès a la tache employee 'id'
                 Employee e = ems.GetByTacheEmployee(id).Where(r => r.Id == idMoi).Single();
 
                 MemberTacheEmployee mte = new MemberTacheEmployee();

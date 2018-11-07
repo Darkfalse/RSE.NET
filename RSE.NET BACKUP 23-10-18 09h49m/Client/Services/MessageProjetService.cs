@@ -34,10 +34,6 @@ namespace Client.Services {
             return service.Insert(mp.ToDal()).ToClient();
         }
 
-        public bool Update(MessageProjet mp) {
-            return service.Update(mp.ToDal());
-        }
-
         public bool Delete(int id) {
             return service.Delete(id);
         }

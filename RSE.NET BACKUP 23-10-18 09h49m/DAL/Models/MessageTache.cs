@@ -14,5 +14,8 @@ namespace DAL.Models {
         public int Id_Employee { get; set; }
         public int? Id_Tache_Equipe { get; set; }
         public int? Id_Tache_Employee { get; set; }
+
+        //Donnée supplémentaire (db vue)
+        public string Auteur { get; set; }
     }
 }

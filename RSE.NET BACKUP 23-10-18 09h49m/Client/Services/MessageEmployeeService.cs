@@ -38,10 +38,6 @@ namespace Client.Services {
             return service.Insert(me.ToDal()).ToClient();
         }
 
-        public bool Update(MessageEmployee me) {
-            return service.Update(me.ToDal());
-        }
-
         public bool Delete(int id) {
             return service.Delete(id);
         }

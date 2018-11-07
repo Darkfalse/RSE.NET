@@ -71,21 +71,6 @@ namespace DAL.Services {
             return mt;
         }
 
-        public bool Update(MessageTache mt) {
-            Connection connection = new Connection(providerName, connString);
-            Command command = new Command("UPDATE Message_Tache SET Titre_Message = @tim, Date_Message = @dm, Texte_Message = @tm, Id_Message = @im, Id_Tache_Equipe = @ite, Id_Tache_Employee = @itemp, Id_Employee = @ie WHERE Id_Message_Tache = @id;");
-            command.AddParameter("tim", mt.Titre);
-            command.AddParameter("dm", mt.Date);
-            command.AddParameter("tm", mt.Contenu);
-            command.AddParameter("im", mt.MessagePrecedent);
-            command.AddParameter("ite", mt.Id_Tache_Equipe);
-            command.AddParameter("itemp", mt.Id_Tache_Employee);
-            command.AddParameter("ie", mt.Id_Employee);
-            command.AddParameter("id", mt.Id);
-
-            return connection.ExecuteNonQuery(command) == 1;
-        }
-
         public bool Delete(int id) {
             Connection connection = new Connection(providerName, connString);
             Command command = new Command("DELETE FROM Message_Tache WHERE Id_Message_Tache = @id;");

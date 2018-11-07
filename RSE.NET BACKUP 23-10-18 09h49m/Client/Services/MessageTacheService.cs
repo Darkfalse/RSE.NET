@@ -43,10 +43,6 @@ namespace Client.Services {
             return service.Insert(mt.ToDal()).ToClient();
         }
 
-        public bool Update(MessageTache mt) {
-            return service.Update(mt.ToDal());
-        }
-
         public bool Delete(int id) {
             return service.Delete(id);
         }
