@@ -64,20 +64,14 @@ namespace _WebApp.Controllers
 
                         EmployeeService es = new EmployeeService();
                         me.ListE = es.GetByEquipe((int)idEq);
+                        
+                        MessageEquipeService mes = new MessageEquipeService();
+                        me.ListMEq = mes.GetByEquipe((int)idEq);
 
-                    MessageEquipeService mes = new MessageEquipeService();
-                    IDictionary<MessageEquipe, Employee> mesemp = new Dictionary<MessageEquipe, Employee>();
-                    foreach (MessageEquipe item in mes.GetByEquipe((int)idEq))
-                    {
-                        mesemp.Add(item,es.GetById(item.Id_Employee));
+                        DocumentService ds = new DocumentService();
+                        me.ListD = ds.GetByEquipe((int)idEq);
                     }
-                    me.ListMEq = mesemp;
-                    //TODO OPTIMISATION CODE MESSAGE + AUTEUR
-                    DocumentService ds = new DocumentService();
-                    me.ListD = ds.GetByEquipe((int)idEq);
                 }
-            }
-
                 return View(me);
             }
             catch (Exception e) when (e is ArgumentNullException || e is InvalidOperationException) {
@@ -144,11 +138,7 @@ namespace _WebApp.Controllers
                     mp.TacheEquipes = teq.GetByProjet(id);
 
                     MessageProjetService mps = new MessageProjetService();
-                    IDictionary<MessageProjet, Employee> listDic = new Dictionary<MessageProjet, Employee>();
-                    foreach(MessageProjet msg in mps.GetByProjet(id)) {
-                        listDic.Add(msg, ems.GetById(msg.Id_Employee));
-                    }
-                    mp.MessageProjets = listDic;
+                    mp.MessageProjets = mps.GetByProjet(id);
 
                     DocumentService ds = new DocumentService();
                     mp.Documents = ds.GetByProjet(id);
@@ -198,12 +188,7 @@ namespace _WebApp.Controllers
                 mteq.te = teqs.GetById(id);
 
                 MessageTacheService mteqq = new MessageTacheService();
-
-                IDictionary<MessageTache, Employee> listDic = new Dictionary<MessageTache, Employee>();
-                foreach (MessageTache msg in mteqq.GetByTacheEquipeId(id)) {
-                    listDic.Add(msg, ems.GetById(msg.Id_Employee));
-                }
-                mteq.ListM = listDic;
+                mteq.ListM = mteqq.GetByTacheEquipeId(id);
 
                 DocumentService ds = new DocumentService();
                 mteq.ListD = ds.GetByTache(id);
@@ -229,12 +214,7 @@ namespace _WebApp.Controllers
                 mte.te = teqs.GetById(id);
 
                 MessageTacheService mtes = new MessageTacheService();
-
-                IDictionary<MessageTache, Employee> listDic = new Dictionary<MessageTache, Employee>();
-                foreach (MessageTache msg in mtes.GetByTacheEmployeeId(id)) {
-                    listDic.Add(msg, ems.GetById(msg.Id_Employee));
-                }
-                mte.ListM = listDic;
+                mte.ListM = mtes.GetByTacheEmployeeId(id);
 
                 DocumentService ds = new DocumentService();
                 mte.ListD = ds.GetByTache(id);
