@@ -7,7 +7,6 @@
 <h2>MessageEquipe</h2>
 
 <table class="table">
-    @{int? dern = null;}
     @{int? eq = null;}
     <tr>
         <th>
@@ -40,7 +39,6 @@
             @Html.DisplayFor(modelItem => item.Auteur)
         </td>
         @{
-            dern = item.Id;
             eq = item.Id_Equipe;
         }
     </tr>
@@ -51,7 +49,7 @@
 <div>
     <form action="~/Member/RepondreEquipe" method="post">
         <input type="hidden" name="idEq" id="idEq" value='@eq' />
-        <input type="hidden" name="idMsg" id="idMsg" value='@dern' />
+        <input type="hidden" name="idMsg" id="idMsg" value='@Model.First().Id;' />
         <textarea name="msg" id="msg" class="champtext" maxlength="4000" placeholder="Entrez votre messages ici !"></textarea>
         @*<input class="champtext" type="text" size="4000" name="msg" id="msg" />*@
         <input class="btnEnvoyez" type="submit" name="Envoyer" value="Envoyez" />

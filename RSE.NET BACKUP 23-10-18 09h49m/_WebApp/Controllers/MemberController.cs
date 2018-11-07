@@ -239,19 +239,19 @@ namespace _WebApp.Controllers
         public ActionResult MessageEquipe(int id) {
             MessageEquipeService mes = new MessageEquipeService();
 
-            return View(mes.GetByEquipe(id));
+            return View(mes.GetMessageBySujet(id));
         }
 
         public ActionResult MessageProjet(int id) {
             MessageProjetService mps = new MessageProjetService();
 
-            return View(mps.GetByProjet(id));
+            return View(mps.GetMessageBySujet(id));
         }
 
         public ActionResult MessageTacheEquipe(int id) {
             MessageTacheService mts = new MessageTacheService();
 
-            return View(mts.GetByTacheId(id));
+            return View(mts.GetMessageBySujet(id));
         }
 
         /***********************************************************************************************************

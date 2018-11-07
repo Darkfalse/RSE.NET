@@ -21,9 +21,9 @@ namespace DAL.Services {
             return connection.ExecuteReader(command, (dr) => dr.ToMessageEquipe());
         }
 
-        public IEnumerable<MessageEquipe> GetByEquipe(int id) {
+        public IEnumerable<MessageEquipe> GetMessageBySujet(int id) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("EXEC SP_MsgEquipeByEquipe @id = @i;");
+            Command command = new Command("EXEC SP_MessageBySujetEquipe @id = @i;");
             command.AddParameter("i", id);
 
             return connection.ExecuteReader(command, (dr) => dr.ToMessageEquipe());

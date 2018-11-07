@@ -7,7 +7,6 @@
 <h2>MessageTacheEquipe</h2>
 
 <table class="table">
-    @{int? dern = null;}
     @{int? ta = null;}
     <tr>
         <th>
@@ -40,7 +39,6 @@
             @Html.DisplayFor(modelItem => item.Auteur)
         </td>
         @{
-            dern = item.Id;
             ta = item.Id_Tache_Equipe;
         }
     </tr>
@@ -51,7 +49,7 @@
 <div>
     <form action="~/Member/RepondreTacheEquipe" method="post">
         <input type="hidden" name="idTa" id="idTa" value='@ta' />
-        <input type="hidden" name="idMsg" id="idMsg" value='@dern' />
+        <input type="hidden" name="idMsg" id="idMsg" value='@Model.First().Id;' />
         <input class="btnEnvoyez" type="text" size="4000" name="msg" id="msg" />
         <input class="btnEnvoyez" type="submit" name="Envoyer" value="Envoyez" />
     </form>

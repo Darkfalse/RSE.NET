@@ -22,9 +22,9 @@ namespace Client.Services {
             return service.GetAll().Select(a => a.ToClient());
         }
 
-        public IEnumerable<MessageTache> GetByTacheId(int id)
+        public IEnumerable<MessageTache> GetMessageBySujet(int id)
         {
-            return service.GetByTacheId(id).Select(a => a.ToClient());
+            return service.GetMessageBySujet(id).Select(a => a.ToClient());
         }
 
         public IEnumerable<MessageTache> GetSujetByTacheId(int id) {

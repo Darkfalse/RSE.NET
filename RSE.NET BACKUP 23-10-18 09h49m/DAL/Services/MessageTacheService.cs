@@ -21,10 +21,10 @@ namespace DAL.Services {
             return connection.ExecuteReader(command, (dr) => dr.ToMessageTache());
         }
 
-        public IEnumerable<MessageTache> GetByTacheId(int id)
+        public IEnumerable<MessageTache> GetMessageBySujet(int id)
         {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("EXEC SP_MsgTacheByTache @id = @i;");
+            Command command = new Command("EXEC SP_MessageBySujetTache @id = @i;");
             command.AddParameter("i", id);
 
             return  connection.ExecuteReader(command, (dr) => dr.ToMessageTache());
