@@ -19,15 +19,15 @@ namespace _WebApp.Controllers
         public ActionResult Index()
         {
             MemberIndex mi = new MemberIndex();
-            int IdEmp = (int) EmployeeSession.CurrentEmployee.Id;
+            int idEmp = (int) EmployeeSession.CurrentEmployee.Id;
 
             ProjetService ps = new ProjetService();
-            mi.ListP = ps.GetListByIdEmpl(IdEmp);
+            mi.ListP = ps.GetListByIdEmpl(idEmp);
 
             EmployeeService es = new EmployeeService();
-            mi.ListE = es.GetByEquipe(IdEmp);
+            mi.ListE = es.GetByEquipe(idEmp);
 
-            mi.ListEWDiscussion = es.GetWithDiscussion(IdEmp);
+            mi.ListEWDiscussion = es.GetWithDiscussion(idEmp);
 
             MessageEmployeeService mes = new MessageEmployeeService();
             mi.ListME = mes.GetAll();
@@ -54,7 +54,7 @@ namespace _WebApp.Controllers
                 MemberEquipe me = new MemberEquipe();
 
                 EquipeService eqs = new EquipeService();
-                Equipe eq = eqs.GetByEmployee((int)EmployeeSession.CurrentEmployee.Id);
+                Equipe eq = eqs.GetByEmployee(idMoi);
 
                 if (eq != null) {
                     int? idEq = eq.Id;
