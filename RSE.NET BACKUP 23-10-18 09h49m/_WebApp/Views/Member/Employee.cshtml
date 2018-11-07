@@ -63,35 +63,39 @@
 
         @foreach (var item in Model.ListeMessageEmployees)
         {
-
+            
             <tr>
+
                 <td class="clearboth">
-                    
-                    <div class="floatdepanL">
-                        @if (item.Id_Destinataire == emp)
-                        {
-                            <div class="rowlongueur1 floatdepanL">
-                               @Html.DisplayFor(modelItem => item.Contenu)
-                            </div>
-                       
+                    <div class="lien_div">
 
-                        }
-                        else
-                        {
-                            <div class="rowlongueur2 floatdepanR">
-                                @Html.DisplayFor(modelItem => item.Contenu)
-                            </div>
-                      
+                        <div class="floatdepanL">
+                            @if (item.Id_Destinataire == emp)
+                            {
+                                <div class="rowlongueur1">
+                                    @Html.DisplayFor(modelItem => item.Contenu)
+                                </div>
 
-                        }
+
+                            }
+                            else
+                            {
+                                <div class="rowlongueur2">
+                                    @Html.DisplayFor(modelItem => item.Contenu)
+                                </div>
+
+
+                            }
+                        </div>
+                        <div class="rowdate floatdepanR">
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </div>
+
                     </div>
-                    <div class="rowdate floatdepanR" >
-                        @Html.DisplayFor(modelItem => item.Date)
-                    </div>
-
-
                 </td>
+
             </tr>
+           
 
 
             dern = item.Id;

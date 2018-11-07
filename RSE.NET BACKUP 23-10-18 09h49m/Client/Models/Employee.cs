@@ -43,5 +43,11 @@ namespace Client.Models {
         public Employee(int? id, string nom, string prenom, string email, string pass, DateTime birthday, string regnat, int? adresse, DateTime hiredate, string tel, int? coord,bool valide) : this(nom, prenom, email, pass, birthday, regnat, adresse, hiredate, tel, coord, valide) {
             Id = id;
         }
+
+         public string Fullname()
+         {
+
+             return Nom +" "+ Prenom;
+         }
     }
 }
