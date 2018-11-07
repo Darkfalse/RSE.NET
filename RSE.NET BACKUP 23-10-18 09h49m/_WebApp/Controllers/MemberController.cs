@@ -110,25 +110,31 @@ namespace _WebApp.Controllers
             int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
 
             try {
-                EmployeeService ems = new EmployeeService();
-                //Verifie si l'utilisateur courrant a accès au projet 'id'
-                Employee e = ems.GetByProjet(id).Where(r => r.Id == idMoi).Single();
-
                 MemberProjet mp = new MemberProjet();
-
                 ProjetService ps = new ProjetService();
 
                 if (id == 0) {
-                    Projet p = ps.GetByIdEmpl(idMoi);
+                    //Récupere le premier projet de l'utilisateur
+                    Projet p = ps.GetByIdEmpl(idMoi).FirstOrDefault();
 
                     if (p != null && p.Id != null) {
-                        mp.p = ps.GetById((int)p.Id);
-                        id = (int)mp.p.Id;
+                        mp.p = p;
+                        id = (int)p.Id;
                     }
+                    else {
+                        //Aucun projet assigner
+                        return RedirectToAction("Index", "Member");
+                    }
+                }
+                else {
+                    mp.p = ps.GetById(id);
                 }
 
                 if (id != 0) {
-                    mp.p = ps.GetById(id);
+                    EmployeeService ems = new EmployeeService();
+                    //Verifie si l'utilisateur courrant a accès au projet 'id'
+                    Employee e = ems.GetByProjet(id).Where(r => r.Id == idMoi).Single();
+
                     mp.chef = ems.GetManagerByProjet(id);
 
                     TacheEmployeeService tes = new TacheEmployeeService();
@@ -142,7 +148,7 @@ namespace _WebApp.Controllers
 
                     DocumentService ds = new DocumentService();
                     mp.Documents = ds.GetByProjet(id);
-                }     
+                }
 
                 return View(mp);
             }

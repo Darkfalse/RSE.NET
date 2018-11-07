@@ -29,12 +29,12 @@ namespace DAL.Services {
             return connection.ExecuteReader(command, (dr) => dr.ToProjet());
         }
 
-        public Projet GetByIdEmpl(int id) {
+        public IEnumerable<Projet> GetByIdEmpl(int id) {
             Connection connection = new Connection(providerName, connString);
             Command command = new Command("EXEC SP_ProjetDEmployee @id = @i;");
             command.AddParameter("i", id);
 
-            return connection.ExecuteReader(command, (dr) => dr.ToProjet()).SingleOrDefault();
+            return connection.ExecuteReader(command, (dr) => dr.ToProjet());
         }
 
         public Projet GetById(int id) {
