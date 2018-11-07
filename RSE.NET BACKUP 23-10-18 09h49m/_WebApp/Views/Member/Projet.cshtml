@@ -159,7 +159,7 @@
                 @foreach (var item in Model.MessageProjets) {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Titre)
+                            @Html.ActionLink(item.Titre.ToString(), "MessageProjet", new { id = item.Id })
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Date)
