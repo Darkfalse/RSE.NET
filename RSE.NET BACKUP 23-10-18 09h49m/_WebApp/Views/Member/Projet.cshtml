@@ -185,7 +185,8 @@
             <form action="~/Member/RepondreProjet" method="post">
                 <input type="hidden" name="idPr" id="idPr" value='@pr' />
                 <input type="hidden" name="idMsg" id="idMsg" value='@dern' />
-                <input class="btnEnvoyez" type="text" size="4000" name="msg" id="msg" />
+                <textarea name="msg" id="msg" class="champtext" maxlength="4000" placeholder="Entrez votre messages ici !"></textarea>
+                @*<input class="champtext" type="text" size="4000" name="msg" id="msg" />*@
                 <input class="btnEnvoyez" type="submit" name="Envoyer" value="Envoyez" />
             </form>
         </div>
