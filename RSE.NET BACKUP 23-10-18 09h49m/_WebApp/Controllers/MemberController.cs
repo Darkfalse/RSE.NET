@@ -194,7 +194,7 @@ namespace _WebApp.Controllers
                 mteq.te = teqs.GetById(id);
 
                 MessageTacheService mteqq = new MessageTacheService();
-                mteq.ListM = mteqq.GetByTacheEquipeId(id);
+                mteq.ListM = mteqq.GetSujetByTacheId(id);
 
                 DocumentService ds = new DocumentService();
                 mteq.ListD = ds.GetByTache(id);
@@ -220,7 +220,7 @@ namespace _WebApp.Controllers
                 mte.te = teqs.GetById(id);
 
                 MessageTacheService mtes = new MessageTacheService();
-                mte.ListM = mtes.GetByTacheEmployeeId(id);
+                mte.ListM = mtes.GetSujetByTacheId(id);
 
                 DocumentService ds = new DocumentService();
                 mte.ListD = ds.GetByTache(id);
@@ -251,7 +251,7 @@ namespace _WebApp.Controllers
         public ActionResult MessageTacheEquipe(int id) {
             MessageTacheService mts = new MessageTacheService();
 
-            return View(mts.GetByTacheEquipeId(id));
+            return View(mts.GetByTacheId(id));
         }
 
         /***********************************************************************************************************
