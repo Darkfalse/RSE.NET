@@ -103,7 +103,7 @@
         @foreach (var item in Model.ListMEq) {
             <tr>
                 <td>
-                    @Html.ActionLink(item.Titre.ToString(), "MessageEquipe", new { id = item.Id})
+                    @Html.ActionLink(item.Titre.ToString(), "MessageEquipe", "Message", new { id = item.Id}, null)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Auteur)
@@ -112,7 +112,7 @@
         }
     </table>
     <p>
-        @Html.ActionLink("Nouveau sujet", "CreateSujetEquipe")
+        @Html.ActionLink("Nouveau sujet", "CreateSujetEquipe", "Message", new { id = Model.eq.Id}, null)
     </p>
 </div>
 

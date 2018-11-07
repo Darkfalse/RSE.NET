@@ -77,5 +77,9 @@ namespace _WebApp.Areas.Admin.Controllers
                 return RedirectToAction("Index", "Admin");
             return RedirectToAction("DeleteDep", "Admin", id);
         }
+
+        public ActionResult AffecterEmployeeDep(int id) {
+            return View();//TODO
+        }
     }
 }
