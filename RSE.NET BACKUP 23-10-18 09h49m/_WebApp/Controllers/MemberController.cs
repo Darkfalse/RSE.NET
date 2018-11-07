@@ -50,7 +50,7 @@ namespace _WebApp.Controllers
             int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
 
             try {
-                //TODO Try Catch
+               
                 MemberEquipe me = new MemberEquipe();
 
                 EquipeService eqs = new EquipeService();
