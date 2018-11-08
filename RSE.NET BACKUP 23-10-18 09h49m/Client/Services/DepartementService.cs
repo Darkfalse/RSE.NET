@@ -30,8 +30,8 @@ namespace Client.Services {
             return service.Insert(a.ToDal()).ToClient();
         }
 
-        public bool AffecteEmployee(int idEmp, int idDep) {
-            return service.AffecteEmployee(idEmp, idDep);
+        public bool AffecteEmployee(List<int> idsEmp, int idDep) {
+            return service.AffecteEmployee(idsEmp, idDep);
         }
 
         public bool Update(Departement a) {

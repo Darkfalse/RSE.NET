@@ -1,4 +1,5 @@
 ﻿@model _WebApp.Areas.Admin.Models.ViewModels.AdminDep
+@using Client.Models;
 
 @{
     ViewBag.Title = "DetailsDep";
@@ -36,7 +37,7 @@
                         @Html.DisplayNameFor(model => model.e.Email)
                     </th>
                 </tr>
-                @if (Model.ListEmpDep != null && Model.ListEmpDep.Any()) { 
+                @if (Model.ListEmpDep != null && Model.ListEmpDep.Any()) {
                     foreach (var item in Model.ListEmpDep) {
                         <tr>
                             <td>
@@ -55,42 +56,47 @@
             </table>
         </div>
 
-        <div class="list-group">
-            <h4>Employés du département</h4>
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.e.Nom)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.e.Birthday)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.e.Email)
-                    </th>
-                    <th>
-                        Affecter
-                    </th>
-                </tr>
-                @if (Model.ListOtherEmp != null && Model.ListOtherEmp.Any()) {
-                    foreach (var item in Model.ListOtherEmp) {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Nom) @Html.DisplayFor(modelItem => item.Prenom)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Birthday)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Email)
-                            </td>
-                            <td>
-                                <input type="checkbox" name="affecter" value="0" />
-                            </td>
-                        </tr>
+        <form action="~/Admin/Admin/AffecterEmployee" method="post">
+            <div class="list-group">
+                <h4>Employés du département</h4>
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.e.Nom)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.e.Birthday)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.e.Email)
+                        </th>
+                        <th>
+                            Affecter
+                        </th>
+                    </tr>
+                    @{List<Employee> le = new List<Employee>(); }
+                    @if (Model.ListOtherEmp != null && Model.ListOtherEmp.Any()) {
+                        foreach (var item in Model.ListOtherEmp) {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nom) @Html.DisplayFor(modelItem => item.Prenom)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Birthday)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    <input type="checkbox" name='@item.Id' value="0" id='@item.Id' />
+                                </td>
+                            </tr>
+                        }
                     }
-                }
-            </table>
-        </div>
+                </table>
+            </div>
+            <input type="hidden" name="idDep" value='@Model.dep.Id' />
+            <input type="submit" value="Affecter" />
+        </form>
 </div>
 </div>

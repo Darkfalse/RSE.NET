@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace _WebApp.Areas.Admin.Controllers
 {
@@ -85,18 +86,32 @@ namespace _WebApp.Areas.Admin.Controllers
 
             AdminDep ad = new AdminDep();
             ad.dep = ds.GetById(id);
-            ad.ListEmpDep = es.GetByDep(id);
-            ad.ListOtherEmp = es.GetOtherByDep(id);
+            ad.ListEmpDep = es.GetByDep(id).OrderBy(r => r.Nom);
+            ad.ListOtherEmp = es.GetOtherByDep(id).OrderBy(r => r.Nom);
 
             return View(ad);
         }
 
-        [HttpPost]
-        public ActionResult DetailsDep(int idEmp, int idDep) {
-            DepartementService ds = new DepartementService();
-            ds.AffecteEmployee(idEmp, idDep);
+        public ActionResult AffecterEmployee(FormCollection listForm, int idDep) {
+            listForm.Remove("idDep");
+            List<int> listId = new List<int>();
 
-            return View();
+            foreach (string item in listForm) {
+                listId.Add(int.Parse(item));
+            }
+
+            DepartementService ds = new DepartementService();
+            ds.AffecteEmployee(listId, idDep);
+
+            return RedirectToAction("DetailsDep", "Admin", new { id = idDep });
         }
+
+        //[HttpPost]
+        //public ActionResult DetailsDep(int idEmp, int idDep) {
+        //    DepartementService ds = new DepartementService();
+        //    ds.AffecteEmployee(idEmp, idDep);
+
+        //    return View();
+        //}
     }
 }

@@ -41,13 +41,21 @@ namespace DAL.Services {
             return d;
         }
 
-        public bool AffecteEmployee(int idEmp, int idDep) {
+        public bool AffecteEmployee(List<int> idsEmp, int idDep) {
             Connection connection = new Connection(providerName, connString);
-            Command command = new Command("EXEC SP_AffecteEmployeeDep @idemp = @ie, @iddep = @id;");
-            command.AddParameter("ie", idEmp);
-            command.AddParameter("id", idDep);
+            try { 
+                foreach (int id in idsEmp) {
+                    Command command = new Command("EXEC SP_AffecteEmployeeDep @idemp = @ie, @iddep = @id;");
+                    command.AddParameter("ie", id);
+                    command.AddParameter("id", idDep);
 
-            return connection.ExecuteNonQuery(command) == 1;
+                    connection.ExecuteNonQuery(command);
+                }
+                return true;
+            }
+            catch (Exception) {
+                return false;
+            }
         }
 
         public bool Update(Departement d) {
