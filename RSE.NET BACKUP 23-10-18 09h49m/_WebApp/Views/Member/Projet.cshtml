@@ -159,7 +159,7 @@
                 @foreach (var item in Model.MessageProjets) {
                     <tr>
                         <td>
-                            @Html.ActionLink(item.Titre.ToString(), "MessageProjet", new { id = item.Id })
+                            @Html.ActionLink(item.Titre.ToString(), "MessageProjet", "Message", new { id = item.Id }, null)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Date)
@@ -174,7 +174,7 @@
                 }
             </table>
             <p>
-                @Html.ActionLink("Nouveau sujet", "CreateSujetProjet")
+                @Html.ActionLink("Nouveau sujet", "CreateSujetProjet", "Message", new { id = Model.p.Id}, null)
             </p>
         </div>
         

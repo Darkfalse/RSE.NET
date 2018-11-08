@@ -48,35 +48,37 @@ namespace _WebApp.Controllers
         public ActionResult Equipe()
         {
             int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
+                           
+            MemberEquipe me = new MemberEquipe();
 
-            try {
-               
-                MemberEquipe me = new MemberEquipe();
+            EquipeService eqs = new EquipeService();
+            Equipe eq = eqs.GetByEmployee(idMoi);
 
-                EquipeService eqs = new EquipeService();
-                Equipe eq = eqs.GetByEmployee(idMoi);
+            if (eq != null) {
+                int? idEq = eq.Id;
 
-                if (eq != null) {
-                    int? idEq = eq.Id;
+                if (idEq != null && idEq != 0) {
+                    /*EmployeeService ems = new EmployeeService();
+                    //Verifie si l'utilisateur courrant a accès à l'équipe 'idEq'
+                    Employee e = ems.GetByEquipe((int)idEq).Where(r => r.Id == idMoi).SingleOrDefault();
 
-                    if (idEq != null && idEq != 0) {
+                    if (e != null) {*/
                         me.eq = eqs.GetById((int)idEq);
 
                         EmployeeService es = new EmployeeService();
                         me.ListE = es.GetByEquipe((int)idEq);
-                        
+
                         MessageEquipeService mes = new MessageEquipeService();
                         me.ListMEq = mes.GetSujetByEquipe((int)idEq);
 
                         DocumentService ds = new DocumentService();
                         me.ListD = ds.GetByEquipe((int)idEq);
-                    }
+
+                        return View(me);
+                    //}
                 }
-                return View(me);
             }
-            catch (Exception e) when (e is ArgumentNullException || e is InvalidOperationException) {
-                return RedirectToAction("Index", "Error");
-            }
+            return RedirectToAction("Index", "Error");
         }
 
         /***********************************************************************************************************
@@ -108,33 +110,33 @@ namespace _WebApp.Controllers
         public ActionResult Projet(int id = 0)
         {
             int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
+            
+            MemberProjet mp = new MemberProjet();
+            ProjetService ps = new ProjetService();
 
-            try {
-                MemberProjet mp = new MemberProjet();
-                ProjetService ps = new ProjetService();
+            if (id == 0) {
+                //Récupere le premier projet de l'utilisateur
+                Projet p = ps.GetByIdEmpl(idMoi).FirstOrDefault();
 
-                if (id == 0) {
-                    //Récupere le premier projet de l'utilisateur
-                    Projet p = ps.GetByIdEmpl(idMoi).FirstOrDefault();
-
-                    if (p != null && p.Id != null) {
-                        mp.p = p;
-                        id = (int)p.Id;
-                    }
-                    else {
-                        //Aucun projet assigner
-                        return RedirectToAction("Index", "Member");
-                    }
+                if (p != null && p.Id != null) {
+                    mp.p = p;
+                    id = (int)p.Id;
                 }
                 else {
-                    mp.p = ps.GetById(id);
+                    //Aucun projet assigner
+                    return RedirectToAction("Index", "Member");
                 }
+            }
+            else {
+                mp.p = ps.GetById(id);
+            }
 
-                if (id != 0) {
-                    EmployeeService ems = new EmployeeService();
-                    //Verifie si l'utilisateur courrant a accès au projet 'id'
-                    Employee e = ems.GetByProjet(id).Where(r => r.Id == idMoi).Single();
+            if (id != 0) {
+                EmployeeService ems = new EmployeeService();
+                //Verifie si l'utilisateur courrant a accès au projet 'id'
+                Employee e = ems.GetByProjet(id).Where(r => r.Id == idMoi).SingleOrDefault();
 
+                if (e != null) {
                     mp.chef = ems.GetManagerByProjet(id);
 
                     TacheEmployeeService tes = new TacheEmployeeService();
@@ -148,13 +150,11 @@ namespace _WebApp.Controllers
 
                     DocumentService ds = new DocumentService();
                     mp.Documents = ds.GetByProjet(id);
-                }
 
-                return View(mp);
+                    return View(mp);
+                }
             }
-            catch (Exception e) when (e is ArgumentNullException || e is InvalidOperationException) {
-                return RedirectToAction("Index", "Error");
-            }
+            return RedirectToAction("Index", "Error");
         }
 
         //public ActionResult CreateProjet()
@@ -183,11 +183,11 @@ namespace _WebApp.Controllers
         public ActionResult TacheEquipe(int id) {
             int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
             
-            try {
-                EmployeeService ems = new EmployeeService();
-                //Verifie si l'utilisateur courrant a accès a la tache equipe 'id'
-                Employee e = ems.GetByTacheEquipe(id).Where(r => r.Id == idMoi).Single();
+            EmployeeService ems = new EmployeeService();
+            //Verifie si l'utilisateur courrant a accès a la tache equipe 'id'
+            Employee e = ems.GetByTacheEquipe(id).Where(r => r.Id == idMoi).SingleOrDefault();
 
+            if (e != null) {
                 MemberTacheEquipe mteq = new MemberTacheEquipe();
 
                 TacheEquipeService teqs = new TacheEquipeService();
@@ -201,19 +201,16 @@ namespace _WebApp.Controllers
 
                 return View(mteq);
             }
-            catch (Exception e) when (e is ArgumentNullException || e is InvalidOperationException){
-                return RedirectToAction("Index", "Error");
-            }
-            
+            return RedirectToAction("Index", "Error");
         }
         public ActionResult TacheEmployee(int id) {
             int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
+            
+            EmployeeService ems = new EmployeeService();
+            //Verifie si l'utilisateur courrant a accès a la tache employee 'id'
+            Employee e = ems.GetByTacheEmployee(id).Where(r => r.Id == idMoi).SingleOrDefault();
 
-            try {
-                EmployeeService ems = new EmployeeService();
-                //Verifie si l'utilisateur courrant a accès a la tache employee 'id'
-                Employee e = ems.GetByTacheEmployee(id).Where(r => r.Id == idMoi).Single();
-
+            if (e != null) {
                 MemberTacheEmployee mte = new MemberTacheEmployee();
 
                 TacheEmployeeService teqs = new TacheEmployeeService();
@@ -227,105 +224,7 @@ namespace _WebApp.Controllers
 
                 return View(mte);
             }
-            catch (Exception e) when(e is ArgumentNullException || e is InvalidOperationException) {
-                return RedirectToAction("Index", "Error");
-            }
-        }
-
-        /***********************************************************************************************************
-         ***********************************************Message*****************************************************
-         ***********************************************************************************************************/
-
-        public ActionResult MessageEquipe(int id) {
-            MessageEquipeService mes = new MessageEquipeService();
-
-            return View(mes.GetMessageBySujet(id));
-        }
-
-        public ActionResult MessageProjet(int id) {
-            MessageProjetService mps = new MessageProjetService();
-
-            return View(mps.GetMessageBySujet(id));
-        }
-
-        public ActionResult MessageTacheEquipe(int id) {
-            MessageTacheService mts = new MessageTacheService();
-
-            return View(mts.GetMessageBySujet(id));
-        }
-
-        /***********************************************************************************************************
-         *******************************************RéponseMessage**************************************************
-         ***********************************************************************************************************/
-
-        [HttpPost]
-        public ActionResult RepondreEmployee(int idDest, int? idMsg, string msg) {
-            int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
-
-            if (!string.IsNullOrWhiteSpace(msg) && idDest != 0) {
-                MessageEmployee me = new MessageEmployee { Titre = idMoi + "" + idDest, Contenu = msg, Date = DateTime.Now, Id_Employee = idMoi, Id_Destinataire = idDest, MessagePrecedent = idMsg };
-
-                MessageEmployeeService mes = new MessageEmployeeService();
-                mes.Insert(me);
-            }
-
-            return RedirectToAction("Employee", "Member", new { id = idDest});
-        }
-
-        [HttpPost]
-        public ActionResult RepondreEquipe(int idEq, int? idMsg, string msg) {
-            int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
-
-            if (!string.IsNullOrWhiteSpace(msg) && idEq != 0) {
-                MessageEquipe me = new MessageEquipe { Titre = idMoi + "" + idEq, Contenu = msg, Date = DateTime.Now, Id_Employee = idMoi, Id_Equipe = idEq, MessagePrecedent = idMsg };
-
-                MessageEquipeService mes = new MessageEquipeService();
-                mes.Insert(me);
-            }
-
-            return RedirectToAction("Equipe", "Member", new { id = idEq });
-        }
-
-        [HttpPost]
-        public ActionResult RepondreProjet(int idPr, int? idMsg, string msg) {
-            int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
-
-            if (!string.IsNullOrWhiteSpace(msg) && idPr != 0) {
-                MessageProjet mp = new MessageProjet { Titre = idMoi + "" + idPr, Contenu = msg, Date = DateTime.Now, Id_Employee = idMoi, Id_Projet = idPr, MessagePrecedent = idMsg };
-
-                MessageProjetService mps = new MessageProjetService();
-                mps.Insert(mp);
-            }
-
-            return RedirectToAction("Projet", "Member", new { id = idPr });
-        }
-
-        [HttpPost]
-        public ActionResult RepondreTacheEmployee(int idTa, int? idMsg, string msg) {
-            int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
-
-            if (!string.IsNullOrWhiteSpace(msg) && idTa != 0) {
-                MessageTache mt = new MessageTache { Titre = idMoi + "" + idTa, Contenu = msg, Date = DateTime.Now, Id_Employee = idMoi, Id_Tache_Employee = idTa, Id_Tache_Equipe = null, MessagePrecedent = idMsg };
-
-                MessageTacheService mps = new MessageTacheService();
-                mps.Insert(mt);
-            }
-
-            return RedirectToAction("TacheEmployee", "Member", new { id = idTa });
-        }
-
-        [HttpPost]
-        public ActionResult RepondreTacheEquipe(int idTa, int? idMsg, string msg) {
-            int idMoi = (int)EmployeeSession.CurrentEmployee.Id;
-
-            if (!string.IsNullOrWhiteSpace(msg) && idTa != 0) {
-                MessageTache mt = new MessageTache { Titre = idMoi + "" + idTa, Contenu = msg, Date = DateTime.Now, Id_Employee = idMoi, Id_Tache_Employee = null, Id_Tache_Equipe = idTa, MessagePrecedent = idMsg };
-
-                MessageTacheService mps = new MessageTacheService();
-                mps.Insert(mt);
-            }
-
-            return RedirectToAction("TacheEquipe", "Member", new { id = idTa });
+            return RedirectToAction("Index", "Error");
         }
     }
 }

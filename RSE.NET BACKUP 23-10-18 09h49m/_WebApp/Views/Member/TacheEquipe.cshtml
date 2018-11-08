@@ -68,7 +68,7 @@
         {
             <tr>
                 <td>
-                    @Html.ActionLink(item.Titre.ToString(), "MessageTacheEquipe", new { id = item.Id })
+                    @Html.ActionLink(item.Titre.ToString(), "MessageTacheEquipe", "Message", new { id = item.Id }, null)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Auteur)
@@ -77,7 +77,7 @@
         }
     </table>
     <p>
-        @Html.ActionLink("Nouveau sujet", "CreateSujetTacheEquipe")
+        @Html.ActionLink("Nouveau sujet", "CreateSujetTacheEquipe", "Message", new { id = Model.te.Id}, null)
     </p>
 </div>
 

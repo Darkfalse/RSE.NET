@@ -17,9 +17,20 @@ namespace _WebApp.Areas.Admin.Controllers
         {
             return RedirectToAction("Login", "Auth");
         }
-
-        [AnonymousRequired]
+        
         public ActionResult Login() {
+
+            if (EmployeeSession.CurrentEmployee != null && EmployeeSession.CurrentEmployee.Id != null) {
+                AdministrateurService ads = new AdministrateurService();
+                Administrateur a = ads.GetByIdEmployee((int)EmployeeSession.CurrentEmployee.Id);
+
+                if (a != null) {
+                    AdminSession.CurrentEmployee = EmployeeSession.CurrentEmployee;
+                    AdminSession.CurrentAdmin = a;
+                    return RedirectToAction("Index", "Admin", new { area = "Admin" });
+                }
+            }
+
             return View();
         }
 
@@ -51,7 +62,7 @@ namespace _WebApp.Areas.Admin.Controllers
         [AdminRequired]
         public ActionResult Logout() {
             Session.Abandon();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Auth");
         }
     }
 }
