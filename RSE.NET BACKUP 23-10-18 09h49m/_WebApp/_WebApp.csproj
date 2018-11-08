@@ -146,6 +146,7 @@
     <Compile Include="Areas\Admin\Infrastructure\AdminRequiredAttribute.cs" />
     <Compile Include="Areas\Admin\Infrastructure\AdminSession.cs" />
     <Compile Include="Areas\Admin\Models\Formulaires\CreateDepForm.cs" />
+    <Compile Include="Areas\Admin\Models\Formulaires\CreateProjetForm.cs" />
     <Compile Include="Areas\Admin\Models\Formulaires\LoginForms.cs" />
     <Compile Include="Areas\Admin\Models\Formulaires\EditDepForm.cs" />
     <Compile Include="Areas\Admin\Models\ViewModels\AdminDep.cs" />
@@ -208,6 +209,8 @@
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\EditDep.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\DetailsDep.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Projet.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\CreateProjet.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

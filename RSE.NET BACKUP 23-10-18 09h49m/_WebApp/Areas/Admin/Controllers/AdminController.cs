@@ -23,6 +23,10 @@ namespace _WebApp.Areas.Admin.Controllers
             return View(ds.GetAll());
         }
 
+        /***********************************************************************************************************
+         *********************************************Departement***************************************************
+         ***********************************************************************************************************/
+
         public ActionResult CreateDep() {
             return View();
         }
@@ -113,5 +117,31 @@ namespace _WebApp.Areas.Admin.Controllers
 
         //    return View();
         //}
+
+        /***********************************************************************************************************
+         ***********************************************Projet******************************************************
+         ***********************************************************************************************************/
+
+        public ActionResult Projet() {
+            ProjetService ps = new ProjetService();
+
+            return View(ps.GetAll());
+        }
+
+        public ActionResult CreateProjet() {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateProjet(CreateProjetForm form) {
+            if (ModelState.IsValid) {
+                ProjetService ps = new ProjetService();
+                Projet p = new Projet(form.Nom, form.Description, form.DateDebut, form.DateFin, AdminSession.CurrentAdmin.NumeroAdmin);
+                ps.Insert(p);
+
+                return RedirectToAction("Index", "Admin");
+            }
+            return View(form);
+        }
     }
 }

@@ -22,8 +22,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Accueil", "Index", "Admin", new { area = "Admin" }, new { @class = "navbar-brand" })</li>
-                    <li>@Html.ActionLink("Projet", "Projet", "Member", new { area = "Admin" }, new { @class = "navbar-brand" })</li>
-                    <li>@Html.ActionLink("Equipe", "Equipe", "Member", new { area = "Admin" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("Projet", "Projet", "Admin", new { area = "Admin" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("Equipe", "Equipe", "Admin", new { area = "Admin" }, new { @class = "navbar-brand" })</li>
                     @if (AdminSession.CurrentAdmin != null && (AdminSession.CurrentAdmin.Id != null || AdminSession.CurrentAdmin.Id != 0)) {
                         <li class="text-right">@Html.ActionLink("Logout", "Logout", "Auth", new { area = "Admin" }, null)</li>
                     }

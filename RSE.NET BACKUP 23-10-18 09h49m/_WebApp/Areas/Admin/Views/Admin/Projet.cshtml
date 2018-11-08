@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Client.Models.Projet>
+
+@{
+    ViewBag.Title = "Projet";
+}
+
+<h2>Projets</h2>
+
+<p>
+    @Html.ActionLink("Nouveau projet", "CreateProjet")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Debut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Admin)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(Html.DisplayFor(modelItem => item.Nom).ToString(), "DetailsProjet", new { id = item.Id })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Debut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Admin)
+        </td>
+        <td>
+            @Html.ActionLink("Modifier", "EditProjet", new { id=item.Id }) |
+            @Html.ActionLink("Supprimer", "DeleteProjet", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
