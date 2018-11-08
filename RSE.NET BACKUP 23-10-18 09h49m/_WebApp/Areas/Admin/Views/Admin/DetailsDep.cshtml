@@ -1,0 +1,96 @@
+﻿@model _WebApp.Areas.Admin.Models.ViewModels.AdminDep
+
+@{
+    ViewBag.Title = "DetailsDep";
+}
+
+<div class="detproj">
+    <h2>DetailsDep</h2>
+    <div>
+        <dl class="dl-horizontal">-
+            <dt>
+                @Html.DisplayNameFor(model => model.dep.Nom)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.dep.Nom)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.dep.Description)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.dep.Description)
+            </dd>
+        </dl>
+
+        <div class="list-group">
+            <h4>Employés du département</h4>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.e.Nom)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.e.Birthday)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.e.Email)
+                    </th>
+                </tr>
+                @if (Model.ListEmpDep != null && Model.ListEmpDep.Any()) { 
+                    foreach (var item in Model.ListEmpDep) {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nom) @Html.DisplayFor(modelItem => item.Prenom)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Birthday)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                        </tr>
+                    }
+                }
+
+            </table>
+        </div>
+
+        <div class="list-group">
+            <h4>Employés du département</h4>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.e.Nom)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.e.Birthday)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.e.Email)
+                    </th>
+                    <th>
+                        Affecter
+                    </th>
+                </tr>
+                @if (Model.ListOtherEmp != null && Model.ListOtherEmp.Any()) {
+                    foreach (var item in Model.ListOtherEmp) {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nom) @Html.DisplayFor(modelItem => item.Prenom)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Birthday)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                <input type="checkbox" name="affecter" value="0" />
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+</div>
+</div>

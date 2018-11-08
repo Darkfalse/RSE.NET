@@ -1,5 +1,6 @@
 ﻿using _WebApp.Areas.Admin.Infrastructure;
 using _WebApp.Areas.Admin.Models.Formulaires;
+using _WebApp.Areas.Admin.Models.ViewModels;
 using Client.Models;
 using Client.Services;
 using System;
@@ -78,8 +79,24 @@ namespace _WebApp.Areas.Admin.Controllers
             return RedirectToAction("DeleteDep", "Admin", id);
         }
 
-        public ActionResult AffecterEmployeeDep(int id) {
-            return View();//TODO
+        public ActionResult DetailsDep(int id) {
+            DepartementService ds = new DepartementService();
+            EmployeeService es = new EmployeeService();
+
+            AdminDep ad = new AdminDep();
+            ad.dep = ds.GetById(id);
+            ad.ListEmpDep = es.GetByDep(id);
+            ad.ListOtherEmp = es.GetOtherByDep(id);
+
+            return View(ad);
+        }
+
+        [HttpPost]
+        public ActionResult DetailsDep(int idEmp, int idDep) {
+            DepartementService ds = new DepartementService();
+            ds.AffecteEmployee(idEmp, idDep);
+
+            return View();
         }
     }
 }

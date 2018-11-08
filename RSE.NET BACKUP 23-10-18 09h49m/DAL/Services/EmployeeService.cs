@@ -22,6 +22,22 @@ namespace DAL.Services {
             return connection.ExecuteReader(command, (dr) => dr.ToEmployee());
         }
 
+        public IEnumerable<Employee> GetByDep(int id) {
+            Connection connection = new Connection(providerName, connString);
+            Command command = new Command("EXEC SP_EmployeeByDep @id = @i;");
+            command.AddParameter("i", id);
+
+            return connection.ExecuteReader(command, (dr) => dr.ToEmployee());
+        }
+
+        public IEnumerable<Employee> GetOtherByDep(int id) {
+            Connection connection = new Connection(providerName, connString);
+            Command command = new Command("EXEC SP_OtherEmployeeByDep @id = @i;");
+            command.AddParameter("i", id);
+
+            return connection.ExecuteReader(command, (dr) => dr.ToEmployee());
+        }
+
         public IEnumerable<Employee> GetByProjet(int id) {
             Connection connection = new Connection(providerName, connString);
             Command command = new Command("EXEC SP_EmployeeByProjet @id = @i;");

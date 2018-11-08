@@ -41,6 +41,15 @@ namespace DAL.Services {
             return d;
         }
 
+        public bool AffecteEmployee(int idEmp, int idDep) {
+            Connection connection = new Connection(providerName, connString);
+            Command command = new Command("EXEC SP_AffecteEmployeeDep @idemp = @ie, @iddep = @id;");
+            command.AddParameter("ie", idEmp);
+            command.AddParameter("id", idDep);
+
+            return connection.ExecuteNonQuery(command) == 1;
+        }
+
         public bool Update(Departement d) {
             Connection connection = new Connection(providerName, connString);
             Command command = new Command("UPDATE Departement SET Nom_Departement = @nd, Description = @d, Id_Admin = @ia WHERE Id_Departement = @id;");
