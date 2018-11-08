@@ -1,4 +1,5 @@
-﻿using _WebApp.Infrastructure;
+﻿using _WebApp.Areas.Admin.Infrastructure;
+using _WebApp.Infrastructure;
 using _WebApp.Models.Formulaires;
 using Client.Models;
 using Client.Services;
@@ -72,6 +73,14 @@ namespace _WebApp.Controllers
                 if (e != null)
                 {
                     EmployeeSession.CurrentEmployee = e;
+                    AdministrateurService ads = new AdministrateurService();
+                    Administrateur a = ads.GetByIdEmployee((int)EmployeeSession.CurrentEmployee.Id);
+
+                    if (a != null) {
+                        AdminSession.CurrentEmployee = EmployeeSession.CurrentEmployee;
+                        AdminSession.CurrentAdmin = a;
+                        return RedirectToAction("Index", "Admin", new { area = "Admin" });
+                    }
                     return RedirectToAction("Index", "Member");
                 }
                 else {
