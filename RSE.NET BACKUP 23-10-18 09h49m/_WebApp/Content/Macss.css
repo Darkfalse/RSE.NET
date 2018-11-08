@@ -6,8 +6,7 @@
     font-size: large;
     font-weight: lighter;
     width:950px;
-    margin-left:120px;
-    margin-right:120px;
+    margin: auto;0
 }
 .menumilieu{
     margin:auto;
@@ -137,4 +136,42 @@ dd{
     height:115px;
     max-width:650pt;
     min-width:650pt;
+}
+.sgnal_border {
+    border-color: #fb0808;
+    border-style: solid;
+    border-width: 5px;
+}
+.divmessageproj {
+    width :950px;
+    margin:auto;
+
+}
+
+.Bus1Td {
+    float: left;
+    height: 225px;
+    width: 22%;
+    border-color: #007acc;
+    border-style: solid;
+    border-width: 5px;
+}
+
+
+.bus2Td {
+    float: right;
+    border-color: #89b147;
+    border-style: solid;
+    border-width: 3px;
+    height: 30px;
+    width: 77%;
+}
+.bus3Td {
+    float: right;
+    border-color: #2937a5;
+    border-style: groove;
+    border-width: 3px;
+    height: 195px;
+    width: 77%;
+
 }
