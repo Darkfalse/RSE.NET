@@ -6,24 +6,27 @@
 
 <h2>MessageProjet</h2>
 
-@* TODO FOREACH *@
-
 @{ int? pr = null;}
-<div class="divmessageproj">
-    
-        @foreach (var item in Model)
-        {<div>
-            <div class="Bus1Td">@Html.DisplayFor(modelItem => item.Auteur)</div>
-            <div class="bus2Td">@Html.DisplayFor(modelItem => item.Date)</div>
-            <div class="bus3Td">@Html.DisplayFor(modelItem => item.Contenu)</div>
-             <br class="clearboth"/>
-         </div>
-        }
+<div class="divmessage">
+
+    @foreach (var item in Model)
+    {<div class="divpostunique">
+            <div class="Auteur">@Html.DisplayFor(modelItem => item.Auteur)</div>
+            <div class="Date">@Html.DisplayFor(modelItem => item.Date)</div>
+            <div class="Contenu">@Html.DisplayFor(modelItem => item.Contenu)</div>
+            <br class="clearboth" />
+        </div>
+        
+    }
+    @if (Model != null && Model.Any())
+    {
+        pr = Model.FirstOrDefault().Id_Projet; 
+    }
 
 </div>
 
 <br class="clearboth" />
-<div>
+<div class="divmessage">
     <form action="~/Member/RepondreProjet" method="post">
         <input type="hidden" name="idPr" id="idPr" value='@pr' />
         <input type="hidden" name="idMsg" id="idMsg" value='@Model.First().Id;' />

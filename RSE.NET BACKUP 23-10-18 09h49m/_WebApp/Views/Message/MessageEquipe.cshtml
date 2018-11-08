@@ -5,42 +5,26 @@
 }
 
 <h2>MessageEquipe</h2>
-
-<table class="table">
     @{int? eq = null;}
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Contenu)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Auteur)
-        </th>
-        <th></th>
-    </tr>
+<div class="divmessage">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Contenu)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Auteur)
-        </td>
-        @{
-            eq = item.Id_Equipe;
-        }
-    </tr>
-}
+    @foreach (var item in Model)
+    {<div class="divpostunique">
+         <div class="Auteur">@Html.DisplayFor(modelItem => item.Auteur)</div>
+         <div class="Date">@Html.DisplayFor(modelItem => item.Date)</div>
+         <div class="Contenu">@Html.DisplayFor(modelItem => item.Contenu)</div>
+         <br class="clearboth" />
+     </div>
+        
+    }
+    @if (Model != null && Model.Any())
+    {
+        eq = Model.FirstOrDefault().Id_Equipe; 
+    }
 
-</table>
-<br class="clearboth" />
-<div>
+</div>
+
+<div class="divmessage">
     <form action="~/Member/RepondreEquipe" method="post">
         <input type="hidden" name="idEq" id="idEq" value='@eq' />
         <input type="hidden" name="idMsg" id="idMsg" value='@Model.First().Id;' />
