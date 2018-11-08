@@ -5,8 +5,14 @@
     /*font-family: Montserrat;*/
     font-size: large;
     font-weight: lighter;
-    width:950px;
-    margin: auto;0
+}
+.base-page {
+
+    margin: auto;
+    width: 90%;
+    
+    /*margin-left: 300px;
+    margin-right: 300px;*/
 }
 .menumilieu{
     margin:auto;
@@ -124,7 +130,7 @@ dd{
     width :800px
 }
 .champtext {
-    font-family: 'Old English Text MT';
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: x-large;
     background-color: #cbca87;
     color:#3d3c04;
@@ -142,23 +148,33 @@ dd{
     border-style: solid;
     border-width: 5px;
 }
-.divmessageproj {
-    width :950px;
-    margin:auto;
+.divmessage {
+    margin: auto;
+    width: 75%;
+    max-width:1250px;
+   
 
 }
+.divpostunique {
 
-.Bus1Td {
+    margin-top:28px;
+    border-style: outset;
+    border-width:2px;
+    border-color: #a6aec2;
+    padding: 22px;
+
+}
+.Auteur {
     float: left;
     height: 225px;
     width: 22%;
     border-color: #007acc;
     border-style: solid;
-    border-width: 5px;
+    border-width: 3px;
 }
 
 
-.bus2Td {
+.Date {
     float: right;
     border-color: #89b147;
     border-style: solid;
@@ -166,10 +182,10 @@ dd{
     height: 30px;
     width: 77%;
 }
-.bus3Td {
+.Contenu {
     float: right;
     border-color: #2937a5;
-    border-style: groove;
+    border-style: solid;
     border-width: 3px;
     height: 195px;
     width: 77%;

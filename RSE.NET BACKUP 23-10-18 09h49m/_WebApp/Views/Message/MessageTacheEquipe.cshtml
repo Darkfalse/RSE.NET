@@ -6,40 +6,25 @@
 
 <h2>MessageTacheEquipe</h2>
 
-<table class="table">
     @{int? ta = null;}
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Contenu)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Auteur)
-        </th>
-    </tr>
+    <div class="divmessage">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Contenu)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Auteur)
-        </td>
-        @{
-            ta = item.Id_Tache_Equipe;
+        @foreach (var item in Model)
+        {<div class="divpostunique">
+                <div class="Auteur">@Html.DisplayFor(modelItem => item.Auteur)</div>
+                <div class="Date">@Html.DisplayFor(modelItem => item.Date)</div>
+                <div class="Contenu">@Html.DisplayFor(modelItem => item.Contenu)</div>
+                <br class="clearboth" />
+            </div>
+
         }
-    </tr>
-}
+        @if (Model != null && Model.Any())
+        {
+            ta = Model.FirstOrDefault().Id_Tache_Equipe;
+        }
 
-</table>
-<br class="clearboth" />
-<div>
+    </div>
+<div class="divmessage">
     <form action="~/Member/RepondreTacheEquipe" method="post">
         <input type="hidden" name="idTa" id="idTa" value='@ta' />
         <input type="hidden" name="idMsg" id="idMsg" value='@Model.First().Id;' />
