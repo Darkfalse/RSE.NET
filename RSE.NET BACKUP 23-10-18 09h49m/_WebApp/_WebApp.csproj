@@ -262,6 +262,7 @@
     <Content Include="Views\Message\CreateSujetEquipe.cshtml" />
     <Content Include="Views\Message\CreateSujetProjet.cshtml" />
     <Content Include="Views\Message\CreateSujetTache.cshtml" />
+    <Content Include="Views\Member\MessageProjet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

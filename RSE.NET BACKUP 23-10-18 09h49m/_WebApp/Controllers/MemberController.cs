@@ -74,6 +74,9 @@ namespace _WebApp.Controllers
                         DocumentService ds = new DocumentService();
                         me.ListD = ds.GetByEquipe((int)idEq);
 
+                        //TODO Chef d'équipe
+                        //me.emp = es.GetManagerByEquipe((int)idEq);
+
                         return View(me);
                     //}
                 }
@@ -131,28 +134,26 @@ namespace _WebApp.Controllers
                 mp.p = ps.GetById(id);
             }
 
-            if (id != 0) {
-                EmployeeService ems = new EmployeeService();
-                //Verifie si l'utilisateur courrant a accès au projet 'id'
-                Employee e = ems.GetByProjet(id).Where(r => r.Id == idMoi).SingleOrDefault();
+            EmployeeService ems = new EmployeeService();
+            //Verifie si l'utilisateur courrant a accès au projet 'id'
+            Employee e = ems.GetByProjet(id).Where(r => r.Id == idMoi).SingleOrDefault();
 
-                if (e != null) {
-                    mp.chef = ems.GetManagerByProjet(id);
+            if (e != null) {
+                mp.chef = ems.GetManagerByProjet(id);
 
-                    TacheEmployeeService tes = new TacheEmployeeService();
-                    mp.TacheEmployees = tes.GetByEmployee(idMoi);
+                TacheEmployeeService tes = new TacheEmployeeService();
+                mp.TacheEmployees = tes.GetByEmployee(idMoi);
 
-                    TacheEquipeService teq = new TacheEquipeService();
-                    mp.TacheEquipes = teq.GetByProjet(id);
+                TacheEquipeService teq = new TacheEquipeService();
+                mp.TacheEquipes = teq.GetByProjet(id);
 
-                    MessageProjetService mps = new MessageProjetService();
-                    mp.MessageProjets = mps.GetSujetByProjet(id);
+                MessageProjetService mps = new MessageProjetService();
+                mp.MessageProjets = mps.GetSujetByProjet(id);
 
-                    DocumentService ds = new DocumentService();
-                    mp.Documents = ds.GetByProjet(id);
+                DocumentService ds = new DocumentService();
+                mp.Documents = ds.GetByProjet(id);
 
-                    return View(mp);
-                }
+                return View(mp);
             }
             return RedirectToAction("Index", "Error");
         }
