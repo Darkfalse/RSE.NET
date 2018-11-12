@@ -1,0 +1,121 @@
+﻿@model _WebApp.Areas.Admin.Models.ViewModels.AdminProjet
+@using Client.Models;
+
+@{
+    ViewBag.Title = "DetailsProjet";
+}
+
+<div class="detproj">
+    <h2>DetailsProjet</h2>
+    <div>
+        <dl class="dl-horizontal">
+            -
+            <dt>
+                @Html.DisplayNameFor(model => model.p.Nom)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.p.Nom)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.p.Description)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.p.Description)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.p.Debut)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.p.Debut)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.p.Fin)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.p.Fin)
+            </dd>
+            <dt>
+                Manager
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.e.Nom) @Html.DisplayFor(model => model.e.Prenom)
+            </dd>
+        </dl>
+
+        <div class="list-group">
+            <h4>Équipe du projet</h4>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.eq.Nom)
+                    </th>
+                    <th>
+                        Date de création
+                    </th>
+                    <th>
+                        Employee(s)
+                    </th>
+                </tr>
+                @if (Model.ListEqEmp != null && Model.ListEqEmp.Any()) {
+                    foreach (var item in Model.ListEqEmp) {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Key.Nom)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Key.Creee)
+                            </td>
+                            <td>
+                                @if (item.Key != null && item.Value != null) {
+                                    foreach (var item2 in item.Value) {
+                                        if (item2 != null) {
+                                            @Html.DisplayFor(modelItem => item2.Nom) @Html.DisplayFor(modelItem => item2.Prenom)<br>
+                                        }
+                                    }
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+
+            </table>
+        </div>
+
+        <form action="~/Admin/Admin/AffecterEquipeProj" method="post">
+            <div class="list-group">
+                <h4>Autre équipe</h4>
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.eq.Nom)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.eq.Creee)
+                        </th>
+                        <th>
+                            Affecter
+                        </th>
+                    </tr>
+                    @{List<Employee> le = new List<Employee>(); }
+                    @if (Model.ListOtherEq != null && Model.ListOtherEq.Any()) {
+                        foreach (var item in Model.ListOtherEq) {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nom)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Creee)
+                                </td>
+                                <td>
+                                    <input type="checkbox" name='@item.Id' value="0" id='@item.Id' />
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+            <input type="hidden" name="idProj" value='@Model.p.Id' />
+            <input type="submit" value="Affecter" />
+        </form>
+    </div>
+</div>

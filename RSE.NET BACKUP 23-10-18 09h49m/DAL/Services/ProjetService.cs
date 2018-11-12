@@ -59,6 +59,23 @@ namespace DAL.Services {
             return p;
         }
 
+        public bool AffecterEquipe(List<int> idList, int idProj) {
+            Connection connection = new Connection(providerName, connString);
+            try {
+                foreach (int id in idList) {
+                    Command command = new Command("EXEC SP_AffecteEmployeeProj @ideq = @ie, @idproj = @id;");
+                    command.AddParameter("ie", id);
+                    command.AddParameter("id", idProj);
+
+                    connection.ExecuteNonQuery(command);
+                }
+                return true;
+            }
+            catch (Exception) {
+                return false;
+            }
+        }
+
         public bool Update(Projet p) {
             Connection connection = new Connection(providerName, connString);
             Command command = new Command("EXEC SP_UpdateProjet @id = @i, @nom = @np, @des = @d, @fin = @df;");

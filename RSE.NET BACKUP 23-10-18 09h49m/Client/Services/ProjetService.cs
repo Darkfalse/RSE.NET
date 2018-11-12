@@ -38,6 +38,10 @@ namespace Client.Services {
             return service.Insert(p.ToDal()).ToClient();
         }
 
+        public bool AffecterEquipe(List<int> idList, int idProj) {
+            return service.AffecterEquipe(idList, idProj);
+        }
+
         public bool Update(Projet p) {
             return service.Update(p.ToDal());
         }

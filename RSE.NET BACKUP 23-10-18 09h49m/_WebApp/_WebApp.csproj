@@ -147,9 +147,11 @@
     <Compile Include="Areas\Admin\Infrastructure\AdminSession.cs" />
     <Compile Include="Areas\Admin\Models\Formulaires\CreateDepForm.cs" />
     <Compile Include="Areas\Admin\Models\Formulaires\CreateProjetForm.cs" />
+    <Compile Include="Areas\Admin\Models\Formulaires\EditProjetForm.cs" />
     <Compile Include="Areas\Admin\Models\Formulaires\LoginForms.cs" />
     <Compile Include="Areas\Admin\Models\Formulaires\EditDepForm.cs" />
     <Compile Include="Areas\Admin\Models\ViewModels\AdminDep.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModels\AdminProjet.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -211,6 +213,8 @@
     <Content Include="Areas\Admin\Views\Admin\DetailsDep.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Projet.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\CreateProjet.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\DetailsProjet.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\EditProjet.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

@@ -96,7 +96,7 @@ namespace _WebApp.Areas.Admin.Controllers
             return View(ad);
         }
 
-        public ActionResult AffecterEmployee(FormCollection listForm, int idDep) {
+        public ActionResult AffecterEmployeeDep(FormCollection listForm, int idDep) {
             listForm.Remove("idDep");
             List<int> listId = new List<int>();
 
@@ -142,6 +142,67 @@ namespace _WebApp.Areas.Admin.Controllers
                 return RedirectToAction("Index", "Admin");
             }
             return View(form);
+        }
+
+        public ActionResult EditProjet(int id) {
+            ProjetService ps = new ProjetService();
+            Projet p = ps.GetById(id);
+
+            EditProjetForm form = new EditProjetForm();
+            form.Id = (int)p.Id;
+            form.Nom = p.Nom;
+            form.Description = p.Description;
+            form.DateDebut = p.Debut;
+            form.DateFin = p.Fin;
+
+            return View(form);
+        }
+
+        [HttpPost]
+        public ActionResult EditProjet(EditProjetForm form) {
+            if (ModelState.IsValid) {
+                ProjetService ps = new ProjetService();
+                Projet p = new Projet(form.Id, form.Nom, form.Description, form.DateDebut, form.DateFin, AdminSession.CurrentAdmin.NumeroAdmin);
+                if (ps.Update(p))
+                    return RedirectToAction("Projet", "Admin");
+            }
+            return View(form);
+        }
+
+        public ActionResult DetailsProjet(int id) {
+            ProjetService ps = new ProjetService();
+            EquipeService eqs = new EquipeService();
+            EmployeeService es = new EmployeeService();
+
+            AdminProjet ap = new AdminProjet();
+            ap.p = ps.GetById(id);
+            ap.e = es.GetManagerByProjet(id);
+            IEnumerable<Equipe> listEq = eqs.GetByProjet(id);
+            if (listEq != null && listEq.Any()) { 
+                foreach (Equipe eq in listEq) {
+                    if (eq != null && eq.Id != null && eq.Id != 0) {
+                        IEnumerable<Employee> listEmp = es.GetByEquipe((int)eq.Id).OrderBy(r => r.Nom);
+                        if (listEmp != null && listEmp.Any())
+                            ap.ListEqEmp.Add(eq, listEmp); //TODO debug
+                    }
+                }
+            }
+
+            return View(ap);
+        }
+
+        public ActionResult AffecterEquipeProj(FormCollection listForm, int idProj) {
+            listForm.Remove("idProj");
+            List<int> listId = new List<int>();
+
+            foreach (string item in listForm) {
+                listId.Add(int.Parse(item));
+            }
+
+            ProjetService ps = new ProjetService();
+            ps.AffecterEquipe(listId, idProj);
+
+            return RedirectToAction("DetailsProjet", "Admin", new { id = idProj });
         }
     }
 }
